@@ -33,35 +33,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($currentRole, ['admin', 'd
         $userId   = (int)($_POST['user_id']     ?? 0);
         $pw       = $_POST['password']          ?? '';
 
-        if (!$empId || !$fName || !$lName) {
-            $msg = 'Employee ID, First Name, and Last Name are required.'; $msgType = 'danger';
+        // DETAILED VALIDATION
+        $errors = [];
+        
+        // Required fields
+        if (!$empId) $errors[] = 'Employee ID is required';
+        if (!$fName) $errors[] = 'First Name is required';
+        if (!$lName) $errors[] = 'Last Name is required';
+        
+        // Email validation
+        if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Invalid email format';
+        }
+        
+        // Employee ID format validation (alphanumeric, dashes, underscores allowed)
+        if ($empId && !preg_match('/^[a-zA-Z0-9_-]+$/', $empId)) {
+            $errors[] = 'Employee ID can only contain letters, numbers, dashes, and underscores';
+        }
+        
+        // Password validation for new users
+        if ($action === 'create') {
+            if (!$pw) {
+                $errors[] = 'Password is required for new users';
+            } elseif (strlen($pw) < 6) {
+                $errors[] = 'Password must be at least 6 characters';
+            }
+        }
+        
+        // Department required for faculty
+        if ($role === 'faculty' && !$dept) {
+            $errors[] = 'Department is required for faculty members';
+        }
+        
+        if (!empty($errors)) {
+            $msg = implode('. ', $errors) . '.';
+            $msgType = 'danger';
         } else {
             if ($action === 'create') {
-                if (!$pw || strlen($pw) < 6) { $msg = 'Password must be at least 6 characters.'; $msgType = 'danger'; }
-                else {
-                    $exists = $db->prepare("SELECT id FROM users WHERE employee_id=?");
-                    $exists->execute([$empId]);
-                    if ($exists->fetch()) { $msg = 'Employee ID already exists.'; $msgType = 'danger'; }
-                    else {
+                // Check for duplicate Employee ID
+                $exists = $db->prepare("SELECT id FROM users WHERE employee_id=?");
+                $exists->execute([$empId]);
+                if ($exists->fetch()) {
+                    $msg = "Employee ID '{$empId}' already exists. Please use a different ID.";
+                    $msgType = 'danger';
+                } else {
+                    try {
                         $hash = password_hash($pw, PASSWORD_BCRYPT);
                         $db->prepare("INSERT INTO users (employee_id,first_name,middle_name,last_name,suffix,email,password_hash,role,department,college,position,employment_status,assigned_dean_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)")
                            ->execute([$empId,$fName,$mName,$lName,$suffix,$email,$hash,$role,$dept,$dept,$pos,$empStat,$deanId]);
                         $newId = $db->lastInsertId();
                         auditLog('created','user',$newId,null,['employee_id'=>$empId,'role'=>$role],'User created');
-                        $msg = "User {$fName} {$lName} created successfully.";
+                        $msg = "✓ User {$fName} {$lName} ({$empId}) created successfully!";
                         
                         // Redirect back if return_url is provided
                         if ($returnUrl) {
                             header("Location: {$returnUrl}?msg=" . urlencode($msg));
                             exit;
                         }
+                    } catch (Exception $e) {
+                        $msg = "Database error: " . $e->getMessage();
+                        $msgType = 'danger';
+                        error_log("User creation error: " . $e->getMessage());
                     }
                 }
             } else {
-                $db->prepare("UPDATE users SET first_name=?,middle_name=?,last_name=?,suffix=?,email=?,role=?,department=?,college=?,position=?,employment_status=?,assigned_dean_id=?,updated_at=NOW() WHERE id=?")
-                   ->execute([$fName,$mName,$lName,$suffix,$email,$role,$dept,$dept,$pos,$empStat,$deanId,$userId]);
-                auditLog('updated','user',$userId,null,['role'=>$role,'dept'=>$dept],'User updated');
-                $msg = "User updated successfully.";
+                try {
+                    $db->prepare("UPDATE users SET first_name=?,middle_name=?,last_name=?,suffix=?,email=?,role=?,department=?,college=?,position=?,employment_status=?,assigned_dean_id=?,updated_at=NOW() WHERE id=?")
+                       ->execute([$fName,$mName,$lName,$suffix,$email,$role,$dept,$dept,$pos,$empStat,$deanId,$userId]);
+                    auditLog('updated','user',$userId,null,['role'=>$role,'dept'=>$dept],'User updated');
+                    $msg = "✓ User {$fName} {$lName} updated successfully!";
+                } catch (Exception $e) {
+                    $msg = "Database error: " . $e->getMessage();
+                    $msgType = 'danger';
+                    error_log("User update error: " . $e->getMessage());
+                }
             }
         }
     }

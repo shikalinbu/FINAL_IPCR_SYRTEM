@@ -3,10 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2026 at 04:57 PM
+-- Generation Time: Oct 13, 2026 at 09:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
+-- ============================================
+-- SAFE IMPORT: Disable foreign key checks
+-- ============================================
+SET FOREIGN_KEY_CHECKS = 0;
+SET AUTOCOMMIT = 0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -1742,7 +1747,564 @@ INSERT INTO `audit_log` (`id`, `action`, `entity_type`, `entity_id`, `old_value`
 (1703, 'created', 'period', '6', NULL, '{\"name\":\"July - Deber 2026 (2nd Semester)\"}', 10, 'Period created', '2026-10-12 06:27:21'),
 (1704, 'deleted', 'period', '6', 'July - Deber 2026 (2nd Semester)', NULL, 10, 'Period deleted: July - Deber 2026 (2nd Semester)', '2026-10-12 06:27:44'),
 (1705, 'deleted', 'period', '5', 'July - Deber 2026 (2nd Semester)', NULL, 10, 'Period deleted: July - Deber 2026 (2nd Semester)', '2026-10-12 06:27:47'),
-(1706, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 14:54:43');
+(1706, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 14:54:43'),
+(1707, 'ipcr_evaluated', 'ipcr_form', '8', 'under_review', 'reviewed', 10, 'Composite: 2.49 (Unsatisfactory)', '2026-10-12 15:03:44'),
+(1708, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 15:17:00'),
+(1709, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 15:17:47'),
+(1710, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 15:20:25'),
+(1711, 'login', 'user', '369', NULL, 'logged_in', 369, 'User logged in', '2026-10-12 15:20:33'),
+(1712, 'logout', 'user', '369', 'logged_in', 'logged_out', 369, 'User logged out', '2026-10-12 15:20:43'),
+(1713, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-12 15:21:00'),
+(1714, 'ipcr_approved', 'ipcr_form', '8', 'reviewed', 'approved', 1, 'Admin approved', '2026-10-12 15:21:15'),
+(1715, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-12 15:23:46'),
+(1716, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 15:23:58'),
+(1717, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-12 15:26:28'),
+(1718, 'user_created', 'user', '383', NULL, NULL, 10, 'Dean created new faculty: andrei pambid (admin-ako)', '2026-10-12 15:53:58'),
+(1719, 'deleted', 'user', '383', 'admin-ako', NULL, 10, 'User deleted: andrei pambid', '2026-10-12 15:54:25'),
+(1720, 'notification_sent', 'user', '364', 'MARIBEL ABALOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:35:43'),
+(1721, 'notification_sent', 'user', '342', 'REYMOND AGCAOILI', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:35:49'),
+(1722, 'notification_sent', 'user', '356', 'SOTERO ARNOLD ALBURO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:35:53'),
+(1723, 'notification_sent', 'user', '334', 'JEFSIE ANTONIO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:35:59'),
+(1724, 'notification_sent', 'user', '343', 'ALEX BALUBAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:03'),
+(1725, 'notification_sent', 'user', '355', 'MARY GRACE BAQUIRAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:07'),
+(1726, 'notification_sent', 'user', '363', 'ORFEL BEJARIN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:13'),
+(1727, 'notification_sent', 'user', '357', 'JEAN CALUDE BENITEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:18'),
+(1728, 'notification_sent', 'user', '344', 'EUGENE BOLAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:22'),
+(1729, 'notification_sent', 'user', '345', 'ABIGAIL BRUNO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:28'),
+(1730, 'notification_sent', 'user', '358', 'JOSELITO BUGAYONG', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:34'),
+(1731, 'notification_sent', 'user', '353', 'MARCO BULAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:38'),
+(1732, 'notification_sent', 'user', '378', 'MARJAY BUMALOD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:44'),
+(1733, 'notification_sent', 'user', '379', 'CLARISA BUNUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:48'),
+(1734, 'notification_sent', 'user', '376', 'RACHEL CABAJAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:52'),
+(1735, 'notification_sent', 'user', '339', 'GERRLENE CABALONGA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:36:56'),
+(1736, 'notification_sent', 'user', '365', 'ZACH CHAMBERLAINE CORPUZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:37:01'),
+(1737, 'notification_sent', 'user', '346', 'ROBERT DANCEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:37:05'),
+(1738, 'notification_sent', 'user', '366', 'MARK GERALD DE LEON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:37:11'),
+(1739, 'notification_sent', 'user', '380', 'HARROLD JAY FATALLA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:37:15'),
+(1740, 'notification_sent', 'user', '354', 'JERICO FIEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:37:18'),
+(1741, 'notification_sent', 'user', '362', 'FREDERICK GALLO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:37:22');
+INSERT INTO `audit_log` (`id`, `action`, `entity_type`, `entity_id`, `old_value`, `new_value`, `performed_by`, `remarks`, `performed_at`) VALUES
+(1742, 'notification_sent', 'user', '367', 'ANGELO GAMARA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:37:26'),
+(1743, 'notification_sent', 'user', '368', 'MARK GIL GANGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:37:29'),
+(1744, 'notification_sent', 'user', '382', 'TWINKLE MAE GATBONTON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 16:37:33'),
+(1745, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 16:44:26'),
+(1746, 'login', 'user', '363', NULL, 'logged_in', 363, 'User logged in', '2026-10-12 16:44:44'),
+(1747, 'password_reset', 'user', '363', NULL, NULL, 363, 'Password changed by user', '2026-10-12 16:45:13'),
+(1748, 'logout', 'user', '363', 'logged_in', 'logged_out', 363, 'User logged out', '2026-10-12 16:45:18'),
+(1749, 'login', 'user', '363', NULL, 'logged_in', 363, 'User logged in', '2026-10-12 16:45:30'),
+(1750, 'logout', 'user', '363', 'logged_in', 'logged_out', 363, 'User logged out', '2026-10-12 16:45:32'),
+(1751, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 16:45:50'),
+(1752, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 16:46:58'),
+(1753, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 16:47:21'),
+(1754, 'created', 'user', '384', NULL, '{\"employee_id\":\"ICT-022\",\"role\":\"faculty\"}', 10, 'User created', '2026-10-12 16:50:02'),
+(1755, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 16:50:15'),
+(1756, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 16:51:18'),
+(1757, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 16:51:35'),
+(1758, 'login', 'user', '384', NULL, 'logged_in', 384, 'User logged in', '2026-10-12 16:51:44'),
+(1759, 'logout', 'user', '384', 'logged_in', 'logged_out', 384, 'User logged out', '2026-10-12 16:52:19'),
+(1760, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 16:52:27'),
+(1761, 'created', 'period', '7', NULL, '{\"name\":\"test\"}', 10, 'Period created', '2026-10-12 17:06:39'),
+(1762, 'status_change', 'period', '4', 'rating', 'closed', 10, 'Period advanced to closed', '2026-10-12 17:15:45'),
+(1763, 'status_change', 'period', '7', 'draft', 'open', 10, 'Period advanced to open', '2026-10-12 17:15:47'),
+(1764, 'status_change', 'period', '7', 'open', 'rating', 10, 'Period advanced to rating', '2026-10-12 17:37:59'),
+(1765, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 17:38:39'),
+(1766, 'login', 'user', '384', NULL, 'logged_in', 384, 'User logged in', '2026-10-12 17:39:17'),
+(1767, 'logout', 'user', '384', 'logged_in', 'logged_out', 384, 'User logged out', '2026-10-12 17:40:47'),
+(1768, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 17:41:05'),
+(1769, 'status_change', 'period', '7', 'rating', 'closed', 10, 'Period advanced to closed', '2026-10-12 17:43:44'),
+(1770, 'created', 'period', '8', NULL, '{\"name\":\"July - December 2026 (2nd Semester)\"}', 10, 'Period created', '2026-10-12 17:45:31'),
+(1771, 'updated', 'period', '8', NULL, '{\"name\":\"July - December 2026 (2nd Semester)\"}', 10, 'Period updated', '2026-10-12 17:45:46'),
+(1772, 'updated', 'period', '8', NULL, '{\"name\":\"July - December 2026 (2nd Semester)\"}', 10, 'Period updated', '2026-10-12 17:46:39'),
+(1773, 'status_change', 'period', '8', 'draft', 'open', 10, 'Period advanced to open', '2026-10-12 17:46:51'),
+(1774, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 17:46:56'),
+(1775, 'login', 'user', '384', NULL, 'logged_in', 384, 'User logged in', '2026-10-12 17:47:03'),
+(1776, 'created', 'ipcr_form', '9', NULL, 'draft', 384, 'IPCR form created', '2026-10-12 17:47:11'),
+(1777, 'ipcr_submitted', 'ipcr_form', '9', 'draft', 'submitted', 384, 'Submitted', '2026-10-12 17:47:20'),
+(1778, 'ipcr_printed', 'ipcr_form', '9', NULL, 'print', 384, 'IPCR printed', '2026-10-12 17:47:33'),
+(1779, 'ipcr_printed', 'ipcr_form', '9', NULL, 'print', 384, 'IPCR printed', '2026-10-12 17:56:39'),
+(1780, 'logout', 'user', '384', 'logged_in', 'logged_out', 384, 'User logged out', '2026-10-12 17:58:00'),
+(1781, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 17:58:25'),
+(1782, 'updated', 'period', '8', NULL, '{\"name\":\"July - December 2026 (2nd Semester)\"}', 10, 'Period updated', '2026-10-12 18:03:10'),
+(1783, 'status_change', 'ipcr_form', '9', 'submitted', 'under_review', 10, 'Dean started review', '2026-10-12 18:03:25'),
+(1784, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1785, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1786, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1787, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1788, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1789, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1790, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1791, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1792, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1793, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1794, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1795, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1796, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1797, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1798, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:03:55'),
+(1799, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1800, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1801, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1802, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1803, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1804, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1805, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1806, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1807, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1808, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1809, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1810, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1811, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1812, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1813, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:25:02'),
+(1814, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1815, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1816, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1817, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1818, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1819, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1820, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1821, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1822, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1823, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1824, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1825, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1826, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1827, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1828, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:25:32'),
+(1829, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1830, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1831, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1832, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1833, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1834, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1835, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1836, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1837, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1838, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1839, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1840, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1841, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1842, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1843, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:26:02'),
+(1844, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1845, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1846, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1847, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1848, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1849, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1850, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1851, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1852, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1853, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1854, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1855, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1856, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1857, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1858, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:26:32'),
+(1859, 'ipcr_printed', 'ipcr_form', '9', NULL, 'print', 10, 'IPCR printed', '2026-10-12 18:26:44'),
+(1860, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1861, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1862, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1863, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1864, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1865, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1866, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1867, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1868, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1869, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1870, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1871, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1872, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1873, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1874, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:27:02'),
+(1875, 'ipcr_downloaded', 'ipcr_form', '9', NULL, 'excel', 10, 'IPCR exported to Excel/CSV', '2026-10-12 18:27:10'),
+(1876, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1877, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1878, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1879, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1880, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1881, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1882, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1883, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1884, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1885, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1886, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1887, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1888, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1889, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1890, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:27:32'),
+(1891, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1892, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1893, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1894, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1895, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1896, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1897, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1898, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1899, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1900, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1901, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1902, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1903, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1904, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1905, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:28:02'),
+(1906, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1907, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1908, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1909, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1910, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1911, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1912, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1913, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1914, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1915, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1916, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1917, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1918, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1919, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1920, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:28:32'),
+(1921, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1922, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1923, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1924, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1925, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1926, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1927, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1928, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1929, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1930, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1931, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1932, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1933, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1934, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1935, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:29:02'),
+(1936, 'ipcr_evaluated', 'ipcr_form', '9', 'under_review', 'reviewed', 10, 'Composite: 3.96 (Very Satisfactory)', '2026-10-12 18:29:27'),
+(1937, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1938, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1939, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1940, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1941, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1942, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1943, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1944, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q=2 E= T=1', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1945, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1946, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1947, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1948, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1949, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1950, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1951, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:30:33'),
+(1952, 'ipcr_evaluated', 'ipcr_form', '9', 'under_review', 'reviewed', 10, 'Composite: 3.96 (Very Satisfactory)', '2026-10-12 18:30:41'),
+(1953, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1954, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1955, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1956, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1957, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1958, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1959, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1960, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q=2 E= T=1', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1961, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1962, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1963, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1964, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1965, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1966, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1967, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 18:31:38'),
+(1968, 'ipcr_evaluated', 'ipcr_form', '9', 'under_review', 'reviewed', 10, 'Composite: 3.96 (Very Satisfactory)', '2026-10-12 18:31:54'),
+(1969, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 18:47:04'),
+(1970, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 18:50:02'),
+(1971, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 18:52:02'),
+(1972, 'login', 'user', '384', NULL, 'logged_in', 384, 'User logged in', '2026-10-12 18:52:10'),
+(1973, 'logout', 'user', '384', 'logged_in', 'logged_out', 384, 'User logged out', '2026-10-12 18:52:35'),
+(1974, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 18:52:43'),
+(1975, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 18:56:43'),
+(1976, 'login', 'user', '384', NULL, 'logged_in', 384, 'User logged in', '2026-10-12 18:56:54'),
+(1977, 'logout', 'user', '384', 'logged_in', 'logged_out', 384, 'User logged out', '2026-10-12 18:57:00'),
+(1978, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 18:57:09'),
+(1979, 'login', 'user', '384', NULL, 'logged_in', 384, 'User logged in', '2026-10-12 18:57:38'),
+(1980, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 18:58:31'),
+(1981, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 18:59:35'),
+(1982, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1983, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1984, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1985, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1986, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1987, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1988, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1989, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q=2 E= T=1', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1990, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1991, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1992, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1993, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1994, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1995, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1996, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 19:08:53'),
+(1997, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(1998, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(1999, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2000, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2001, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2002, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2003, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2004, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q=2 E= T=1', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2005, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2006, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2007, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2008, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2009, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2010, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2011, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 19:09:23'),
+(2012, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 1: Q=4 E=4.4 T=5', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2013, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 2: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2014, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 3: Q=5 E=5 T=5', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2015, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2016, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2017, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2018, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2019, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 8: Q=2 E= T=1', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2020, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2021, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 10: Q=1 E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2022, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2023, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2024, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2025, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2026, 'rating_changed', 'ipcr_form', '9', NULL, 'SI 15: Q=1 E=1 T=1', 10, 'Dean saved ratings', '2026-10-12 19:09:53'),
+(2027, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 19:09:59'),
+(2028, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 19:10:27'),
+(2029, 'logout', 'user', '384', 'logged_in', 'logged_out', 384, 'User logged out', '2026-10-12 20:04:07'),
+(2030, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 20:04:27'),
+(2031, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 02:27:15'),
+(2032, 'notification_sent', 'user', '364', 'MARIBEL ABALOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:08'),
+(2033, 'notification_sent', 'user', '342', 'REYMOND AGCAOILI', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:14'),
+(2034, 'notification_sent', 'user', '356', 'SOTERO ARNOLD ALBURO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:20'),
+(2035, 'notification_sent', 'user', '334', 'JEFSIE ANTONIO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:29'),
+(2036, 'notification_sent', 'user', '343', 'ALEX BALUBAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:34'),
+(2037, 'notification_sent', 'user', '355', 'MARY GRACE BAQUIRAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:38'),
+(2038, 'notification_sent', 'user', '363', 'ORFEL BEJARIN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:42'),
+(2039, 'notification_sent', 'user', '357', 'JEAN CALUDE BENITEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:46'),
+(2040, 'notification_sent', 'user', '344', 'EUGENE BOLAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:49'),
+(2041, 'notification_sent', 'user', '345', 'ABIGAIL BRUNO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:55'),
+(2042, 'notification_sent', 'user', '358', 'JOSELITO BUGAYONG', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:35:59'),
+(2043, 'notification_sent', 'user', '353', 'MARCO BULAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:02'),
+(2044, 'notification_sent', 'user', '378', 'MARJAY BUMALOD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:06'),
+(2045, 'notification_sent', 'user', '379', 'CLARISA BUNUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:12'),
+(2046, 'notification_sent', 'user', '376', 'RACHEL CABAJAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:15'),
+(2047, 'notification_sent', 'user', '339', 'GERRLENE CABALONGA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:20'),
+(2048, 'notification_sent', 'user', '365', 'ZACH CHAMBERLAINE CORPUZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:23'),
+(2049, 'notification_sent', 'user', '346', 'ROBERT DANCEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:27'),
+(2050, 'notification_sent', 'user', '366', 'MARK GERALD DE LEON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:31'),
+(2051, 'notification_sent', 'user', '380', 'HARROLD JAY FATALLA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:34'),
+(2052, 'notification_sent', 'user', '354', 'JERICO FIEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:37'),
+(2053, 'notification_sent', 'user', '362', 'FREDERICK GALLO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:42'),
+(2054, 'notification_sent', 'user', '367', 'ANGELO GAMARA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:45'),
+(2055, 'notification_sent', 'user', '368', 'MARK GIL GANGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:49'),
+(2056, 'notification_sent', 'user', '382', 'TWINKLE MAE GATBONTON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:53'),
+(2057, 'notification_sent', 'user', '347', 'KRISTELLE ANN GINEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:36:56'),
+(2058, 'notification_sent', 'user', '381', 'MARIA VERCIDA GONZALVO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:00'),
+(2059, 'notification_sent', 'user', '369', 'JAYDWIN LABIANO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:04'),
+(2060, 'notification_sent', 'user', '340', 'ADRIAN LAGUA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:08'),
+(2061, 'notification_sent', 'user', '333', 'BLESIE JOY LAGUNA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:11'),
+(2062, 'notification_sent', 'user', '370', 'FITZERALD LIM', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:15'),
+(2063, 'notification_sent', 'user', '371', 'ROMAN ALEX LUSTRO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:18'),
+(2064, 'notification_sent', 'user', '348', 'HAZEL MEI MANUEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:23'),
+(2065, 'notification_sent', 'user', '372', 'VON RYAN MARCELO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:27'),
+(2066, 'notification_sent', 'user', '373', 'JOEY NATIVIDAD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:31'),
+(2067, 'notification_sent', 'user', '349', 'MARIA CRISTINA LALAINE NERONA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:34'),
+(2068, 'notification_sent', 'user', '377', 'MARIA THERESA NUEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:38'),
+(2069, 'notification_sent', 'user', '341', 'DIANNE FAE PAGADUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:42'),
+(2070, 'notification_sent', 'user', '335', 'GERALDINE PAGUIGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:46'),
+(2071, 'notification_sent', 'user', '374', 'JHOAN PAGUIRIGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:50'),
+(2072, 'notification_sent', 'user', '336', 'BAGNOS JR QUEBRAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:54'),
+(2073, 'notification_sent', 'user', '360', 'RAFAEL RAMOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:37:57'),
+(2074, 'notification_sent', 'user', '337', 'WILNA BREECH RAMOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:38:02'),
+(2075, 'notification_sent', 'user', '350', 'JOEY RAPADAS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:38:05'),
+(2076, 'notification_sent', 'user', '351', 'REYNAN REYES', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:38:09'),
+(2077, 'notification_sent', 'user', '352', 'ALFONSO SIMON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:38:12'),
+(2078, 'notification_sent', 'user', '338', 'RAZEL TACAY', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:38:16'),
+(2079, 'notification_sent', 'user', '375', 'EDDISON TULIAO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:38:20'),
+(2080, 'notification_sent', 'user', '364', 'MARIBEL ABALOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:40'),
+(2081, 'notification_sent', 'user', '342', 'REYMOND AGCAOILI', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:41'),
+(2082, 'notification_sent', 'user', '356', 'SOTERO ARNOLD ALBURO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:43'),
+(2083, 'notification_sent', 'user', '334', 'JEFSIE ANTONIO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:44'),
+(2084, 'notification_sent', 'user', '343', 'ALEX BALUBAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:46'),
+(2085, 'notification_sent', 'user', '355', 'MARY GRACE BAQUIRAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:47'),
+(2086, 'notification_sent', 'user', '363', 'ORFEL BEJARIN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:49'),
+(2087, 'notification_sent', 'user', '357', 'JEAN CALUDE BENITEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:51'),
+(2088, 'notification_sent', 'user', '344', 'EUGENE BOLAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:52'),
+(2089, 'notification_sent', 'user', '345', 'ABIGAIL BRUNO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:53'),
+(2090, 'notification_sent', 'user', '358', 'JOSELITO BUGAYONG', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:55'),
+(2091, 'notification_sent', 'user', '353', 'MARCO BULAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:56'),
+(2092, 'notification_sent', 'user', '378', 'MARJAY BUMALOD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:40:58'),
+(2093, 'notification_sent', 'user', '379', 'CLARISA BUNUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:00'),
+(2094, 'notification_sent', 'user', '376', 'RACHEL CABAJAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:01'),
+(2095, 'notification_sent', 'user', '339', 'GERRLENE CABALONGA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:03'),
+(2096, 'notification_sent', 'user', '365', 'ZACH CHAMBERLAINE CORPUZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:04'),
+(2097, 'notification_sent', 'user', '346', 'ROBERT DANCEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:05'),
+(2098, 'notification_sent', 'user', '366', 'MARK GERALD DE LEON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:08'),
+(2099, 'notification_sent', 'user', '380', 'HARROLD JAY FATALLA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:09'),
+(2100, 'notification_sent', 'user', '354', 'JERICO FIEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:11'),
+(2101, 'notification_sent', 'user', '362', 'FREDERICK GALLO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:12'),
+(2102, 'notification_sent', 'user', '367', 'ANGELO GAMARA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:15'),
+(2103, 'notification_sent', 'user', '368', 'MARK GIL GANGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:16'),
+(2104, 'notification_sent', 'user', '382', 'TWINKLE MAE GATBONTON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:18'),
+(2105, 'notification_sent', 'user', '347', 'KRISTELLE ANN GINEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:19'),
+(2106, 'notification_sent', 'user', '381', 'MARIA VERCIDA GONZALVO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:21'),
+(2107, 'notification_sent', 'user', '369', 'JAYDWIN LABIANO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:24'),
+(2108, 'notification_sent', 'user', '340', 'ADRIAN LAGUA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:25'),
+(2109, 'notification_sent', 'user', '333', 'BLESIE JOY LAGUNA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:27'),
+(2110, 'notification_sent', 'user', '370', 'FITZERALD LIM', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:29'),
+(2111, 'notification_sent', 'user', '371', 'ROMAN ALEX LUSTRO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:30'),
+(2112, 'notification_sent', 'user', '348', 'HAZEL MEI MANUEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:31'),
+(2113, 'notification_sent', 'user', '372', 'VON RYAN MARCELO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:33'),
+(2114, 'notification_sent', 'user', '373', 'JOEY NATIVIDAD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:34'),
+(2115, 'notification_sent', 'user', '349', 'MARIA CRISTINA LALAINE NERONA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:36'),
+(2116, 'notification_sent', 'user', '377', 'MARIA THERESA NUEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:37'),
+(2117, 'notification_sent', 'user', '341', 'DIANNE FAE PAGADUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:39'),
+(2118, 'notification_sent', 'user', '335', 'GERALDINE PAGUIGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:41'),
+(2119, 'notification_sent', 'user', '374', 'JHOAN PAGUIRIGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:42'),
+(2120, 'notification_sent', 'user', '336', 'BAGNOS JR QUEBRAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:44'),
+(2121, 'notification_sent', 'user', '360', 'RAFAEL RAMOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:45'),
+(2122, 'notification_sent', 'user', '337', 'WILNA BREECH RAMOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:47'),
+(2123, 'notification_sent', 'user', '350', 'JOEY RAPADAS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:49'),
+(2124, 'notification_sent', 'user', '351', 'REYNAN REYES', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:51'),
+(2125, 'notification_sent', 'user', '352', 'ALFONSO SIMON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:52');
+INSERT INTO `audit_log` (`id`, `action`, `entity_type`, `entity_id`, `old_value`, `new_value`, `performed_by`, `remarks`, `performed_at`) VALUES
+(2126, 'notification_sent', 'user', '338', 'RAZEL TACAY', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:54'),
+(2127, 'notification_sent', 'user', '375', 'EDDISON TULIAO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:41:55'),
+(2128, 'notification_sent', 'user', '364', 'MARIBEL ABALOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:15'),
+(2129, 'notification_sent', 'user', '342', 'REYMOND AGCAOILI', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:17'),
+(2130, 'notification_sent', 'user', '356', 'SOTERO ARNOLD ALBURO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:18'),
+(2131, 'notification_sent', 'user', '334', 'JEFSIE ANTONIO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:20'),
+(2132, 'notification_sent', 'user', '343', 'ALEX BALUBAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:21'),
+(2133, 'notification_sent', 'user', '355', 'MARY GRACE BAQUIRAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:23'),
+(2134, 'notification_sent', 'user', '363', 'ORFEL BEJARIN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:24'),
+(2135, 'notification_sent', 'user', '357', 'JEAN CALUDE BENITEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:26'),
+(2136, 'notification_sent', 'user', '344', 'EUGENE BOLAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:27'),
+(2137, 'notification_sent', 'user', '345', 'ABIGAIL BRUNO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:29'),
+(2138, 'notification_sent', 'user', '358', 'JOSELITO BUGAYONG', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:31'),
+(2139, 'notification_sent', 'user', '353', 'MARCO BULAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:32'),
+(2140, 'notification_sent', 'user', '378', 'MARJAY BUMALOD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:34'),
+(2141, 'notification_sent', 'user', '379', 'CLARISA BUNUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:35'),
+(2142, 'notification_sent', 'user', '376', 'RACHEL CABAJAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:37'),
+(2143, 'notification_sent', 'user', '339', 'GERRLENE CABALONGA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:38'),
+(2144, 'notification_sent', 'user', '365', 'ZACH CHAMBERLAINE CORPUZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:40'),
+(2145, 'notification_sent', 'user', '346', 'ROBERT DANCEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:41'),
+(2146, 'notification_sent', 'user', '366', 'MARK GERALD DE LEON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:43'),
+(2147, 'notification_sent', 'user', '380', 'HARROLD JAY FATALLA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:44'),
+(2148, 'notification_sent', 'user', '354', 'JERICO FIEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:46'),
+(2149, 'notification_sent', 'user', '362', 'FREDERICK GALLO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:47'),
+(2150, 'notification_sent', 'user', '367', 'ANGELO GAMARA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:49'),
+(2151, 'notification_sent', 'user', '368', 'MARK GIL GANGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:50'),
+(2152, 'notification_sent', 'user', '382', 'TWINKLE MAE GATBONTON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:52'),
+(2153, 'notification_sent', 'user', '347', 'KRISTELLE ANN GINEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:53'),
+(2154, 'notification_sent', 'user', '381', 'MARIA VERCIDA GONZALVO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:55'),
+(2155, 'notification_sent', 'user', '369', 'JAYDWIN LABIANO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:56'),
+(2156, 'notification_sent', 'user', '340', 'ADRIAN LAGUA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:58'),
+(2157, 'notification_sent', 'user', '333', 'BLESIE JOY LAGUNA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:43:59'),
+(2158, 'notification_sent', 'user', '370', 'FITZERALD LIM', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:01'),
+(2159, 'notification_sent', 'user', '371', 'ROMAN ALEX LUSTRO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:02'),
+(2160, 'notification_sent', 'user', '348', 'HAZEL MEI MANUEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:04'),
+(2161, 'notification_sent', 'user', '372', 'VON RYAN MARCELO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:05'),
+(2162, 'notification_sent', 'user', '373', 'JOEY NATIVIDAD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:07'),
+(2163, 'notification_sent', 'user', '349', 'MARIA CRISTINA LALAINE NERONA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:09'),
+(2164, 'notification_sent', 'user', '377', 'MARIA THERESA NUEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:10'),
+(2165, 'notification_sent', 'user', '341', 'DIANNE FAE PAGADUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:12'),
+(2166, 'notification_sent', 'user', '335', 'GERALDINE PAGUIGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:13'),
+(2167, 'notification_sent', 'user', '374', 'JHOAN PAGUIRIGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:15'),
+(2168, 'notification_sent', 'user', '336', 'BAGNOS JR QUEBRAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:16'),
+(2169, 'notification_sent', 'user', '360', 'RAFAEL RAMOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:18'),
+(2170, 'notification_sent', 'user', '337', 'WILNA BREECH RAMOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:19'),
+(2171, 'notification_sent', 'user', '350', 'JOEY RAPADAS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:21'),
+(2172, 'notification_sent', 'user', '351', 'REYNAN REYES', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:23'),
+(2173, 'notification_sent', 'user', '352', 'ALFONSO SIMON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:24'),
+(2174, 'notification_sent', 'user', '338', 'RAZEL TACAY', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:26'),
+(2175, 'notification_sent', 'user', '375', 'EDDISON TULIAO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:44:27'),
+(2176, 'notification_sent', 'user', '364', 'MARIBEL ABALOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:27'),
+(2177, 'notification_sent', 'user', '342', 'REYMOND AGCAOILI', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:28'),
+(2178, 'notification_sent', 'user', '356', 'SOTERO ARNOLD ALBURO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:30'),
+(2179, 'notification_sent', 'user', '334', 'JEFSIE ANTONIO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:31'),
+(2180, 'notification_sent', 'user', '343', 'ALEX BALUBAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:33'),
+(2181, 'notification_sent', 'user', '355', 'MARY GRACE BAQUIRAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:34'),
+(2182, 'notification_sent', 'user', '363', 'ORFEL BEJARIN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:36'),
+(2183, 'notification_sent', 'user', '357', 'JEAN CALUDE BENITEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:38'),
+(2184, 'notification_sent', 'user', '344', 'EUGENE BOLAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:39'),
+(2185, 'notification_sent', 'user', '345', 'ABIGAIL BRUNO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:40'),
+(2186, 'notification_sent', 'user', '358', 'JOSELITO BUGAYONG', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:42'),
+(2187, 'notification_sent', 'user', '353', 'MARCO BULAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:44'),
+(2188, 'notification_sent', 'user', '378', 'MARJAY BUMALOD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:46'),
+(2189, 'notification_sent', 'user', '379', 'CLARISA BUNUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:47'),
+(2190, 'notification_sent', 'user', '376', 'RACHEL CABAJAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:48'),
+(2191, 'notification_sent', 'user', '339', 'GERRLENE CABALONGA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:50'),
+(2192, 'notification_sent', 'user', '365', 'ZACH CHAMBERLAINE CORPUZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:52'),
+(2193, 'notification_sent', 'user', '346', 'ROBERT DANCEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:53'),
+(2194, 'notification_sent', 'user', '366', 'MARK GERALD DE LEON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:54'),
+(2195, 'notification_sent', 'user', '380', 'HARROLD JAY FATALLA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:56'),
+(2196, 'notification_sent', 'user', '354', 'JERICO FIEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:57'),
+(2197, 'notification_sent', 'user', '362', 'FREDERICK GALLO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:45:59'),
+(2198, 'notification_sent', 'user', '367', 'ANGELO GAMARA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:01'),
+(2199, 'notification_sent', 'user', '368', 'MARK GIL GANGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:02'),
+(2200, 'notification_sent', 'user', '382', 'TWINKLE MAE GATBONTON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:04'),
+(2201, 'notification_sent', 'user', '347', 'KRISTELLE ANN GINEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:05'),
+(2202, 'notification_sent', 'user', '381', 'MARIA VERCIDA GONZALVO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:07'),
+(2203, 'notification_sent', 'user', '369', 'JAYDWIN LABIANO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:09'),
+(2204, 'notification_sent', 'user', '340', 'ADRIAN LAGUA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:10'),
+(2205, 'notification_sent', 'user', '333', 'BLESIE JOY LAGUNA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:12'),
+(2206, 'notification_sent', 'user', '370', 'FITZERALD LIM', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:13'),
+(2207, 'notification_sent', 'user', '371', 'ROMAN ALEX LUSTRO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:15'),
+(2208, 'notification_sent', 'user', '348', 'HAZEL MEI MANUEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:16'),
+(2209, 'notification_sent', 'user', '372', 'VON RYAN MARCELO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:18'),
+(2210, 'notification_sent', 'user', '373', 'JOEY NATIVIDAD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:19'),
+(2211, 'notification_sent', 'user', '349', 'MARIA CRISTINA LALAINE NERONA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:21'),
+(2212, 'notification_sent', 'user', '377', 'MARIA THERESA NUEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:22'),
+(2213, 'notification_sent', 'user', '341', 'DIANNE FAE PAGADUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:24'),
+(2214, 'notification_sent', 'user', '335', 'GERALDINE PAGUIGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:25'),
+(2215, 'notification_sent', 'user', '374', 'JHOAN PAGUIRIGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:26'),
+(2216, 'notification_sent', 'user', '336', 'BAGNOS JR QUEBRAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:28'),
+(2217, 'notification_sent', 'user', '360', 'RAFAEL RAMOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:30'),
+(2218, 'notification_sent', 'user', '337', 'WILNA BREECH RAMOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:31'),
+(2219, 'notification_sent', 'user', '350', 'JOEY RAPADAS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:32'),
+(2220, 'notification_sent', 'user', '351', 'REYNAN REYES', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:34'),
+(2221, 'notification_sent', 'user', '352', 'ALFONSO SIMON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:35'),
+(2222, 'notification_sent', 'user', '338', 'RAZEL TACAY', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:37'),
+(2223, 'notification_sent', 'user', '375', 'EDDISON TULIAO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-13 03:46:38'),
+(2224, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 04:08:19'),
+(2225, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-13 04:08:28'),
+(2226, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-13 04:09:05'),
+(2227, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 04:09:12'),
+(2228, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 04:24:17'),
+(2229, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 04:26:25'),
+(2230, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 04:30:12'),
+(2231, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 04:44:55'),
+(2232, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 04:45:21'),
+(2233, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 04:46:24'),
+(2234, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 04:46:32'),
+(2235, 'login', 'user', '334', NULL, 'logged_in', 334, 'User logged in', '2026-10-13 04:46:38'),
+(2236, 'logout', 'user', '334', 'logged_in', 'logged_out', 334, 'User logged out', '2026-10-13 04:46:46'),
+(2237, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 04:46:56'),
+(2238, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 04:47:31'),
+(2239, 'login', 'user', '352', NULL, 'logged_in', 352, 'User logged in', '2026-10-13 04:47:43'),
+(2240, 'logout', 'user', '352', 'logged_in', 'logged_out', 352, 'User logged out', '2026-10-13 04:47:47'),
+(2241, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 05:52:24'),
+(2242, 'created', 'user', '385', NULL, '{\"employee_id\":\"ICT-123\",\"role\":\"dean\"}', 10, 'User created', '2026-10-13 06:40:31'),
+(2243, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 06:41:16'),
+(2244, 'login', 'user', '385', NULL, 'logged_in', 385, 'User logged in', '2026-10-13 06:41:34'),
+(2245, 'logout', 'user', '385', 'logged_in', 'logged_out', 385, 'User logged out', '2026-10-13 06:42:04'),
+(2246, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 06:47:48'),
+(2247, 'ipcr_printed', 'ipcr_form', '9', NULL, 'print', 10, 'IPCR printed', '2026-10-13 07:00:35'),
+(2248, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 07:01:09'),
+(2249, 'login', 'user', '369', NULL, 'logged_in', 369, 'User logged in', '2026-10-13 07:01:53'),
+(2250, 'created', 'ipcr_form', '10', NULL, 'draft', 369, 'IPCR form created', '2026-10-13 07:01:57'),
+(2251, 'ipcr_submitted', 'ipcr_form', '10', 'draft', 'submitted', 369, 'Submitted', '2026-10-13 07:05:12'),
+(2252, 'logout', 'user', '369', 'logged_in', 'logged_out', 369, 'User logged out', '2026-10-13 07:05:40'),
+(2253, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 07:05:48'),
+(2254, 'status_change', 'ipcr_form', '10', 'submitted', 'under_review', 10, 'Dean started review', '2026-10-13 07:06:49'),
+(2255, 'updated', 'user', '10', NULL, '{\"role\":\"dean\",\"dept\":\"Bachelor of Science in Architecture\"}', 10, 'User updated', '2026-10-13 07:08:40'),
+(2256, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 07:08:44'),
+(2257, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-13 07:14:59'),
+(2258, 'created', 'user', '386', NULL, '{\"employee_id\":\"FAC-TEST\",\"role\":\"faculty\"}', 10, 'User created', '2026-10-13 07:16:14'),
+(2259, 'created', 'user', '387', NULL, '{\"employee_id\":\"FAC-TESTING\",\"role\":\"faculty\"}', 10, 'User created', '2026-10-13 07:16:55'),
+(2260, 'created', 'user', '388', NULL, '{\"employee_id\":\"FACTEST\",\"role\":\"faculty\"}', 10, 'User created', '2026-10-13 07:17:41'),
+(2261, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-13 07:19:26');
 
 -- --------------------------------------------------------
 
@@ -1888,7 +2450,19 @@ INSERT INTO `form_history` (`id`, `form_id`, `action`, `done_by`, `remarks`, `do
 (27, 8, 'under_review', 10, 'Dean started review.', '2026-10-11 15:56:40'),
 (28, 8, 'returned', 10, 's', '2026-10-11 15:57:24'),
 (29, 8, 'submitted', 377, 'IPCR submitted for evaluation.', '2026-10-11 15:58:11'),
-(30, 8, 'under_review', 10, 'Dean started review.', '2026-10-12 05:23:13');
+(30, 8, 'under_review', 10, 'Dean started review.', '2026-10-12 05:23:13'),
+(31, 8, 'reviewed', 10, 'Evaluation submitted. Composite: 2.49 — Unsatisfactory', '2026-10-12 15:03:44'),
+(32, 8, 'approved', 1, 'Approved by Admin', '2026-10-12 15:21:15'),
+(33, 9, 'created', 384, 'IPCR form created.', '2026-10-12 17:47:11'),
+(34, 9, 'submitted', 384, 'IPCR submitted for evaluation.', '2026-10-12 17:47:20'),
+(35, 9, 'under_review', 10, 'Dean started review.', '2026-10-12 18:03:25'),
+(36, 9, 'reviewed', 10, 'Evaluation submitted. Composite: 3.96 — Very Satisfactory', '2026-10-12 18:29:27'),
+(37, 9, 'reviewed', 10, 'Evaluation submitted. Composite: 3.96 — Very Satisfactory', '2026-10-12 18:30:41'),
+(38, 9, 'reviewed', 10, 'Evaluation submitted. Composite: 3.96 — Very Satisfactory', '2026-10-12 18:31:54'),
+(39, 7, 'status_fix', NULL, 'Status corrected from \'returned\' to \'reviewed\' (had ratings: 3.570)', '2026-10-13 04:08:47'),
+(40, 10, 'created', 369, 'IPCR form created.', '2026-10-13 07:01:57'),
+(41, 10, 'submitted', 369, 'IPCR submitted for evaluation.', '2026-10-13 07:05:12'),
+(42, 10, 'under_review', 10, 'Dean started review.', '2026-10-13 07:06:49');
 
 -- --------------------------------------------------------
 
@@ -1921,6 +2495,8 @@ CREATE TABLE `ipcr_forms` (
   `template_id` int(11) NOT NULL,
   `status` enum('draft','submitted','under_review','reviewed','returned','approved','finalized') DEFAULT 'draft',
   `is_late` tinyint(1) DEFAULT 0,
+  `has_extension` tinyint(1) DEFAULT 0,
+  `extension_used_at` datetime DEFAULT NULL,
   `submitted_at` datetime DEFAULT NULL,
   `reviewed_at` datetime DEFAULT NULL,
   `reviewed_by` int(11) DEFAULT NULL,
@@ -1940,10 +2516,12 @@ CREATE TABLE `ipcr_forms` (
 -- Dumping data for table `ipcr_forms`
 --
 
-INSERT INTO `ipcr_forms` (`id`, `period_id`, `user_id`, `template_id`, `status`, `is_late`, `submitted_at`, `reviewed_at`, `reviewed_by`, `approved_at`, `approved_by`, `finalized_at`, `return_remarks`, `dean_remarks`, `admin_remarks`, `composite_rating`, `adjectival_rating`, `created_at`, `updated_at`) VALUES
-(6, 3, 333, 1, 'draft', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-01 17:29:55', '2026-10-02 09:48:37'),
-(7, 3, 363, 1, 'returned', 0, '2026-10-02 02:52:09', '2026-10-02 16:34:21', 10, NULL, NULL, NULL, 'asd', '', NULL, 3.570, 'Very Satisfactory', '2026-10-01 17:30:05', '2026-10-11 15:32:11'),
-(8, 4, 377, 1, 'under_review', 0, '2026-10-11 23:58:11', NULL, 10, NULL, NULL, NULL, 's', NULL, NULL, NULL, NULL, '2026-10-11 15:36:32', '2026-10-12 05:23:43');
+INSERT INTO `ipcr_forms` (`id`, `period_id`, `user_id`, `template_id`, `status`, `is_late`, `has_extension`, `extension_used_at`, `submitted_at`, `reviewed_at`, `reviewed_by`, `approved_at`, `approved_by`, `finalized_at`, `return_remarks`, `dean_remarks`, `admin_remarks`, `composite_rating`, `adjectival_rating`, `created_at`, `updated_at`) VALUES
+(6, 3, 333, 1, 'draft', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-01 17:29:55', '2026-10-02 09:48:37'),
+(7, 3, 363, 1, 'reviewed', 0, 0, NULL, '2026-10-02 02:52:09', '2026-10-02 16:34:21', 10, NULL, NULL, NULL, 'asd', '', NULL, 3.570, 'Very Satisfactory', '2026-10-01 17:30:05', '2026-10-13 04:08:47'),
+(8, 4, 377, 1, 'approved', 0, 0, NULL, '2026-10-11 23:58:11', '2026-10-12 23:03:44', 10, '2026-10-12 23:21:15', 1, NULL, 's', '', '', 2.490, 'Unsatisfactory', '2026-10-11 15:36:32', '2026-10-12 15:21:15'),
+(9, 8, 384, 1, 'reviewed', 0, 0, NULL, '2026-10-13 01:47:20', '2026-10-13 02:31:54', 10, NULL, NULL, NULL, NULL, '', NULL, 3.960, 'Very Satisfactory', '2026-10-12 17:47:11', '2026-10-12 19:09:53'),
+(10, 8, 369, 1, 'under_review', 0, 0, NULL, '2026-10-13 15:05:12', NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-13 07:01:57', '2026-10-13 07:06:49');
 
 -- --------------------------------------------------------
 
@@ -2022,7 +2600,37 @@ INSERT INTO `ipcr_si_entries` (`id`, `form_id`, `si_id`, `planned_magnitude`, `p
 (3102, 8, 12, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
 (3103, 8, 13, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
 (3104, 8, 14, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
-(3105, 8, 15, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0);
+(3105, 8, 15, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3526, 9, 1, '', '', '', '', '', '', NULL, NULL, 4.0, 4.4, 5.0, 4.360, NULL, '', 'pending', 0),
+(3527, 9, 2, '', '', '', '', '', '', NULL, NULL, 5.0, 5.0, 5.0, 5.000, NULL, '', 'pending', 0),
+(3528, 9, 3, '', '', '', '', '', '', NULL, NULL, 5.0, 5.0, 5.0, 5.000, NULL, '', 'pending', 0),
+(3529, 9, 4, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3530, 9, 5, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3531, 9, 6, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3532, 9, 7, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3533, 9, 8, '', '', '', '', '', '', NULL, NULL, 2.0, NULL, 1.0, NULL, NULL, '', 'pending', 0),
+(3534, 9, 9, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3535, 9, 10, '', '', '', '', '', '', NULL, NULL, 1.0, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3536, 9, 11, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3537, 9, 12, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3538, 9, 13, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3539, 9, 14, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3540, 9, 15, '', '', '', '', '', '', NULL, NULL, 1.0, 1.0, 1.0, 1.000, NULL, '', 'pending', 0),
+(3796, 10, 1, '21', '0', 'Jan-Jun 2026', '22', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3797, 10, 2, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3798, 10, 3, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3799, 10, 4, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3800, 10, 5, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3801, 10, 6, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3802, 10, 7, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3803, 10, 8, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3804, 10, 9, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3805, 10, 10, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3806, 10, 11, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3807, 10, 12, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3808, 10, 13, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3809, 10, 14, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3810, 10, 15, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0);
 
 -- --------------------------------------------------------
 
@@ -2122,7 +2730,9 @@ CREATE TABLE `rating_periods` (
 
 INSERT INTO `rating_periods` (`id`, `name`, `academic_year`, `semester`, `start_date`, `end_date`, `submission_deadline`, `review_deadline`, `status`, `template_id`, `created_by`, `created_at`, `updated_at`) VALUES
 (3, 'July - December 2026 (2nd Semester)', '2026-2027', NULL, NULL, NULL, '2026-12-15', '2026-12-25', 'closed', 1, 10, '2026-10-01 17:29:37', '2026-10-11 15:35:45'),
-(4, 'July - December 2026 (2nd Semester)', '2026-2027', NULL, NULL, NULL, '2026-12-15', '2026-12-25', 'rating', 1, 10, '2026-10-11 15:35:52', '2026-10-11 15:38:00');
+(4, 'July - December 2026 (2nd Semester)', '2026-2027', NULL, NULL, NULL, '2026-12-15', '2026-12-25', 'closed', 1, 10, '2026-10-11 15:35:52', '2026-10-12 17:15:45'),
+(7, 'test', '2026-2026', NULL, NULL, NULL, '2026-10-12', '2026-10-13', 'closed', 1, 10, '2026-10-12 17:06:39', '2026-10-12 17:43:44'),
+(8, 'July - December 2026 (2nd Semester)', '2026-2027', NULL, NULL, NULL, '2026-12-15', '2026-12-25', 'open', 1, 10, '2026-10-12 17:45:31', '2026-10-12 18:03:09');
 
 -- --------------------------------------------------------
 
@@ -2195,6 +2805,24 @@ INSERT INTO `secretary_permissions` (`id`, `secretary_id`, `dean_id`, `departmen
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `submission_extensions`
+--
+
+CREATE TABLE `submission_extensions` (
+  `id` int(11) NOT NULL,
+  `period_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `extended_deadline` datetime NOT NULL,
+  `reason` text DEFAULT NULL,
+  `granted_by` int(11) NOT NULL,
+  `granted_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_used` tinyint(1) DEFAULT 0,
+  `used_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `success_indicators`
 --
 
@@ -2260,7 +2888,8 @@ INSERT INTO `system_config` (`id`, `config_key`, `config_value`, `updated_at`) V
 (7, 'allow_self_rating', '0', '2026-09-29 11:50:02'),
 (8, 'require_admin_approval', '1', '2026-09-29 11:50:02'),
 (9, 'rating_scale', '[{\"value\":5,\"label\":\"Outstanding\",\"color\":\"#198754\",\"min_score\":4.5},{\"value\":4,\"label\":\"Very Satisfactory\",\"color\":\"#0d6efd\",\"min_score\":3.5},{\"value\":3,\"label\":\"Satisfactory\",\"color\":\"#ffc107\",\"min_score\":2.5},{\"value\":2,\"label\":\"Unsatisfactory\",\"color\":\"#fd7e14\",\"min_score\":1.5},{\"value\":1,\"label\":\"Poor\",\"color\":\"#dc3545\",\"min_score\":0}]', '2026-09-29 11:50:02'),
-(10, 'gemini_api_key', 'YOUR_GCP_API_KEY_HERE', '2026-09-30 17:58:32');
+(10, 'gemini_api_key', 'YOUR_GCP_API_KEY_HERE', '2026-09-30 17:58:32'),
+(11, 'ai_verification_mode', 'advisory', '2026-10-13 09:00:00');
 
 -- --------------------------------------------------------
 
@@ -2298,11 +2927,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `employee_id`, `first_name`, `middle_name`, `last_name`, `suffix`, `email`, `personal_email`, `password_hash`, `role`, `department`, `college`, `position`, `employment_status`, `assigned_dean_id`, `is_active`, `failed_attempts`, `lockout_until`, `last_login`, `created_at`, `updated_at`, `pending_approvals`) VALUES
-(1, 'ADMIN001', 'System', '', 'Administrator', '', 'pambidandrei26@gmail.com', NULL, '$2y$10$geiJFgsfdrdjFaXvERpRAeYl0JBP9ldUBGDaRfuV/4NY/IZ2pfLO2', 'admin', 'Administration', 'Administration', 'HRMO Officer', 'permanent', NULL, 1, 0, NULL, '2026-10-12 09:45:23', '2026-09-29 11:50:02', '2026-10-12 01:45:23', 0),
-(10, 'DEAN-001', 'Crestian', '', 'Agustin', '', 'crestian.agustin@isu.edu.ph', NULL, '$2y$10$pAqI6YsY4sntYI5sn4a8N.QinartXcwN0w.t//jS2bdNPTpaHOVMq', 'dean', 'Bachelor of Science in Architecture', NULL, 'Dean', 'permanent', NULL, 1, 0, NULL, '2026-10-12 22:54:43', '2026-10-01 15:53:42', '2026-10-12 14:54:43', 0),
+(1, 'ADMIN001', 'System', '', 'Administrator', '', 'pambidandrei26@gmail.com', NULL, '$2y$10$geiJFgsfdrdjFaXvERpRAeYl0JBP9ldUBGDaRfuV/4NY/IZ2pfLO2', 'admin', 'Administration', 'Administration', 'HRMO Officer', 'permanent', NULL, 1, 0, NULL, '2026-10-13 12:08:28', '2026-09-29 11:50:02', '2026-10-13 04:08:28', 0),
+(10, 'DEAN-001', 'Crestian', '', 'Agustin', '', 'crestian.a.agustin@isu.edu.ph', NULL, '$2y$10$ERs1IVUY5L1sElhWhfccyOdEzWq.cLio/OmZEbHk.zcMi0AWR5aeC', 'dean', 'Bachelor of Science in Architecture', 'Bachelor of Science in Architecture', '', 'permanent', NULL, 1, 0, NULL, '2026-10-13 15:14:59', '2026-10-01 15:53:42', '2026-10-13 07:14:59', 0),
 (20, 'SEC-001', 'CEAT', '', 'Secretary', '', 'secretary.ceat@isu.edu.ph', NULL, '$2y$10$GbFa2RLuHRWCOeknK5c7DuAEMip2MAba5LcpR/t/SEYqH7My1C/aq', 'secretary', 'Bachelor of Science in Architecture', NULL, 'College Secretary', 'permanent', 10, 1, 3, NULL, '2026-10-02 01:08:51', '2026-10-01 15:53:42', '2026-10-12 05:48:25', 0),
 (333, 'ARCH-001', 'BLESIE JOY', 'M.', 'LAGUNA', '', 'blesie.joy.laguna@isu.edu.ph', NULL, '$2y$10$nu/IiwItBsMmVfjCQab8P.zhjDinz9etfkArMwTev5rYFjn9cpfom', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, '2026-10-02 17:35:57', '2026-10-01 17:21:55', '2026-10-12 05:48:25', 0),
-(334, 'ARCH-002', 'JEFSIE', 'M.', 'ANTONIO', '', 'jefsie.antonio@isu.edu.ph', NULL, '$2y$10$6ru1ZltbA6NFQ7nXpWkUoeLOumNqH9s7/UtrsDtnBzsmYT8F6Nta2', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(334, 'ARCH-002', 'JEFSIE', 'M.', 'ANTONIO', '', 'jefsie.antonio@isu.edu.ph', NULL, '$2y$10$6ru1ZltbA6NFQ7nXpWkUoeLOumNqH9s7/UtrsDtnBzsmYT8F6Nta2', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, '2026-10-13 12:46:38', '2026-10-01 17:21:56', '2026-10-13 04:46:38', 0),
 (335, 'ARCH-003', 'GERALDINE', 'J.', 'PAGUIGAN', '', 'geraldine.paguigan@isu.edu.ph', NULL, '$2y$10$ah.D.MYah1nl2dmOFcRRvuSwk69q/zIOiRCN/D23TsRzuu10w2aTu', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Associate Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
 (336, 'ARCH-004', 'BAGNOS JR', 'A.', 'QUEBRAL', '', 'bagnos.jr.quebral@isu.edu.ph', NULL, '$2y$10$cF5HTBWSfK1zdridctqPze16zIyps3Hg4MWchEnp5JQ4ZxzCsy.ZK', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Assistant Professor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
 (337, 'ARCH-005', 'WILNA BREECH', 'A.', 'RAMOS', '', 'wilna.breech.ramos@isu.edu.ph', NULL, '$2y$10$pl0k6mn3zPDUnq/mny2XrulZY.rZNLGoEdQctPnWP1/kBQWIiSoIq', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
@@ -2320,7 +2949,7 @@ INSERT INTO `users` (`id`, `employee_id`, `first_name`, `middle_name`, `last_nam
 (349, 'CE-008', 'MARIA CRISTINA LALAINE', 'M.', 'NERONA', '', 'maria.cristina.lalaine.nerona@isu.edu.ph', NULL, '$2y$10$coZVFRS1BavOdadNT8CRxu6d40ZQXB3bB3vTSRs4yajaHzL9frOQ.', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Professor VI', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
 (350, 'CE-009', 'JOEY', 'L.', 'RAPADAS', '', 'joey.rapadas@isu.edu.ph', NULL, '$2y$10$sI8eQhNvrKXp6gJ.ZZ7h3OWImQ6skxPSHf6TaPCQUcSnXeaKPQnWW', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Assistant Professor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
 (351, 'CE-010', 'REYNAN', 'R.', 'REYES', '', 'reynan.reyes@isu.edu.ph', NULL, '$2y$10$srIZ.9aNt5krWhCgKvZccu6TWX3CYq2UW.uAyRU4NLJq3YHQ/W8Uq', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
-(352, 'CE-011', 'ALFONSO', 'R.', 'SIMON', '', 'alfonso.simon@isu.edu.ph', NULL, '$2y$10$4aavY5M1M8aapGGyNFS8.u9e1C4Dl/6.mpZfi6Tzdv53NZnzLvFUa', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Professor V', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(352, 'CE-011', 'ALFONSO', 'R.', 'SIMON', '', 'alfonso.simon@isu.edu.ph', NULL, '$2y$10$4aavY5M1M8aapGGyNFS8.u9e1C4Dl/6.mpZfi6Tzdv53NZnzLvFUa', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Professor V', 'permanent', 10, 1, 0, NULL, '2026-10-13 12:47:43', '2026-10-01 17:21:57', '2026-10-13 04:47:43', 0),
 (353, 'CE-012', 'MARCO', 'B.', 'BULAN', '', 'marco.bulan@isu.edu.ph', NULL, '$2y$10$gw/aHnAw0nCRfuncqIhTZef2Rg7M/ViQAgSqdUnMMA7j6CyoAd7sy', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
 (354, 'CE-013', 'JERICO', 'P.', 'FIEL', '', 'jerico.fiel@isu.edu.ph', NULL, '$2y$10$AylHInDqcorILZ2vrF4GcexdNj2llHwPGJh8VSNQXpOXf79uNwEzK', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
 (355, 'EE-001', 'MARY GRACE', 'M.', 'BAQUIRAN', '', 'mary.grace.baquiran@isu.edu.ph', NULL, '$2y$10$R2wA2IYDWtTNx.Cvf0jzH.SzWMBsclFhJsa8H34Zaz3NgmieN/jIO', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
@@ -2331,13 +2960,13 @@ INSERT INTO `users` (`id`, `employee_id`, `first_name`, `middle_name`, `last_nam
 (360, 'EE-006', 'RAFAEL', 'S.', 'RAMOS', '', 'rafael.ramos@isu.edu.ph', NULL, '$2y$10$g.dd9zcvGfBcDHQPP0UoBuTcHHcdHSUU55PoXp0/DuIubH3g71zZe', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Assistant Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
 (361, 'EE-007', 'PABLO JR.', 'T.', 'ZIPAGAN', '', 'pablo.jr..zipagan@isu.edu.ph', NULL, '$2y$10$KxDEt70sE4RnNd.b7eSB5e7FEAnQ8mTHsBfHZKUvObZQfcADBzsl.', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Assistant Professor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
 (362, 'EE-008', 'FREDERICK', 'K.', 'GALLO', '', 'frederick.gallo@isu.edu.ph', NULL, '$2y$10$4pKg1mfCdu0u6x1EnS2T3.ouljFZ1bmdtS/tJDl6nNWLf66hywcWa', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
-(363, 'ICT-001', 'ORFEL', 'L.', 'BEJARIN', '', 'orfel.bejarin@isu.edu.ph', NULL, '$2y$10$EQDJCMLagrxEi3S.nMhVXeYqvnUdaT5Icq/Lz1pb.NnSha4MMNGJq', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor II', 'permanent', 10, 1, 0, NULL, '2026-10-02 02:52:04', '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
-(364, 'ICT-002', 'MARIBEL', 'S.', 'ABALOS', '', 'maribel.abalos@isu.edu.ph', NULL, '$2y$10$4ly0cWIQ.i4gKGjv0PBGD.RzsIzHIq86qJL1WDMP3bxyKUpL7s3/m', 'faculty', 'Bachelor of Science in Information Technology', 'Bachelor of Science in Information and Communication Technology', 'Assistant Professor II', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(363, 'ICT-001', 'ORFEL', 'L.', 'BEJARIN', '', 'orfel.bejarin@isu.edu.ph', NULL, '$2y$10$HBZKS4FZEDQvWLVLChnvCOO9UvEzVLwBkH28mRqnpTGSWgaEehykq', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor II', 'permanent', 10, 1, 0, NULL, '2026-10-13 00:45:30', '2026-10-01 17:21:58', '2026-10-12 16:45:30', 0),
+(364, 'ICT-002', 'MARIBEL', 'S.', 'ABALOS', '', 'maribel.abalos@isu.edu.ph', NULL, '$2y$10$4ly0cWIQ.i4gKGjv0PBGD.RzsIzHIq86qJL1WDMP3bxyKUpL7s3/m', 'faculty', 'Bachelor of Science in Information Technology', 'Bachelor of Science in Information and Communication Technology', 'Assistant Professor II', 'permanent', 10, 1, 2, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 16:44:36', 0),
 (365, 'ICT-003', 'ZACH CHAMBERLAINE', 'M.', 'CORPUZ', '', 'zach.chamberlaine.corpuz@isu.edu.ph', NULL, '$2y$10$/LiXNog37opq5dAJOCoZaeEi/7/VxcKjAxP9lYFWgrCSYS.H7APhS', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Associate Professor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
 (366, 'ICT-004', 'MARK GERALD', 'O.', 'DE LEON', '', 'mark.gerald.de.leon@isu.edu.ph', NULL, '$2y$10$VCTJVgR2ys9J34UBDF/EsOdpjs4UepTIm3P1bqaywl9LdNC9NmagK', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor IV', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
 (367, 'ICT-005', 'ANGELO', 'R.', 'GAMARA', '', 'angelo.gamara@isu.edu.ph', NULL, '$2y$10$pB9Nf3lg3BD8oRabxOAya.MFjN.RlW/Hnzpqnq3O04Y0pHm19rrQW', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor IV', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
 (368, 'ICT-006', 'MARK GIL', 'T.', 'GANGAN', '', 'mark.gil.gangan@isu.edu.ph', NULL, '$2y$10$GSMDjyulid7WOLfDLWFKEek3MK6mYHSafiLqacVJ5WHiMH57DtujC', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
-(369, 'ICT-007', 'JAYDWIN', 'T.', 'LABIANO', '', 'jaydwin.labiano@isu.edu.ph', NULL, '$2y$10$x3D8XyVXxIRnQC4T4VpsGO9b1frGAqCyidQH6ltis0DVnPZ5iI/4C', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, '2026-10-02 01:22:42', '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(369, 'ICT-007', 'JAYDWIN', 'T.', 'LABIANO', '', 'jaydwin.labiano@isu.edu.ph', NULL, '$2y$10$x3D8XyVXxIRnQC4T4VpsGO9b1frGAqCyidQH6ltis0DVnPZ5iI/4C', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, '2026-10-13 15:01:53', '2026-10-01 17:21:58', '2026-10-13 07:01:53', 0),
 (370, 'ICT-008', 'FITZERALD', 'P.', 'LIM', '', 'fitzerald.lim@isu.edu.ph', NULL, '$2y$10$ztSuTt93ejUMjKaYA5Bcfe9MeQxwPlzKW/aOGTugG6AjaWYTToDKu', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Associate Professor II', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
 (371, 'ICT-009', 'ROMAN ALEX', 'F.', 'LUSTRO', '', 'roman.alex.lustro@isu.edu.ph', NULL, '$2y$10$Rm/DswIpSwR/Owf4eBhr6.BHqmnCLA2.Tl4/xSP.dRKslepmWSoSC', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Associate Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
 (372, 'ICT-010', 'VON RYAN', 'P.', 'MARCELO', '', 'von.ryan.marcelo@isu.edu.ph', NULL, '$2y$10$LcMBKbHIvnq5uRjXbjiJzOQYSKuYkIn9PeBGctiBylrJFyEay2SpW', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
@@ -2350,7 +2979,12 @@ INSERT INTO `users` (`id`, `employee_id`, `first_name`, `middle_name`, `last_nam
 (379, 'ICT-017', 'CLARISA', 'E.', 'BUNUAN', '', 'clarisa.bunuan@isu.edu.ph', NULL, '$2y$10$YsKvZRpFdCKDzJTXcWLHdeAQsAPN39UhETbenRxKNrSW6oydGFZGq', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'part-time', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
 (380, 'ICT-018', 'HARROLD JAY', 'D.', 'FATALLA', '', 'harrold.jay.fatalla@isu.edu.ph', NULL, '$2y$10$M7NGnZU2dCclxm1/MQUt3OGAZjGlP9O3Lw/XMplf13tTqN3xbO28m', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'part-time', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
 (381, 'ICT-019', 'MARIA VERCIDA', 'G.', 'GONZALVO', '', 'maria.vercida.gonzalvo@isu.edu.ph', NULL, '$2y$10$w0p8UuRJMQwjSNRcjQiNruM0l85dP5c3A6CsPMTly.Czi1CSyzdtm', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'part-time', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
-(382, 'ICT-020', 'TWINKLE MAE', 'C.', 'GATBONTON', '', 'twinkle.mae.gatbonton@isu.edu.ph', NULL, '$2y$10$OlZ4Vh0VEe5DJcGFmCBGyuCBkn5Db2bObZ5HbVz2fpbi9mD.rQnnK', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'part-time', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0);
+(382, 'ICT-020', 'TWINKLE MAE', 'C.', 'GATBONTON', '', 'twinkle.mae.gatbonton@isu.edu.ph', NULL, '$2y$10$OlZ4Vh0VEe5DJcGFmCBGyuCBkn5Db2bObZ5HbVz2fpbi9mD.rQnnK', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'part-time', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(384, 'ICT-022', 'Darryl', 'Navalta', 'Tamayo', '', 'tamayodarryl22@gmail.com', NULL, '$2y$10$NW1nCzo7JDU2QzhS/EnVMuJlZh4FoVCnLhM81G9E8pGSv0Spf502e', 'faculty', 'Bachelor of Science in Civil Engineering', 'Bachelor of Science in Civil Engineering', 'Instructor I', 'permanent', 10, 1, 4, NULL, '2026-10-13 02:57:38', '2026-10-12 16:50:02', '2026-10-13 07:01:37', 0),
+(385, 'ICT-123', 'Arjay', 'Gambol', 'Balmores', '', 'arjaybalmores1@gmail.com', NULL, '$2y$10$Xptej0D0Hdx7y5vqixSdSOlXukSgiRjOZNmqIP4SKVOTKEbxFXvQ6', 'dean', 'Bachelor of Science in Information Technology', 'Bachelor of Science in Information Technology', 'Professor VI', 'temporary', NULL, 1, 0, NULL, '2026-10-13 14:41:34', '2026-10-13 06:40:31', '2026-10-13 06:41:34', 0),
+(386, 'FAC-TEST', 'jhon carl', 'licuben', 'Ercilla', '', 'crest.agustin@gmail.com', NULL, '$2y$10$w/xubmCKHDZlB.DDyfPfJe6Nd.VZUa8oNVcmtp9v468pTqKbhXXua', 'faculty', 'Bachelor of Science in Industrial Technology', 'Bachelor of Science in Industrial Technology', 'Professor II', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-13 07:16:14', '2026-10-13 07:19:35', 0),
+(387, 'FAC-TESTING', 'jhon carl', 'licuben', 'Ercilla', '', 'crest.agustin@gmail.com', NULL, '$2y$10$7yy2POfUnKwZEAgEZ/M2uuCYmCgIFApI9gzLSV7H0fSiZhXenB.Ya', 'faculty', 'Bachelor of Science in Architecture', 'Bachelor of Science in Architecture', 'Professor II', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-13 07:16:55', '2026-10-13 07:16:55', 0),
+(388, 'FACTEST', 'jhoncarl', 'licuben', 'ercilla', '', 'crest.agustin@gmail.com', NULL, '$2y$10$H2IR3Cpg61JBv3fkEmgQSueVc/9Y6BgdFs8o8tNMgw1ztxJaN0q9i', 'faculty', 'Bachelor of Science in Industrial Technology', 'Bachelor of Science in Industrial Technology', 'Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-13 07:17:41', '2026-10-13 07:17:41', 0);
 
 --
 -- Indexes for dumped tables
@@ -2473,6 +3107,16 @@ ALTER TABLE `secretary_permissions`
   ADD KEY `dean_id` (`dean_id`);
 
 --
+-- Indexes for table `submission_extensions`
+--
+ALTER TABLE `submission_extensions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `period_id` (`period_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `granted_by` (`granted_by`),
+  ADD KEY `idx_extension_lookup` (`period_id`,`user_id`,`is_used`);
+
+--
 -- Indexes for table `success_indicators`
 --
 ALTER TABLE `success_indicators`
@@ -2502,7 +3146,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1707;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2262;
 
 --
 -- AUTO_INCREMENT for table `audit_logs`
@@ -2532,7 +3176,7 @@ ALTER TABLE `evidence_files`
 -- AUTO_INCREMENT for table `form_history`
 --
 ALTER TABLE `form_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `ipcr_evidence`
@@ -2544,13 +3188,13 @@ ALTER TABLE `ipcr_evidence`
 -- AUTO_INCREMENT for table `ipcr_forms`
 --
 ALTER TABLE `ipcr_forms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `ipcr_si_entries`
 --
 ALTER TABLE `ipcr_si_entries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3511;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3886;
 
 --
 -- AUTO_INCREMENT for table `ipcr_templates`
@@ -2574,7 +3218,7 @@ ALTER TABLE `mfos`
 -- AUTO_INCREMENT for table `rating_periods`
 --
 ALTER TABLE `rating_periods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `required_proof_types`
@@ -2587,6 +3231,12 @@ ALTER TABLE `required_proof_types`
 --
 ALTER TABLE `secretary_permissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `submission_extensions`
+--
+ALTER TABLE `submission_extensions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `success_indicators`
@@ -2604,7 +3254,7 @@ ALTER TABLE `system_config`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=383;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=389;
 
 --
 -- Constraints for dumped tables
@@ -2678,6 +3328,14 @@ ALTER TABLE `secretary_permissions`
   ADD CONSTRAINT `secretary_permissions_ibfk_2` FOREIGN KEY (`dean_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `submission_extensions`
+--
+ALTER TABLE `submission_extensions`
+  ADD CONSTRAINT `submission_extensions_ibfk_1` FOREIGN KEY (`period_id`) REFERENCES `rating_periods` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `submission_extensions_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `submission_extensions_ibfk_3` FOREIGN KEY (`granted_by`) REFERENCES `users` (`id`);
+
+--
 -- Constraints for table `success_indicators`
 --
 ALTER TABLE `success_indicators`
@@ -2693,3 +3351,12 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+-- ============================================
+-- SAFE IMPORT: Commit and re-enable checks
+-- ============================================
+COMMIT;
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- Import complete! All tables created successfully.

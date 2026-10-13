@@ -69,10 +69,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'save_ai') {
         $apiKey = trim($_POST['gemini_api_key'] ?? '');
+        $aiMode = trim($_POST['ai_verification_mode'] ?? 'advisory');
+        
+        // Validate AI mode - must be one of the three valid options
+        if (!in_array($aiMode, ['disabled', 'advisory', 'strict'])) {
+            $aiMode = 'advisory'; // Force default if invalid
+        }
+        
         $stmt   = $db->prepare("INSERT INTO system_config (config_key,config_value) VALUES (?,?) ON DUPLICATE KEY UPDATE config_value=VALUES(config_value)");
         $stmt->execute(['gemini_api_key', $apiKey]);
-        auditLog('updated','config','gemini_api_key',null,'[set]','Gemini API key updated');
-        $msg = 'AI settings saved.';
+        $stmt->execute(['ai_verification_mode', $aiMode]);
+        auditLog('updated','config','ai_settings',null,['api_key'=>'[set]','mode'=>$aiMode],'AI settings updated');
+        $msg = 'AI settings saved to: ' . $aiMode . '.';
     }
 }
 
@@ -213,18 +221,48 @@ $scale = $scaleJson ? json_decode($scaleJson, true) : [
       </div>
       <div class="card-body">
         <p class="text-muted small mb-3">
-          When enabled, AI will automatically check uploaded evidence files and verify if they match the expected document type for each success indicator.
+          AI automatically checks uploaded evidence files and verifies if they match the expected document type for each success indicator.
           Uses Google Gemini API — <strong>free tier: 15 requests/min, 1M tokens/day</strong>.
         </p>
         <form method="POST">
           <input type="hidden" name="action" value="save_ai">
+          
+          <div class="mb-4">
+            <label class="form-label fw-bold">AI Verification Mode</label>
+            <?php $aiMode = cfg($db,'ai_verification_mode','advisory'); ?>
+            
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="ai_verification_mode" id="ai-disabled" value="disabled" <?= $aiMode==='disabled'?'checked':'' ?>>
+              <label class="form-check-label" for="ai-disabled">
+                <strong>Disabled</strong> — No AI verification (all uploads allowed)
+                <div class="text-muted small">Use this if AI is rejecting valid files or you don't have an API key</div>
+              </label>
+            </div>
+            
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="ai_verification_mode" id="ai-advisory" value="advisory" <?= $aiMode==='advisory'?'checked':'' ?>>
+              <label class="form-check-label" for="ai-advisory">
+                <strong>Advisory Only</strong> (Recommended) — AI checks but never blocks uploads
+                <div class="text-muted small">Shows AI confidence and warnings, but always allows upload regardless of score</div>
+              </label>
+            </div>
+            
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ai_verification_mode" id="ai-strict" value="strict" <?= $aiMode==='strict'?'checked':'' ?>>
+              <label class="form-check-label" for="ai-strict">
+                <strong>Strict Mode</strong> — AI blocks uploads below 50% confidence
+                <div class="text-muted small">⚠️ Warning: May reject valid files. Use only if you need strict validation.</div>
+              </label>
+            </div>
+          </div>
+          
           <div class="mb-3">
             <label class="form-label">Google Gemini API Key</label>
             <div class="input-group">
               <span class="input-group-text"><i class="bi bi-key"></i></span>
               <input type="password" class="form-control" name="gemini_api_key" id="gemini-key"
                 value="<?= h(cfg($db,'gemini_api_key','')) ?>"
-                placeholder="AIzaSy...">
+                placeholder="AIzaSy... (optional if mode is Disabled)">
               <button type="button" class="btn btn-outline-secondary"
                 onclick="const f=document.getElementById('gemini-key');f.type=f.type==='password'?'text':'password'">
                 <i class="bi bi-eye"></i>
@@ -240,7 +278,7 @@ $scale = $scaleJson ? json_decode($scaleJson, true) : [
           ?>
           <div class="d-flex align-items-center gap-3">
             <button class="btn btn-primary">
-              <i class="bi bi-save me-1"></i>Save API Key
+              <i class="bi bi-save me-1"></i>Save AI Settings
             </button>
             <?php if($hasKey): ?>
             <span class="badge" style="background:#16a34a;font-size:.75rem;padding:6px 12px">
@@ -248,7 +286,7 @@ $scale = $scaleJson ? json_decode($scaleJson, true) : [
             </span>
             <?php else: ?>
             <span class="badge bg-secondary" style="font-size:.75rem;padding:6px 12px">
-              <i class="bi bi-x-circle me-1"></i>Not Configured
+              <i class="bi bi-x-circle me-1"></i>No API Key
             </span>
             <?php endif; ?>
           </div>

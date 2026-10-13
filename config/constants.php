@@ -1,5 +1,28 @@
 <?php
-define('BASE_URL',      '/ipcr-system');
+/**
+ * Auto-detect BASE_URL based on server environment
+ * Works on both localhost and online servers
+ */
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443 ? 'https://' : 'http://';
+$host = $_SERVER['HTTP_HOST'];
+$scriptName = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+$basePath = rtrim($scriptName, '/');
+
+// Remove nested paths to get the root folder
+$pathParts = explode('/', trim($basePath, '/'));
+if (count($pathParts) > 0) {
+    // If we're in a subfolder like /ipcr-system/config, go up to /ipcr-system
+    $rootFolder = '/' . $pathParts[0];
+} else {
+    $rootFolder = '';
+}
+
+define('BASE_URL', $protocol . $host . $rootFolder);
+
+// Alternative: If the above doesn't work, use manual configuration
+// define('BASE_URL', 'http://apps.isu-ilagan.edu.ph:8888/ipcr-system');  // For online
+// define('BASE_URL', 'http://localhost/ipcr-system');  // For localhost
+
 define('UPLOAD_DIR',    __DIR__ . '/../uploads/');
 define('UPLOAD_URL',    BASE_URL . '/uploads/');
 define('MAX_FILE_SIZE', 10 * 1024 * 1024); // 10MB

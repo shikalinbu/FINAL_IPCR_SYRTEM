@@ -959,6 +959,7 @@ function evIcon(string $ext): array {
 <?php endif; ?>
 
 <script>
+// Version 2.0 - Fixed AI advisory mode blocking issue (2026-10-13)
 window.FORM_ID  = <?= $form['id'] ?>;
 window.BASE_URL = '<?= BASE_URL ?>';
 window.RATING_SCALE = <?= $db->query("SELECT config_value FROM system_config WHERE config_key='rating_scale'")->fetchColumn() ?: '[]' ?>;
@@ -1048,18 +1049,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const data = await res.json();
         
-        // Handle AI blocked upload OR low confidence
-        // Only block if explicitly blocked OR confidence < 50%
-        const shouldBlock = (
-          data.ai_blocked || 
-          (data.ai_verdict === 'invalid') || 
-          ((data.ai_confidence || 0) < 50)
-        );
-        
-        if (!data.success && shouldBlock) {
+        // Handle AI blocked upload
+        // ONLY block if backend explicitly blocks (strict mode only)
+        // In advisory/disabled mode, backend never sends ai_blocked=true
+        if (!data.success && data.ai_blocked === true) {
           Swal.fire({
             icon: 'error',
-            title: '❌ Upload REJECTED by AI',
+            title: '❌ Upload Blocked by AI Verification',
             html: `
               <div style="text-align:left; max-width:550px">
                 <div class="alert alert-danger mb-3" style="font-size:1.1rem">
@@ -1084,7 +1080,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ` : ''}
                 
                 <div class="mt-3 p-2" style="background:#f8f9fa; border-radius:6px; font-size:0.9rem">
-                  <strong>ℹ️ Note:</strong> Please upload the correct evidence document that matches the requirement above.
+                  <strong>ℹ️ Note:</strong> AI verification is in <strong>strict mode</strong>. Contact your administrator to change to advisory mode if you believe this is a valid file.
                 </div>
               </div>
             `,
@@ -1106,8 +1102,10 @@ document.addEventListener('DOMContentLoaded', function() {
           
           if (verdict === 'valid' && confidence >= 80) {
             Toast.success(`✅ AI Verified (${confidence}%): ${file.name} uploaded!`, 'Valid Evidence');
-          } else if (verdict === 'uncertain' || confidence < 80) {
-            Toast.warning(`⚠️ Uploaded (${confidence}% confidence): ${file.name} - May need manual review`, 'Uncertain Evidence');
+          } else if (verdict === 'uncertain' || (confidence > 0 && confidence < 80)) {
+            Toast.warning(`⚠️ Uploaded (${confidence}% confidence): ${file.name} - AI suggests manual review`, 'Uncertain Evidence');
+          } else if (confidence === 0) {
+            Toast.success(`✅ File uploaded: ${file.name}`, 'Upload Complete (AI verification disabled)');
           } else {
             Toast.success(`✅ File uploaded: ${file.name}`, 'Upload Complete');
           }

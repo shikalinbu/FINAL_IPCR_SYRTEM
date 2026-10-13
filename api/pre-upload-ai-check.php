@@ -109,6 +109,23 @@ if (!$si) {
     exit;
 }
 
+// ── Get AI Verification Mode ──────────────────────────────────
+$aiModeResult = $db->query("SELECT config_value FROM system_config WHERE config_key='ai_verification_mode'")->fetchColumn();
+$aiMode = $aiModeResult && trim($aiModeResult) !== '' ? trim($aiModeResult) : 'advisory';
+
+// If AI mode is DISABLED, skip AI check entirely
+if ($aiMode === 'disabled') {
+    echo json_encode([
+        'success'    => true,
+        'verdict'    => 'skipped',
+        'confidence' => 0,
+        'document_type' => 'Not Checked',
+        'reason'     => 'AI verification is disabled',
+        'suggestions'=> ''
+    ]);
+    exit;
+}
+
 // ── Get API Key ─────────────────────────────────────────────
 $apiKey = trim($db->query("SELECT config_value FROM system_config WHERE config_key='gemini_api_key'")->fetchColumn());
 

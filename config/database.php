@@ -1,9 +1,11 @@
 <?php
-define('DB_HOST',     '127.0.0.1');
-define('DB_USER',     'root');
-define('DB_PASS',     '');
-define('DB_NAME',     'ipcr_system');
-define('DB_CHARSET',  'utf8mb4');
+// Database Configuration - Localhost (XAMPP)
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'ipcr_system');
+define('DB_CHARSET', 'utf8mb4');
+
 
 function getDB(): PDO {
     static $pdo = null;

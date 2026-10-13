@@ -123,10 +123,18 @@ $aiDocType = '';
 $aiSummary = '';
 $aiSuggestions = '';
 
+// Get AI verification mode setting
+$aiModeResult = $db->query("SELECT config_value FROM system_config WHERE config_key='ai_verification_mode'")->fetchColumn();
+$aiMode = $aiModeResult && trim($aiModeResult) !== '' ? trim($aiModeResult) : 'advisory';
+
+// Debug log to see what mode is being used
+error_log("AI Verification Mode: [{$aiMode}] (raw: [" . var_export($aiModeResult, true) . "])");
+
 // Get API Key
 $apiKey = trim($db->query("SELECT config_value FROM system_config WHERE config_key='gemini_api_key'")->fetchColumn());
 
-if ($apiKey) {
+// Only run AI check if mode is not 'disabled' AND we have an API key
+if ($aiMode !== 'disabled' && $apiKey) {
     $isOpenRouter = strpos($apiKey, 'sk-or-') === 0;
     
     // Build AI prompt
@@ -193,10 +201,10 @@ if ($apiKey) {
                 $aiSummary = $aiResult['content_summary'] ?? '';
                 $aiSuggestions = $aiResult['suggestions'] ?? '';
                 
-                // BLOCK if invalid or confidence < 50%
-                if ($aiVerdict === 'invalid' || $aiConfidence < 50) {
+                // ONLY BLOCK if mode is 'strict' AND (invalid OR confidence < 50%)
+                if ($aiMode === 'strict' && ($aiVerdict === 'invalid' || $aiConfidence < 50)) {
                     // Log for debugging
-                    error_log("AI BLOCKED upload: {$file['name']} | Verdict: {$aiVerdict} | Confidence: {$aiConfidence}%");
+                    error_log("AI BLOCKED upload (strict mode): {$file['name']} | Verdict: {$aiVerdict} | Confidence: {$aiConfidence}%");
                     
                     echo json_encode([
                         'success' => false,
@@ -206,12 +214,12 @@ if ($apiKey) {
                         'document_type' => $aiDocType,
                         'reason' => $aiReason ?: 'This file does not match the required evidence type.',
                         'suggestions' => $aiSuggestions,
-                        'message' => 'Upload blocked by AI verification'
+                        'message' => 'Upload blocked by AI verification (strict mode)'
                     ]);
                     exit;
                 } else {
-                    // Log successful AI verification
-                    error_log("AI ALLOWED upload: {$file['name']} | Verdict: {$aiVerdict} | Confidence: {$aiConfidence}%");
+                    // Log AI check result (advisory mode or passed strict check)
+                    error_log("AI CHECK ({$aiMode} mode): {$file['name']} | Verdict: {$aiVerdict} | Confidence: {$aiConfidence}% | Upload ALLOWED");
                 }
             }
         }
