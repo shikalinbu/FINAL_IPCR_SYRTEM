@@ -1,0 +1,12 @@
+# Block all direct PHP execution in uploads folder
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|phar|cgi|pl|py|rb)$">
+    Deny from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Only allow serving of known file types
+<FilesMatch "\.(pdf|doc|docx|xls|xlsx|jpg|jpeg|png|gif|webp)$">
+    Allow from all
+</FilesMatch>

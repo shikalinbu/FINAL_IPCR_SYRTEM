@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Gold braided ring gradient -->
+    <radialGradient id="goldRing" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e8c84a"/>
+      <stop offset="60%" stop-color="#c8a415"/>
+      <stop offset="100%" stop-color="#a07d08"/>
+    </radialGradient>
+    <!-- Yellow sunburst gradient -->
+    <radialGradient id="sunburst" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff9c4"/>
+      <stop offset="100%" stop-color="#f0c940"/>
+    </radialGradient>
+    <clipPath id="innerCircle">
+      <circle cx="100" cy="100" r="76"/>
+    </clipPath>
+  </defs>
+
+  <!-- Outer braided gold ring -->
+  <circle cx="100" cy="100" r="99" fill="url(#goldRing)"/>
+  <!-- Braid pattern simulation -->
+  <circle cx="100" cy="100" r="99" fill="none" stroke="#a07d08" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#e8c84a" stroke-width="1" stroke-dasharray="3,4"/>
+
+  <!-- Dark green main ring -->
+  <circle cx="100" cy="100" r="91" fill="#1a5c2e"/>
+
+  <!-- Inner yellow sunburst circle -->
+  <circle cx="100" cy="100" r="76" fill="url(#sunburst)"/>
+
+  <!-- Sunburst rays -->
+  <g clip-path="url(#innerCircle)" opacity="0.7">
+    <?php for($i=0;$i<36;$i++): $a=$i*10; ?>
+    <line x1="100" y1="100" x2="<?= 100+80*cos(deg2rad($a)) ?>" y2="<?= 100+80*sin(deg2rad($a)) ?>" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+    <?php endfor; ?>
+  </g>
+  <!-- Static sunburst rays (SVG) -->
+  <g clip-path="url(#innerCircle)" stroke="#ffffff" stroke-width="1.8" opacity="0.55">
+    <line x1="100" y1="100" x2="100" y2="24"/><line x1="100" y1="100" x2="121" y2="25"/>
+    <line x1="100" y1="100" x2="140" y2="31"/><line x1="100" y1="100" x2="156" y2="44"/>
+    <line x1="100" y1="100" x2="168" y2="60"/><line x1="100" y1="100" x2="174" y2="79"/>
+    <line x1="100" y1="100" x2="176" y2="100"/><line x1="100" y1="100" x2="174" y2="121"/>
+    <line x1="100" y1="100" x2="168" y2="140"/><line x1="100" y1="100" x2="156" y2="156"/>
+    <line x1="100" y1="100" x2="140" y2="169"/><line x1="100" y1="100" x2="121" y2="175"/>
+    <line x1="100" y1="100" x2="100" y2="176"/><line x1="100" y1="100" x2="79" y2="175"/>
+    <line x1="100" y1="100" x2="60" y2="169"/><line x1="100" y1="100" x2="44" y2="156"/>
+    <line x1="100" y1="100" x2="32" y2="140"/><line x1="100" y1="100" x2="26" y2="121"/>
+    <line x1="100" y1="100" x2="24" y2="100"/><line x1="100" y1="100" x2="26" y2="79"/>
+    <line x1="100" y1="100" x2="32" y2="60"/><line x1="100" y1="100" x2="44" y2="44"/>
+    <line x1="100" y1="100" x2="60" y2="31"/><line x1="100" y1="100" x2="79" y2="25"/>
+  </g>
+
+  <!-- Open Book (white pages) -->
+  <rect x="62" y="88" width="34" height="44" rx="2" fill="#ffffff" stroke="#555" stroke-width="1"/>
+  <rect x="104" y="88" width="34" height="44" rx="2" fill="#ffffff" stroke="#555" stroke-width="1"/>
+  <!-- Book spine -->
+  <rect x="96" y="87" width="8" height="46" fill="#e8c84a" rx="1"/>
+
+  <!-- Shield on book -->
+  <!-- Shield background - gold top -->
+  <path d="M78 96 L122 96 L122 126 Q100 134 78 126 Z" fill="#c8a415" stroke="#1a5c2e" stroke-width="1.2"/>
+  <!-- Shield top half gold -->
+  <path d="M78 96 L122 96 L122 112 L78 112 Z" fill="#c8a415"/>
+  <!-- Shield bottom half - green grid -->
+  <path d="M78 112 L122 112 L122 126 Q100 134 78 126 Z" fill="#1a5c2e"/>
+  <!-- Grid pattern on bottom -->
+  <g stroke="#2a7a42" stroke-width="0.6" opacity="0.8">
+    <line x1="78" y1="116" x2="122" y2="116"/><line x1="78" y1="120" x2="122" y2="120"/>
+    <line x1="78" y1="124" x2="118" y2="124"/>
+    <line x1="86" y1="112" x2="82" y2="130"/><line x1="92" y1="112" x2="88" y2="130"/>
+    <line x1="98" y1="112" x2="96" y2="130"/><line x1="104" y1="112" x2="104" y2="130"/>
+    <line x1="110" y1="112" x2="112" y2="130"/><line x1="116" y1="112" x2="118" y2="130"/>
+  </g>
+  <!-- Plant / seedling on shield -->
+  <line x1="100" y1="114" x2="100" y2="104" stroke="#1a5c2e" stroke-width="1.5"/>
+  <ellipse cx="100" cy="107" rx="5" ry="3" fill="#2ecc71" transform="rotate(-30 100 107)"/>
+  <ellipse cx="100" cy="106" rx="5" ry="3" fill="#27ae60" transform="rotate(30 100 106)"/>
+  <ellipse cx="100" cy="104" rx="4" ry="3" fill="#2ecc71"/>
+  <!-- Shield border -->
+  <path d="M78 96 L122 96 L122 126 Q100 134 78 126 Z" fill="none" stroke="#1a5c2e" stroke-width="1.5"/>
+
+  <!-- Gear below book -->
+  <circle cx="100" cy="136" r="6" fill="#b0bec5" stroke="#78909c" stroke-width="1"/>
+  <circle cx="100" cy="136" r="3" fill="#90a4ae"/>
+  <!-- Gear teeth -->
+  <g fill="#b0bec5" stroke="#78909c" stroke-width="0.5">
+    <rect x="98.5" y="128.5" width="3" height="3" rx="0.5"/>
+    <rect x="98.5" y="140.5" width="3" height="3" rx="0.5"/>
+    <rect x="128.5" y="134.5" width="3" height="3" rx="0.5" transform="rotate(90 100 136) translate(-1.5)"/>
+    <rect x="106.5" y="134.5" width="3" height="3" rx="0.5"/>
+    <rect x="90.5" y="134.5" width="3" height="3" rx="0.5"/>
+  </g>
+  <!-- Gear connection dots (network) -->
+  <circle cx="84" cy="140" r="2.5" fill="#e74c3c"/>
+  <circle cx="116" cy="140" r="2.5" fill="#e74c3c"/>
+  <circle cx="92" cy="143" r="2" fill="#e74c3c"/>
+  <circle cx="108" cy="143" r="2" fill="#e74c3c"/>
+  <line x1="84" y1="140" x2="94" y2="136" stroke="#90a4ae" stroke-width="1"/>
+  <line x1="116" y1="140" x2="106" y2="136" stroke="#90a4ae" stroke-width="1"/>
+
+  <!-- Torch handle -->
+  <rect x="97" y="68" width="6" height="22" rx="2" fill="#3f51b5"/>
+  <rect x="96" y="76" width="8" height="4" rx="1" fill="#1a237e"/>
+  <rect x="95.5" y="80" width="9" height="3" rx="1" fill="#1a237e"/>
+  <!-- Flame -->
+  <ellipse cx="100" cy="64" rx="6" ry="9" fill="#e53935"/>
+  <ellipse cx="97" cy="62" rx="3" ry="7" fill="#ff7043"/>
+  <ellipse cx="102" cy="63" rx="2.5" ry="6" fill="#ff7043"/>
+  <ellipse cx="100" cy="61" rx="2" ry="5" fill="#ffcc02"/>
+
+  <!-- Text: ISABELA STATE UNIVERSITY (arc top) -->
+  <path id="topArc" d="M 18,100 A 82,82 0 0,1 182,100" fill="none"/>
+  <text font-family="Arial, sans-serif" font-weight="800" font-size="11.5" fill="#ffffff" letter-spacing="2">
+    <textPath href="#topArc" startOffset="5%">ISABELA STATE UNIVERSITY</textPath>
+  </text>
+
+  <!-- Text: 1978 (bottom) -->
+  <path id="bottomArc" d="M 30,130 A 82,82 0 0,0 170,130" fill="none"/>
+  <text font-family="Arial, sans-serif" font-weight="800" font-size="13" fill="#ffffff" letter-spacing="3">
+    <textPath href="#bottomArc" startOffset="30%">1978</textPath>
+  </text>
+
+  <!-- Gold laurel leaves bottom -->
+  <!-- Left laurel -->
+  <g fill="#f0c940" transform="translate(32, 138) rotate(-20)">
+    <ellipse cx="0" cy="0" rx="4" ry="2.5" transform="rotate(0)"/>
+    <ellipse cx="5" cy="-3" rx="4" ry="2.5" transform="rotate(-20)"/>
+    <ellipse cx="10" cy="-5" rx="4" ry="2.5" transform="rotate(-35)"/>
+    <line x1="0" y1="0" x2="12" y2="-6" stroke="#c8a415" stroke-width="1"/>
+  </g>
+  <!-- Right laurel -->
+  <g fill="#f0c940" transform="translate(168, 138) rotate(20) scale(-1,1)">
+    <ellipse cx="0" cy="0" rx="4" ry="2.5" transform="rotate(0)"/>
+    <ellipse cx="5" cy="-3" rx="4" ry="2.5" transform="rotate(-20)"/>
+    <ellipse cx="10" cy="-5" rx="4" ry="2.5" transform="rotate(-35)"/>
+    <line x1="0" y1="0" x2="12" y2="-6" stroke="#c8a415" stroke-width="1"/>
+  </g>
+</svg>

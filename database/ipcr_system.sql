@@ -1,0 +1,2695 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Oct 12, 2026 at 04:57 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `ipcr_system`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `audit_log`
+--
+
+CREATE TABLE `audit_log` (
+  `id` int(11) NOT NULL,
+  `action` varchar(100) NOT NULL,
+  `entity_type` varchar(100) DEFAULT NULL,
+  `entity_id` varchar(100) DEFAULT NULL,
+  `old_value` text DEFAULT NULL,
+  `new_value` text DEFAULT NULL,
+  `performed_by` int(11) DEFAULT NULL,
+  `remarks` text DEFAULT NULL,
+  `performed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `audit_log`
+--
+
+INSERT INTO `audit_log` (`id`, `action`, `entity_type`, `entity_id`, `old_value`, `new_value`, `performed_by`, `remarks`, `performed_at`) VALUES
+(1, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-29 11:57:14'),
+(2, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-29 11:57:28'),
+(3, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-29 11:57:32'),
+(4, 'updated', 'user', '4', NULL, '{\"role\":\"faculty\",\"dept\":\"College of Education\"}', 1, 'User updated', '2026-09-29 12:22:27'),
+(5, 'updated', 'user', '4', NULL, '{\"role\":\"faculty\",\"dept\":\"College of Education\"}', 1, 'User updated', '2026-09-29 12:22:50'),
+(6, 'status_change', 'period', '1', 'open', 'rating', 1, 'Period advanced to rating', '2026-09-29 12:23:13'),
+(7, 'status_change', 'period', '1', 'rating', 'closed', 1, 'Period advanced to closed', '2026-09-29 12:23:17'),
+(8, 'status_change', 'period', '1', 'closed', 'archived', 1, 'Period advanced to archived', '2026-09-29 12:23:23'),
+(9, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-29 12:32:41'),
+(10, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-29 12:32:45'),
+(11, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-29 12:33:27'),
+(12, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-09-29 12:33:30'),
+(13, 'created', 'ipcr_form', '1', NULL, 'draft', 4, 'IPCR form created', '2026-09-29 12:36:02'),
+(14, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-09-29 13:59:35'),
+(15, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-29 13:59:40'),
+(16, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-29 14:03:20'),
+(17, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-29 14:03:24'),
+(18, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-29 14:03:39'),
+(19, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-29 14:07:47'),
+(20, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-29 14:20:29'),
+(21, 'created', 'department', '6', NULL, '{\"name\":\"Department of Information Communication Techonology\"}', 1, 'Department created', '2026-09-29 14:21:51'),
+(22, 'created', 'department', '7', NULL, '{\"name\":\"Colleger of Architecture\"}', 1, 'Department created', '2026-09-29 14:22:18'),
+(23, 'created', 'department', '8', NULL, '{\"name\":\"College of Civil Engineering\"}', 1, 'Department created', '2026-09-29 14:22:43'),
+(24, 'created', 'department', '9', NULL, '{\"name\":\"College of Electrical Engineering\"}', 1, 'Department created', '2026-09-29 14:23:08'),
+(25, 'created', 'department', '10', NULL, '{\"name\":\"College of Industrial Techonology\"}', 1, 'Department created', '2026-09-29 14:25:11'),
+(26, 'updated', 'department', '6', NULL, '{\"name\":\"Collegfe of Information Communication Techonology\"}', 1, 'Department updated', '2026-09-29 14:25:52'),
+(27, 'updated', 'department', '6', NULL, '{\"name\":\"College of Information Communication Techonology\"}', 1, 'Department updated', '2026-09-29 14:26:00'),
+(28, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 03:40:02'),
+(29, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 03:40:05'),
+(30, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 03:58:11'),
+(31, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 03:58:29'),
+(32, 'deleted', 'department', '4', 'College of Business', NULL, 1, 'Department deleted', '2026-09-30 04:04:21'),
+(33, 'deleted', 'department', '3', 'College of Engineering', NULL, 1, 'Department deleted', '2026-09-30 04:04:52'),
+(34, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 05:06:56'),
+(35, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-09-30 05:07:05'),
+(36, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-09-30 05:11:53'),
+(37, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-30 05:11:58'),
+(38, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-30 05:24:34'),
+(39, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 05:24:37'),
+(40, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 05:25:05'),
+(41, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-09-30 05:25:09'),
+(42, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-09-30 05:26:41'),
+(43, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-30 05:26:46'),
+(44, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-30 07:39:52'),
+(45, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 07:40:54'),
+(46, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 07:41:16'),
+(47, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-09-30 07:41:19'),
+(48, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-09-30 07:46:00'),
+(49, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 07:46:03'),
+(50, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 07:49:27'),
+(51, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 15:44:13'),
+(52, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 15:45:36'),
+(53, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-30 15:45:50'),
+(54, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-30 15:46:19'),
+(55, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-30 15:46:24'),
+(56, 'ipcr_printed', 'ipcr_form', '1', NULL, 'print', 2, 'IPCR printed', '2026-09-30 15:47:29'),
+(57, 'ipcr_printed', 'ipcr_form', '1', NULL, 'print', 2, 'IPCR printed', '2026-09-30 15:47:43'),
+(58, 'ipcr_printed', 'ipcr_form', '1', NULL, 'print', 2, 'IPCR printed', '2026-09-30 15:51:42'),
+(59, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-30 15:53:53'),
+(60, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 15:53:56'),
+(61, 'created', 'user', '7', NULL, '{\"employee_id\":\"DEAN01\",\"role\":\"dean\"}', 1, 'User created', '2026-09-30 15:55:30'),
+(62, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 15:55:38'),
+(63, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-09-30 15:55:54'),
+(64, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-09-30 15:56:05'),
+(65, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-09-30 15:56:12'),
+(66, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-09-30 15:56:46'),
+(67, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 15:56:50'),
+(68, 'updated', 'user', '5', NULL, '{\"is_active\":0}', 1, 'User deactivated.', '2026-09-30 15:57:28'),
+(69, 'updated', 'user', '4', NULL, '{\"is_active\":0}', 1, 'User deactivated.', '2026-09-30 15:57:32'),
+(70, 'updated', 'user', '6', NULL, '{\"is_active\":0}', 1, 'User deactivated.', '2026-09-30 15:57:36'),
+(71, 'updated', 'user', '6', NULL, '{\"is_active\":1}', 1, 'User activated', '2026-09-30 15:57:42'),
+(72, 'updated', 'user', '6', NULL, '{\"is_active\":0}', 1, 'User deactivated.', '2026-09-30 15:57:49'),
+(73, 'updated', 'user', '3', NULL, '{\"role\":\"dean\",\"dept\":\"College of Electrical Engineering\"}', 1, 'User updated', '2026-09-30 15:58:26'),
+(74, 'updated', 'user', '4', NULL, '{\"is_active\":1}', 1, 'User activated', '2026-09-30 15:58:31'),
+(75, 'updated', 'user', '4', NULL, '{\"role\":\"faculty\",\"dept\":\"College of Information Communication Techonology\"}', 1, 'User updated', '2026-09-30 15:58:57'),
+(76, 'updated', 'user', '6', NULL, '{\"is_active\":1}', 1, 'User activated', '2026-09-30 15:59:03'),
+(77, 'updated', 'user', '6', NULL, '{\"role\":\"faculty\",\"dept\":\"College of Civil Engineering\"}', 1, 'User updated', '2026-09-30 15:59:15'),
+(78, 'updated', 'user', '5', NULL, '{\"role\":\"faculty\",\"dept\":\"Colleger of Architecture\"}', 1, 'User updated', '2026-09-30 15:59:26'),
+(79, 'deleted', 'department', '2', 'College of Arts and Sciences', NULL, 1, 'Department deleted', '2026-09-30 15:59:41'),
+(80, 'updated', 'user', '2', NULL, '{\"role\":\"dean\",\"dept\":\"College of Industrial Techonology\"}', 1, 'User updated', '2026-09-30 15:59:59'),
+(81, 'deleted', 'department', '1', 'College of Education', NULL, 1, 'Department deleted', '2026-09-30 16:00:08'),
+(82, 'updated', 'user', '3', NULL, '{\"role\":\"faculty\",\"dept\":\"College of Electrical Engineering\"}', 1, 'User updated', '2026-09-30 16:01:01'),
+(83, 'updated', 'user', '2', NULL, '{\"role\":\"admin\",\"dept\":\"College of Industrial Techonology\"}', 1, 'User updated', '2026-09-30 16:01:10'),
+(84, 'updated', 'user', '5', NULL, '{\"role\":\"faculty\",\"dept\":\"Colleger of Architecture\"}', 1, 'User updated', '2026-09-30 16:01:19'),
+(85, 'updated', 'user', '4', NULL, '{\"role\":\"faculty\",\"dept\":\"College of Information Communication Techonology\"}', 1, 'User updated', '2026-09-30 16:01:24'),
+(86, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 16:01:29'),
+(87, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-09-30 16:01:34'),
+(88, 'evidence_added', 'ipcr_form', '1', NULL, 'Networking_Multiple_Choice_Questions.docx', 4, 'Evidence uploaded for SI 1', '2026-09-30 16:05:47'),
+(89, 'evidence_added', 'ipcr_form', '1', NULL, 'Networking_Multiple_Choice_Questions.docx', 4, 'Evidence uploaded for SI 1', '2026-09-30 16:06:00'),
+(90, 'ipcr_submitted', 'ipcr_form', '1', 'draft', 'submitted', 4, 'Submitted', '2026-09-30 16:06:12'),
+(91, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-09-30 16:06:19'),
+(92, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-30 16:06:22'),
+(93, 'status_change', 'ipcr_form', '1', 'submitted', 'under_review', 2, 'Dean started review', '2026-09-30 16:09:51'),
+(94, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=5', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(95, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(96, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(97, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(98, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(99, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(100, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(101, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(102, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(103, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(104, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(105, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(106, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(107, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(108, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:22'),
+(109, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=5', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(110, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(111, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(112, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(113, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(114, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(115, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(116, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(117, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(118, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(119, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(120, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(121, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(122, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(123, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:10:52'),
+(124, 'ipcr_printed', 'ipcr_form', '1', NULL, 'print', 2, 'IPCR printed', '2026-09-30 16:11:55'),
+(125, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(126, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(127, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(128, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(129, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(130, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(131, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(132, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(133, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(134, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(135, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(136, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(137, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(138, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(139, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:23'),
+(140, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(141, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(142, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(143, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(144, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(145, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(146, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(147, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(148, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(149, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(150, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(151, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(152, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(153, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(154, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:13:53'),
+(155, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(156, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(157, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(158, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(159, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(160, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(161, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(162, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(163, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(164, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(165, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(166, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(167, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(168, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(169, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:23'),
+(170, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(171, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(172, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(173, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(174, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(175, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(176, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(177, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(178, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(179, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(180, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(181, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(182, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(183, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(184, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:14:53'),
+(185, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(186, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(187, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(188, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(189, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(190, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(191, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(192, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(193, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(194, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(195, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(196, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(197, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(198, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(199, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:24'),
+(200, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(201, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(202, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(203, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(204, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(205, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(206, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(207, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(208, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(209, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(210, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(211, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(212, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(213, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(214, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:15:54'),
+(215, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(216, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(217, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(218, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(219, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(220, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(221, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(222, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(223, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(224, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(225, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(226, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(227, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(228, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(229, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:16:24'),
+(230, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(231, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(232, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(233, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(234, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(235, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(236, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(237, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(238, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(239, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(240, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(241, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(242, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(243, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(244, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:17:22'),
+(245, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(246, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(247, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(248, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(249, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(250, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(251, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(252, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(253, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(254, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(255, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(256, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(257, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(258, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(259, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:18:22'),
+(260, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(261, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(262, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(263, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(264, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(265, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(266, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(267, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(268, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(269, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(270, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(271, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(272, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(273, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(274, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:19:22'),
+(275, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(276, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(277, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(278, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(279, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(280, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(281, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(282, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(283, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(284, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(285, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(286, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(287, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(288, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(289, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:22'),
+(290, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(291, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(292, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(293, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(294, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(295, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(296, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(297, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(298, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(299, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(300, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(301, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(302, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(303, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(304, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:20:54'),
+(305, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(306, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(307, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(308, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(309, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(310, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(311, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(312, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(313, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(314, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(315, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(316, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(317, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(318, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(319, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:21:24'),
+(320, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(321, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(322, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(323, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(324, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(325, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(326, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(327, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(328, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(329, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(330, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(331, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(332, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(333, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(334, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:22:22'),
+(335, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(336, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(337, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(338, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(339, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(340, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(341, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(342, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(343, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(344, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(345, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(346, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(347, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(348, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(349, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:23:22'),
+(350, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(351, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(352, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(353, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(354, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(355, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(356, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(357, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(358, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(359, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(360, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(361, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(362, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(363, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(364, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:24:22'),
+(365, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-30 16:24:57'),
+(366, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-30 16:25:00'),
+(367, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(368, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(369, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(370, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(371, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(372, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(373, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(374, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(375, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(376, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(377, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(378, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(379, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(380, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(381, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:25:46'),
+(382, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(383, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(384, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(385, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(386, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(387, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(388, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(389, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(390, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(391, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(392, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(393, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(394, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(395, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(396, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:23'),
+(397, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(398, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(399, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(400, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(401, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(402, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(403, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(404, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(405, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(406, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(407, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(408, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(409, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(410, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(411, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:26:53'),
+(412, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(413, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(414, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(415, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(416, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(417, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(418, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(419, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(420, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(421, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(422, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(423, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(424, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(425, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(426, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:27:44'),
+(427, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(428, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(429, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(430, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(431, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(432, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(433, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(434, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(435, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(436, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(437, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(438, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(439, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(440, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(441, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:14'),
+(442, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(443, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(444, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44');
+INSERT INTO `audit_log` (`id`, `action`, `entity_type`, `entity_id`, `old_value`, `new_value`, `performed_by`, `remarks`, `performed_at`) VALUES
+(445, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(446, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(447, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(448, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(449, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(450, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(451, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(452, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(453, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(454, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(455, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(456, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:28:44'),
+(457, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(458, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(459, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(460, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(461, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(462, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(463, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(464, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(465, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(466, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(467, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(468, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(469, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(470, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(471, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:14'),
+(472, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(473, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(474, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(475, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(476, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(477, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(478, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(479, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(480, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(481, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(482, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(483, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(484, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(485, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(486, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:29:44'),
+(487, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(488, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(489, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(490, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(491, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(492, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(493, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(494, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(495, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(496, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(497, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(498, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(499, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(500, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(501, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:14'),
+(502, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(503, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(504, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(505, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(506, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(507, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(508, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(509, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(510, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(511, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(512, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(513, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(514, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(515, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(516, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:30:44'),
+(517, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(518, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(519, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(520, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(521, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(522, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(523, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(524, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(525, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(526, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(527, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(528, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(529, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(530, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(531, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:31:22'),
+(532, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(533, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(534, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(535, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(536, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(537, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(538, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(539, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(540, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(541, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(542, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(543, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(544, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(545, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(546, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:07'),
+(547, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(548, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(549, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(550, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(551, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(552, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(553, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(554, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(555, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(556, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(557, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(558, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(559, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(560, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(561, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:32:40'),
+(562, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(563, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(564, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(565, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(566, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(567, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(568, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(569, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(570, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(571, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(572, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(573, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(574, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(575, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(576, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:10'),
+(577, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(578, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(579, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(580, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(581, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(582, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(583, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(584, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(585, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(586, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(587, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(588, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(589, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(590, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(591, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:33:40'),
+(592, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(593, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(594, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(595, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(596, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(597, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(598, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(599, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(600, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(601, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(602, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(603, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(604, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(605, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(606, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:10'),
+(607, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(608, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(609, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(610, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(611, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(612, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(613, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(614, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(615, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(616, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(617, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(618, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(619, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(620, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(621, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:34:40'),
+(622, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(623, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(624, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(625, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(626, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(627, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(628, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(629, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(630, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(631, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(632, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(633, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(634, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(635, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(636, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:35:10'),
+(637, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-30 16:35:37'),
+(638, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-30 16:35:41'),
+(639, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(640, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(641, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(642, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(643, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(644, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(645, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(646, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(647, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(648, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(649, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(650, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(651, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(652, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(653, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:20'),
+(654, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(655, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(656, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(657, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(658, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(659, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(660, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(661, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(662, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(663, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(664, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(665, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(666, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(667, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(668, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:36:50'),
+(669, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(670, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(671, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(672, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(673, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(674, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(675, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(676, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(677, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(678, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(679, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(680, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(681, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(682, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(683, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:20'),
+(684, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(685, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(686, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(687, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(688, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(689, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(690, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(691, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(692, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(693, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(694, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(695, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(696, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(697, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(698, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 2, 'Dean saved ratings', '2026-09-30 16:37:50'),
+(699, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-30 16:38:22'),
+(700, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 16:38:25'),
+(701, 'updated', 'user', '2', NULL, '{\"role\":\"faculty\",\"dept\":\"College of Industrial Techonology\"}', 1, 'User updated', '2026-09-30 16:38:56'),
+(702, 'updated', 'user', '5', NULL, '{\"is_active\":1}', 1, 'User activated', '2026-09-30 16:39:09'),
+(703, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 16:39:13'),
+(704, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 16:44:04'),
+(705, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 17:11:12'),
+(706, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-09-30 17:11:16'),
+(707, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-09-30 17:15:00'),
+(708, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-30 17:15:03'),
+(709, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-30 17:15:09'),
+(710, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-09-30 17:15:12'),
+(711, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-09-30 17:15:16'),
+(712, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-09-30 17:15:24'),
+(713, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(714, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(715, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(716, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(717, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(718, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(719, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(720, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(721, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(722, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(723, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(724, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(725, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(726, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(727, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:23'),
+(728, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(729, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(730, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(731, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(732, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(733, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(734, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(735, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(736, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(737, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(738, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(739, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(740, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(741, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(742, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:17:53'),
+(743, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 1: Q=5 E=5 T=4', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(744, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 2: Q= E= T=1', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(745, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 3: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(746, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 4: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(747, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 5: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(748, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 6: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(749, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 7: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(750, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 8: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(751, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 9: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(752, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 10: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(753, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 11: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(754, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 12: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(755, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 13: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(756, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 14: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(757, 'rating_changed', 'ipcr_form', '1', NULL, 'SI 15: Q= E= T=', 7, 'Dean saved ratings', '2026-09-30 17:18:23'),
+(758, 'ipcr_evaluated', 'ipcr_form', '1', 'under_review', 'reviewed', 7, 'Composite: 4.08 (Very Satisfactory)', '2026-09-30 17:18:58'),
+(759, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-09-30 17:19:03'),
+(760, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-09-30 17:19:07'),
+(761, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-09-30 17:19:45'),
+(762, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 17:19:48'),
+(763, 'password_reset', 'user', '6', NULL, NULL, 1, 'Password reset by admin', '2026-09-30 17:20:31'),
+(764, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 17:20:35'),
+(765, 'login', 'user', '6', NULL, 'logged_in', 6, 'User logged in', '2026-09-30 17:20:42'),
+(766, 'created', 'ipcr_form', '2', NULL, 'draft', 6, 'IPCR form created', '2026-09-30 17:21:12'),
+(767, 'evidence_added', 'ipcr_form', '2', NULL, 'Networking_Multiple_Choice_Questions (1).docx', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:26'),
+(768, 'evidence_added', 'ipcr_form', '2', NULL, 'Networking_Quiz_and_Answer_Key.docx', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:30'),
+(769, 'evidence_added', 'ipcr_form', '2', NULL, 'Networking_Quiz_and_Answer_Key.docx', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(770, 'evidence_added', 'ipcr_form', '2', NULL, 'Networking_Multiple_Choice_Questions.docx', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(771, 'evidence_added', 'ipcr_form', '2', NULL, 'Lecture Note 5 - Advance VLAN Configuration.pdf', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(772, 'evidence_added', 'ipcr_form', '2', NULL, 'Lecture Note 4 - InterVLAN.pdf', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(773, 'evidence_added', 'ipcr_form', '2', NULL, 'Excel Act 1.xlsx', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(774, 'evidence_added', 'ipcr_form', '2', NULL, 'Laboratory_Activity_Android_Studio_Familiarization (1).pdf', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(775, 'evidence_added', 'ipcr_form', '2', NULL, 'Laboratory_Activity_Android_Studio_Familiarization.pdf', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(776, 'evidence_added', 'ipcr_form', '2', NULL, '5d44d3ca-94da-411b-859b-dfef26027ff0.jpg', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(777, 'evidence_added', 'ipcr_form', '2', NULL, 'Activity_Media_Content_Integration_Web_Applications.docx.pdf', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(778, 'evidence_added', 'ipcr_form', '2', NULL, 'ERCILLA, JHON CARL.pdf', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(779, 'evidence_added', 'ipcr_form', '2', NULL, 'jc.pdf', 6, 'Evidence uploaded for SI 1', '2026-09-30 17:21:53'),
+(780, 'ipcr_submitted', 'ipcr_form', '2', 'draft', 'submitted', 6, 'Submitted', '2026-09-30 17:22:01'),
+(781, 'logout', 'user', '6', 'logged_in', 'logged_out', 6, 'User logged out', '2026-09-30 17:22:10'),
+(782, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-09-30 17:22:42'),
+(783, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-09-30 17:41:37'),
+(784, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-09-30 17:41:39'),
+(785, 'updated', 'user', '6', NULL, '{\"role\":\"faculty\",\"dept\":\"College of Civil Engineering\"}', 1, 'User updated', '2026-09-30 17:41:50'),
+(786, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-09-30 17:41:53'),
+(787, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-09-30 17:42:11'),
+(788, 'status_change', 'ipcr_form', '2', 'submitted', 'under_review', 7, 'Dean started review', '2026-09-30 17:42:25'),
+(789, 'ipcr_returned', 'ipcr_form', '2', 'under_review', 'returned', 7, 'dfa', '2026-09-30 17:42:51'),
+(790, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-09-30 17:42:57'),
+(791, 'login', 'user', '6', NULL, 'logged_in', 6, 'User logged in', '2026-09-30 17:43:09'),
+(792, 'logout', 'user', '6', 'logged_in', 'logged_out', 6, 'User logged out', '2026-10-01 03:24:04'),
+(793, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-10-01 03:24:12'),
+(794, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-10-01 03:26:16'),
+(795, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-10-01 03:26:28'),
+(796, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-10-01 03:26:51'),
+(797, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 03:47:39'),
+(798, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 03:50:24'),
+(799, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-10-01 03:50:30'),
+(800, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-10-01 03:50:44'),
+(801, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 03:50:49'),
+(802, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 03:51:16'),
+(803, 'login', 'user', '6', NULL, 'logged_in', 6, 'User logged in', '2026-10-01 03:51:26'),
+(804, 'evidence_added', 'ipcr_form', '2', NULL, 'Networking_Multiple_Choice_Questions.docx', 6, 'Evidence uploaded for SI 2', '2026-10-01 03:51:40'),
+(805, 'ai_verification', 'evidence', '15', NULL, 'invalid', 6, 'AI verified: The uploaded document consists of review questions, answers, and quiz items related to Android mobile application development. It contains no information regarding teaching workload, faculty assignments, or FTE units.', '2026-10-01 03:52:02'),
+(806, 'logout', 'user', '6', 'logged_in', 'logged_out', 6, 'User logged out', '2026-10-01 03:54:55'),
+(807, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 03:54:59'),
+(808, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 04:03:29'),
+(809, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-10-01 04:03:37'),
+(810, 'ipcr_printed', 'ipcr_form', '1', NULL, 'print', 7, 'IPCR printed', '2026-10-01 04:03:43'),
+(811, 'ipcr_printed', 'ipcr_form', '1', NULL, 'print', 7, 'IPCR printed', '2026-10-01 04:08:09'),
+(812, 'ipcr_printed', 'ipcr_form', '1', NULL, 'print', 7, 'IPCR printed', '2026-10-01 04:10:05'),
+(813, 'ipcr_printed', 'ipcr_form', '1', NULL, 'print', 7, 'IPCR printed', '2026-10-01 04:10:12'),
+(814, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-10-01 04:20:29'),
+(815, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 04:20:39'),
+(816, 'created', 'user', '8', NULL, '{\"employee_id\":\"FAC005\",\"role\":\"faculty\"}', 1, 'User created', '2026-10-01 04:22:11'),
+(817, 'ipcr_printed', 'ipcr_form', '2', NULL, 'print', 1, 'IPCR printed', '2026-10-01 04:26:07'),
+(818, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 05:03:11'),
+(819, 'login', 'user', '6', NULL, 'logged_in', 6, 'User logged in', '2026-10-01 05:03:24'),
+(820, 'ai_verification', 'evidence', '3', NULL, 'uncertain', 6, 'AI verified: AI could not determine document type.', '2026-10-01 05:03:45'),
+(821, 'evidence_deleted', 'ipcr_form', '2', 'Networking_Multiple_Choice_Questions (1).docx', NULL, 6, 'Evidence file deleted', '2026-10-01 05:04:49'),
+(822, 'evidence_added', 'ipcr_form', '2', NULL, 'Networking_Quiz_and_Answer_Key.docx', 6, 'Evidence uploaded for SI 3', '2026-10-01 05:05:41'),
+(823, 'evidence_added', 'ipcr_form', '2', NULL, 'Networking_Multiple_Choice_Questions.docx', 6, 'Evidence uploaded for SI 3', '2026-10-01 05:05:42'),
+(824, 'evidence_added', 'ipcr_form', '2', NULL, 'Lecture Note 5 - Advance VLAN Configuration.pdf', 6, 'Evidence uploaded for SI 3', '2026-10-01 05:05:42'),
+(825, 'evidence_added', 'ipcr_form', '2', NULL, 'Lecture Note 4 - InterVLAN.pdf', 6, 'Evidence uploaded for SI 3', '2026-10-01 05:05:42'),
+(826, 'evidence_added', 'ipcr_form', '2', NULL, 'Excel Act 1.xlsx', 6, 'Evidence uploaded for SI 3', '2026-10-01 05:05:42'),
+(827, 'evidence_added', 'ipcr_form', '2', NULL, 'Networking_Multiple_Choice_Questions (1).docx', 6, 'Evidence uploaded for SI 4', '2026-10-01 05:06:12'),
+(828, 'logout', 'user', '6', 'logged_in', 'logged_out', 6, 'User logged out', '2026-10-01 05:06:55'),
+(829, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 05:09:38'),
+(830, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 05:13:52'),
+(831, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-10-01 05:14:01'),
+(832, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-10-01 05:14:19'),
+(833, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-10-01 05:15:01'),
+(834, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-10-01 05:15:07'),
+(835, 'login', 'user', '4', NULL, 'logged_in', 4, 'User logged in', '2026-10-01 05:15:13'),
+(836, 'logout', 'user', '4', 'logged_in', 'logged_out', 4, 'User logged out', '2026-10-01 05:15:20'),
+(837, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-10-01 05:15:36'),
+(838, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-10-01 05:16:28'),
+(839, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 05:16:33'),
+(840, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 05:20:04'),
+(841, 'login', 'user', '6', NULL, 'logged_in', 6, 'User logged in', '2026-10-01 05:20:15'),
+(842, 'logout', 'user', '6', 'logged_in', 'logged_out', 6, 'User logged out', '2026-10-01 05:21:08'),
+(843, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-10-01 05:21:20'),
+(844, 'ipcr_printed', 'ipcr_form', '1', NULL, 'print', 7, 'IPCR printed', '2026-10-01 05:21:28'),
+(845, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-10-01 05:25:30'),
+(846, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 05:25:34'),
+(847, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 05:26:25'),
+(848, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-10-01 05:26:35'),
+(849, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-10-01 05:29:21'),
+(850, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 05:29:24'),
+(851, 'login', 'user', '2', NULL, 'logged_in', 2, 'User logged in', '2026-10-01 12:39:31'),
+(852, 'logout', 'user', '2', 'logged_in', 'logged_out', 2, 'User logged out', '2026-10-01 12:39:43'),
+(853, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-10-01 12:39:54'),
+(854, 'ipcr_printed', 'ipcr_form', '2', NULL, 'print', 7, 'IPCR printed', '2026-10-01 12:40:01'),
+(855, 'ipcr_printed', 'ipcr_form', '2', NULL, 'print', 7, 'IPCR printed', '2026-10-01 12:43:27'),
+(856, 'ipcr_downloaded', 'ipcr_form', '2', NULL, 'excel', 7, 'IPCR exported to Excel/CSV', '2026-10-01 12:43:41'),
+(857, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-10-01 12:44:52'),
+(858, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 12:45:04'),
+(859, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 12:47:10'),
+(860, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 12:47:38'),
+(861, 'deleted', 'user', '3', 'DEAN002', NULL, 1, 'User deleted: Ana Gomez', '2026-10-01 13:38:02'),
+(862, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 13:38:19'),
+(863, 'login', 'user', '7', NULL, 'logged_in', 7, 'User logged in', '2026-10-01 13:38:33'),
+(864, 'logout', 'user', '7', 'logged_in', 'logged_out', 7, 'User logged out', '2026-10-01 13:38:44'),
+(865, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 13:38:50'),
+(866, 'deleted', 'user', '7', 'DEAN01', NULL, 1, 'User deleted: crhestian asd', '2026-10-01 13:58:27'),
+(867, 'deleted', 'user', '8', 'FAC005', NULL, 1, 'User deleted: Darryl Tamayo', '2026-10-01 13:58:31'),
+(868, 'deleted', 'user', '5', 'FAC002', NULL, 1, 'User deleted: Juan Santos', '2026-10-01 13:58:34'),
+(869, 'deleted', 'user', '2', 'DEAN001', NULL, 1, 'User deleted: Jose Reyes', '2026-10-01 13:58:37'),
+(870, 'ipcr_returned', 'ipcr_form', '1', 'reviewed', 'returned', 1, 'Admin returned: wsa', '2026-10-01 13:59:08'),
+(871, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 14:34:27'),
+(872, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-01 14:34:32'),
+(873, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-01 14:34:37'),
+(884, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 15:55:10'),
+(885, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 15:55:19'),
+(886, 'login', 'user', '313', NULL, 'logged_in', 313, 'User logged in', '2026-10-01 16:05:44'),
+(887, 'logout', 'user', '313', 'logged_in', 'logged_out', 313, 'User logged out', '2026-10-01 16:05:49'),
+(888, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 16:05:51'),
+(889, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 16:07:49'),
+(890, 'login', 'user', '20', NULL, 'logged_in', 20, 'User logged in', '2026-10-01 16:07:53'),
+(891, 'logout', 'user', '20', 'logged_in', 'logged_out', 20, 'User logged out', '2026-10-01 16:08:11'),
+(892, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 16:08:13'),
+(893, 'created', 'period', '2', NULL, '{\"name\":\"testing\"}', 10, 'Period created', '2026-10-01 16:21:03'),
+(894, 'status_change', 'period', '1', 'open', 'rating', 10, 'Period advanced to rating', '2026-10-01 16:21:22'),
+(895, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 16:24:28'),
+(896, 'login', 'user', '20', NULL, 'logged_in', 20, 'User logged in', '2026-10-01 16:24:31'),
+(897, 'logout', 'user', '20', 'logged_in', 'logged_out', 20, 'User logged out', '2026-10-01 16:25:29'),
+(898, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 16:25:32'),
+(899, 'status_change', 'period', '1', 'rating', 'closed', 10, 'Period advanced to closed', '2026-10-01 16:25:38'),
+(900, 'status_change', 'period', '2', 'draft', 'open', 10, 'Period advanced to open', '2026-10-01 16:25:40'),
+(901, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 16:27:40'),
+(902, 'login', 'user', '292', NULL, 'logged_in', 292, 'User logged in', '2026-10-01 16:27:44');
+INSERT INTO `audit_log` (`id`, `action`, `entity_type`, `entity_id`, `old_value`, `new_value`, `performed_by`, `remarks`, `performed_at`) VALUES
+(903, 'created', 'ipcr_form', '4', NULL, 'draft', 292, 'IPCR form created', '2026-10-01 16:27:46'),
+(904, 'logout', 'user', '292', 'logged_in', 'logged_out', 292, 'User logged out', '2026-10-01 16:27:59'),
+(905, 'login', 'user', '283', NULL, 'logged_in', 283, 'User logged in', '2026-10-01 16:28:04'),
+(906, 'created', 'ipcr_form', '5', NULL, 'draft', 283, 'IPCR form created', '2026-10-01 16:28:07'),
+(907, 'logout', 'user', '283', 'logged_in', 'logged_out', 283, 'User logged out', '2026-10-01 16:28:50'),
+(908, 'login', 'user', '20', NULL, 'logged_in', 20, 'User logged in', '2026-10-01 16:29:31'),
+(909, 'logout', 'user', '20', 'logged_in', 'logged_out', 20, 'User logged out', '2026-10-01 16:32:06'),
+(910, 'login', 'user', '283', NULL, 'logged_in', 283, 'User logged in', '2026-10-01 16:32:12'),
+(911, 'logout', 'user', '283', 'logged_in', 'logged_out', 283, 'User logged out', '2026-10-01 16:33:39'),
+(912, 'login', 'user', '20', NULL, 'logged_in', 20, 'User logged in', '2026-10-01 16:33:42'),
+(913, 'updated', 'user', '327', NULL, '{\"role\":\"faculty\",\"dept\":\"Information and Communications Technology\"}', 20, 'User updated', '2026-10-01 16:45:27'),
+(914, 'updated', 'user', '315', NULL, '{\"role\":\"faculty\",\"dept\":\"Information and Communications Technology\"}', 20, 'User updated', '2026-10-01 16:45:40'),
+(915, 'updated', 'user', '327', NULL, '{\"role\":\"faculty\",\"dept\":\"Information and Communications Technology\"}', 20, 'User updated', '2026-10-01 16:45:54'),
+(916, 'logout', 'user', '20', 'logged_in', 'logged_out', 20, 'User logged out', '2026-10-01 16:46:07'),
+(917, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 16:46:10'),
+(918, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 16:46:15'),
+(919, 'login', 'user', '20', NULL, 'logged_in', 20, 'User logged in', '2026-10-01 16:46:22'),
+(920, 'edit_request_submitted', 'user', '284', '20', '10', 20, 'Edit request #1 submitted', '2026-10-01 17:04:16'),
+(921, 'logout', 'user', '20', 'logged_in', 'logged_out', 20, 'User logged out', '2026-10-01 17:04:20'),
+(922, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 17:04:24'),
+(923, 'user_updated', 'user', '284', '20', NULL, 10, 'Dean approved secretary edit request #1', '2026-10-01 17:04:57'),
+(924, 'edit_request_approved', 'user', '284', NULL, '20', 10, 'Dean approved edit request #1', '2026-10-01 17:04:57'),
+(925, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 17:07:59'),
+(926, 'login', 'user', '20', NULL, 'logged_in', 20, 'User logged in', '2026-10-01 17:08:01'),
+(927, 'edit_request_submitted', 'user', '291', '20', '10', 20, 'Edit request #2 submitted', '2026-10-01 17:08:23'),
+(928, 'logout', 'user', '20', 'logged_in', 'logged_out', 20, 'User logged out', '2026-10-01 17:08:26'),
+(929, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 17:08:29'),
+(930, 'user_updated', 'user', '291', '20', '10', 10, 'Dean approved secretary edit request #2', '2026-10-01 17:08:40'),
+(931, 'edit_request_approved', 'user', '291', '10', '20', 10, 'Dean approved edit request #2', '2026-10-01 17:08:40'),
+(932, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 17:08:48'),
+(933, 'login', 'user', '20', NULL, 'logged_in', 20, 'User logged in', '2026-10-01 17:08:51'),
+(934, 'logout', 'user', '20', 'logged_in', 'logged_out', 20, 'User logged out', '2026-10-01 17:09:09'),
+(935, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 17:09:14'),
+(936, 'updated', 'user', '291', NULL, '{\"role\":\"faculty\",\"dept\":\"Architecture\"}', 10, 'User updated', '2026-10-01 17:09:38'),
+(937, 'updated', 'user', '291', NULL, '{\"is_active\":1}', 10, 'User activated', '2026-10-01 17:09:44'),
+(938, 'updated', 'user', '284', NULL, '{\"is_active\":1}', 10, 'User activated', '2026-10-01 17:09:48'),
+(939, 'status_change', 'period', '2', 'open', 'rating', 10, 'Period advanced to rating', '2026-10-01 17:10:55'),
+(940, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 17:11:04'),
+(941, 'login', 'user', '283', NULL, 'logged_in', 283, 'User logged in', '2026-10-01 17:11:08'),
+(942, 'logout', 'user', '283', 'logged_in', 'logged_out', 283, 'User logged out', '2026-10-01 17:12:57'),
+(943, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 17:13:04'),
+(944, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 17:22:36'),
+(945, 'login', 'user', '369', NULL, 'logged_in', 369, 'User logged in', '2026-10-01 17:22:42'),
+(946, 'logout', 'user', '369', 'logged_in', 'logged_out', 369, 'User logged out', '2026-10-01 17:22:55'),
+(947, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 17:22:58'),
+(948, 'deleted', 'period', '1', '1st Semester AY 2025-2026', NULL, 10, 'Period deleted: 1st Semester AY 2025-2026', '2026-10-01 17:26:19'),
+(949, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 17:26:25'),
+(950, 'login', 'user', '363', NULL, 'logged_in', 363, 'User logged in', '2026-10-01 17:26:33'),
+(951, 'logout', 'user', '363', 'logged_in', 'logged_out', 363, 'User logged out', '2026-10-01 17:28:21'),
+(952, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 17:28:26'),
+(953, 'status_change', 'period', '2', 'rating', 'closed', 10, 'Period advanced to closed', '2026-10-01 17:28:34'),
+(954, 'deleted', 'period', '2', 'testing', NULL, 10, 'Period deleted: testing', '2026-10-01 17:28:37'),
+(955, 'created', 'period', '3', NULL, '{\"name\":\"test\"}', 10, 'Period created', '2026-10-01 17:29:37'),
+(956, 'status_change', 'period', '3', 'draft', 'open', 10, 'Period advanced to open', '2026-10-01 17:29:42'),
+(957, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 17:29:49'),
+(958, 'login', 'user', '333', NULL, 'logged_in', 333, 'User logged in', '2026-10-01 17:29:53'),
+(959, 'created', 'ipcr_form', '6', NULL, 'draft', 333, 'IPCR form created', '2026-10-01 17:29:55'),
+(960, 'logout', 'user', '333', 'logged_in', 'logged_out', 333, 'User logged out', '2026-10-01 17:30:00'),
+(961, 'login', 'user', '363', NULL, 'logged_in', 363, 'User logged in', '2026-10-01 17:30:03'),
+(962, 'created', 'ipcr_form', '7', NULL, 'draft', 363, 'IPCR form created', '2026-10-01 17:30:05'),
+(963, 'logout', 'user', '363', 'logged_in', 'logged_out', 363, 'User logged out', '2026-10-01 17:30:45'),
+(964, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 18:17:37'),
+(965, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 18:19:08'),
+(966, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 18:19:58'),
+(967, 'updated', 'user', '364', NULL, '{\"role\":\"faculty\",\"dept\":\"Information and Communication Technology\"}', 10, 'User updated', '2026-10-01 18:20:08'),
+(968, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 18:20:11'),
+(969, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 18:51:28'),
+(970, 'status_change', 'period', '3', 'open', 'rating', 10, 'Period advanced to rating', '2026-10-01 18:51:37'),
+(971, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-01 18:52:01'),
+(972, 'login', 'user', '363', NULL, 'logged_in', 363, 'User logged in', '2026-10-01 18:52:04'),
+(973, 'ipcr_submitted', 'ipcr_form', '7', 'draft', 'submitted', 363, 'Submitted', '2026-10-01 18:52:09'),
+(974, 'logout', 'user', '363', 'logged_in', 'logged_out', 363, 'User logged out', '2026-10-01 18:52:12'),
+(975, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-01 18:52:17'),
+(976, 'status_change', 'ipcr_form', '7', 'submitted', 'under_review', 10, 'Dean started review', '2026-10-01 18:54:49'),
+(977, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 1: Q= E=4 T=5', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(978, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 2: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(979, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(980, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(981, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(982, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(983, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(984, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(985, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(986, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(987, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(988, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(989, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(990, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(991, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:20'),
+(992, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 1: Q= E=4 T=5', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(993, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 2: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(994, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(995, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(996, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(997, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(998, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(999, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(1000, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(1001, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(1002, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(1003, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(1004, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(1005, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(1006, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:55:50'),
+(1007, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 1: Q= E=4 T=5', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1008, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 2: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1009, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1010, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1011, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1012, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1013, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1014, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1015, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1016, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1017, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1018, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1019, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1020, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1021, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-01 18:56:20'),
+(1022, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 07:53:32'),
+(1023, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 07:53:32'),
+(1024, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-02 08:30:59'),
+(1025, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 1: Q= E=4 T=5', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1026, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 2: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1027, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1028, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1029, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1030, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1031, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1032, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1033, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1034, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1035, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1036, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1037, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1038, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1039, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:15'),
+(1040, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 1: Q= E=4 T=5', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1041, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 2: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1042, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1043, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1044, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1045, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1046, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1047, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1048, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1049, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1050, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1051, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1052, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1053, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1054, 'rating_changed', 'ipcr_form', '7', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-02 08:33:45'),
+(1055, 'ipcr_evaluated', 'ipcr_form', '7', 'under_review', 'reviewed', 10, 'Composite: 3.57 (Very Satisfactory)', '2026-10-02 08:34:21'),
+(1056, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 08:34:33'),
+(1057, 'login', 'user', '333', NULL, 'logged_in', 333, 'User logged in', '2026-10-02 08:34:36'),
+(1058, 'logout', 'user', '333', 'logged_in', 'logged_out', 333, 'User logged out', '2026-10-02 08:42:01'),
+(1059, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-02 08:43:44'),
+(1060, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 08:43:53'),
+(1061, 'login', 'user', '333', NULL, 'logged_in', 333, 'User logged in', '2026-10-02 08:43:58'),
+(1062, 'evidence_added', 'ipcr_form', '6', NULL, 'OOP-Syllabus-1st-Sem-2026-2027.docx', 333, 'Uploaded for SI 2 | Period: test | AI: pending', '2026-10-02 08:44:07'),
+(1063, 'evidence_added', 'ipcr_form', '6', NULL, 'OOP-Syllabus-1st-Sem-2026-2027.docx', 333, 'Uploaded for SI 2 | Period: test | AI: pending', '2026-10-02 08:44:08'),
+(1064, 'evidence_deleted', 'ipcr_form', '6', 'OOP-Syllabus-1st-Sem-2026-2027.docx', NULL, 333, 'Evidence file deleted', '2026-10-02 08:44:13'),
+(1065, 'evidence_added', 'ipcr_form', '6', NULL, 'CGuide-IT-121-Computer-Programming-2.pdf', 333, 'Uploaded for SI 1 | Period: test | AI: pending', '2026-10-02 08:44:34'),
+(1066, 'evidence_added', 'ipcr_form', '6', NULL, 'CGuide-IT-121-Computer-Programming-2.pdf', 333, 'Uploaded for SI 1 | Period: test | AI: pending', '2026-10-02 08:44:34'),
+(1067, 'evidence_deleted', 'ipcr_form', '6', 'CGuide-IT-121-Computer-Programming-2.pdf', NULL, 333, 'Evidence file deleted', '2026-10-02 08:44:39'),
+(1068, 'evidence_added', 'ipcr_form', '6', NULL, 'Networking_Multiple_Choice_Questions (1).docx', 333, 'Uploaded for SI 3 | Period: test | AI: pending', '2026-10-02 08:44:47'),
+(1069, 'evidence_added', 'ipcr_form', '6', NULL, 'Networking_Multiple_Choice_Questions (1).docx', 333, 'Uploaded for SI 3 | Period: test | AI: pending', '2026-10-02 08:44:48'),
+(1070, 'evidence_deleted', 'ipcr_form', '6', 'Networking_Multiple_Choice_Questions (1).docx', NULL, 333, 'Evidence file deleted', '2026-10-02 08:45:54'),
+(1071, 'evidence_deleted', 'ipcr_form', '6', 'CGuide-IT-121-Computer-Programming-2.pdf', NULL, 333, 'Evidence file deleted', '2026-10-02 08:52:43'),
+(1072, 'evidence_added', 'ipcr_form', '6', NULL, 'OOP-Syllabus-1st-Sem-2026-2027 (1).docx', 333, 'Uploaded for SI 1 | Period: test | AI: pending', '2026-10-02 08:52:49'),
+(1073, 'evidence_added', 'ipcr_form', '6', NULL, 'OOP-Syllabus-1st-Sem-2026-2027 (1).docx', 333, 'Uploaded for SI 4 | Period: test | AI: pending', '2026-10-02 08:53:04'),
+(1074, 'evidence_deleted', 'ipcr_form', '6', 'OOP-Syllabus-1st-Sem-2026-2027 (1).docx', NULL, 333, 'Evidence file deleted', '2026-10-02 09:01:31'),
+(1075, 'evidence_added', 'ipcr_form', '6', NULL, 'OOP-Syllabus-1st-Sem-2026-2027 (1).docx', 333, 'Uploaded for SI 1 | Period: test | AI: pending', '2026-10-02 09:01:37'),
+(1076, 'logout', 'user', '333', 'logged_in', 'logged_out', 333, 'User logged out', '2026-10-02 09:02:51'),
+(1077, 'login', 'user', '333', NULL, 'logged_in', 333, 'User logged in', '2026-10-02 09:02:55'),
+(1078, 'logout', 'user', '333', 'logged_in', 'logged_out', 333, 'User logged out', '2026-10-02 09:09:25'),
+(1079, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-02 09:22:00'),
+(1080, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 09:22:04'),
+(1081, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-02 09:22:07'),
+(1082, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 09:24:11'),
+(1083, 'login', 'user', '342', NULL, 'logged_in', 342, 'User logged in', '2026-10-02 09:24:58'),
+(1084, 'logout', 'user', '342', 'logged_in', 'logged_out', 342, 'User logged out', '2026-10-02 09:25:23'),
+(1085, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-02 09:25:28'),
+(1086, 'updated', 'period', '3', NULL, '{\"name\":\"test\"}', 10, 'Period updated', '2026-10-02 09:26:53'),
+(1087, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 09:26:57'),
+(1088, 'login', 'user', '333', NULL, 'logged_in', 333, 'User logged in', '2026-10-02 09:27:00'),
+(1089, 'evidence_added', 'ipcr_form', '6', NULL, '5149bc44-8b32-44e3-ba8d-7e94b30589b0.jpg', 333, 'Uploaded for SI 5 | Period: test | AI: pending', '2026-10-02 09:27:18'),
+(1090, 'logout', 'user', '333', 'logged_in', 'logged_out', 333, 'User logged out', '2026-10-02 09:32:32'),
+(1091, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-02 09:35:47'),
+(1092, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 09:35:53'),
+(1093, 'login', 'user', '333', NULL, 'logged_in', 333, 'User logged in', '2026-10-02 09:35:57'),
+(1094, 'logout', 'user', '333', 'logged_in', 'logged_out', 333, 'User logged out', '2026-10-02 09:48:41'),
+(1095, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-02 09:51:53'),
+(1096, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 09:52:32'),
+(1097, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-02 09:53:31'),
+(1098, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 09:56:20'),
+(1099, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-02 09:56:28'),
+(1100, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-02 09:58:23'),
+(1101, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-11 14:03:48'),
+(1102, 'notification_sent', 'user', '364', 'MARIBEL ABALOS', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:04:12'),
+(1103, 'notification_sent', 'user', '342', 'REYMOND AGCAOILI', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:04:18'),
+(1104, 'notification_sent', 'user', '356', 'SOTERO ARNOLD ALBURO', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:04:23'),
+(1105, 'notification_sent', 'user', '334', 'JEFSIE ANTONIO', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:04:28'),
+(1106, 'notification_sent', 'user', '343', 'ALEX BALUBAL', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:04:34'),
+(1107, 'notification_sent', 'user', '355', 'MARY GRACE BAQUIRAN', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:04:41'),
+(1108, 'notification_sent', 'user', '357', 'JEAN CALUDE BENITEZ', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:04:46'),
+(1109, 'notification_sent', 'user', '344', 'EUGENE BOLAR', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:04:53'),
+(1110, 'notification_sent', 'user', '345', 'ABIGAIL BRUNO', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:04:57'),
+(1111, 'notification_sent', 'user', '358', 'JOSELITO BUGAYONG', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:02'),
+(1112, 'notification_sent', 'user', '353', 'MARCO BULAN', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:07'),
+(1113, 'notification_sent', 'user', '378', 'MARJAY BUMALOD', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:13'),
+(1114, 'notification_sent', 'user', '379', 'CLARISA BUNUAN', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:18'),
+(1115, 'notification_sent', 'user', '376', 'RACHEL CABAJAR', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:23'),
+(1116, 'notification_sent', 'user', '339', 'GERRLENE CABALONGA', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:28'),
+(1117, 'notification_sent', 'user', '365', 'ZACH CHAMBERLAINE CORPUZ', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:35'),
+(1118, 'notification_sent', 'user', '346', 'ROBERT DANCEL', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:42'),
+(1119, 'notification_sent', 'user', '366', 'MARK GERALD DE LEON', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:49'),
+(1120, 'notification_sent', 'user', '380', 'HARROLD JAY FATALLA', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:54'),
+(1121, 'notification_sent', 'user', '354', 'JERICO FIEL', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:05:58'),
+(1122, 'notification_sent', 'user', '362', 'FREDERICK GALLO', NULL, 10, 'IPCR submission reminder sent for period: test', '2026-10-11 14:06:04'),
+(1123, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:20:00'),
+(1124, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:24:08'),
+(1125, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:26:41'),
+(1126, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:31:12'),
+(1127, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:34:34'),
+(1128, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:37:45'),
+(1129, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:37:47'),
+(1130, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:37:47'),
+(1131, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:37:48'),
+(1132, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-11 14:58:15'),
+(1133, 'ipcr_downloaded', 'ipcr_form', '7', NULL, 'excel', 10, 'IPCR exported to Excel/CSV', '2026-10-11 14:58:23'),
+(1134, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:58:53'),
+(1135, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 14:59:20'),
+(1136, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:01:04'),
+(1137, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:01:06'),
+(1138, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:04:28'),
+(1139, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:04:30'),
+(1140, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:04:30'),
+(1141, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:04:30'),
+(1142, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:04:30'),
+(1143, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:04:30'),
+(1144, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:04:35'),
+(1145, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:07:52'),
+(1146, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:07:54'),
+(1147, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:09:55'),
+(1148, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:09:56'),
+(1149, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:09:56'),
+(1150, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:09:56'),
+(1151, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:10:10'),
+(1152, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:11:42'),
+(1153, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:11:44'),
+(1154, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:11:44'),
+(1155, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:12:39'),
+(1156, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:12:42'),
+(1157, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:12:43'),
+(1158, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:12:43'),
+(1159, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:15:35'),
+(1160, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:15:35'),
+(1161, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:15:36'),
+(1162, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:15:36'),
+(1163, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:17:19'),
+(1164, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:20:07'),
+(1165, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:25:12'),
+(1166, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:25:13'),
+(1167, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:25:14'),
+(1168, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:25:14'),
+(1169, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:25:16'),
+(1170, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:25:16'),
+(1171, 'ipcr_printed', 'ipcr_form', '7', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:25:16'),
+(1172, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-11 15:30:37'),
+(1173, 'login', 'user', '377', NULL, 'logged_in', 377, 'User logged in', '2026-10-11 15:30:49'),
+(1174, 'logout', 'user', '377', 'logged_in', 'logged_out', 377, 'User logged out', '2026-10-11 15:31:01'),
+(1175, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-11 15:31:12'),
+(1176, 'ipcr_returned', 'ipcr_form', '7', 'reviewed', 'returned', 10, 'asd', '2026-10-11 15:32:11'),
+(1177, 'updated', 'period', '3', NULL, '{\"name\":\"test\"}', 10, 'Period updated', '2026-10-11 15:32:45'),
+(1178, 'updated', 'period', '3', NULL, '{\"name\":\"test\"}', 10, 'Period updated', '2026-10-11 15:34:24'),
+(1179, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-11 15:34:29'),
+(1180, 'login', 'user', '377', NULL, 'logged_in', 377, 'User logged in', '2026-10-11 15:34:38'),
+(1181, 'logout', 'user', '377', 'logged_in', 'logged_out', 377, 'User logged out', '2026-10-11 15:34:47'),
+(1182, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-11 15:34:57'),
+(1183, 'updated', 'period', '3', NULL, '{\"name\":\"July - December 2026 (2nd Semester)\"}', 10, 'Period updated', '2026-10-11 15:35:39'),
+(1184, 'status_change', 'period', '3', 'rating', 'closed', 10, 'Period advanced to closed', '2026-10-11 15:35:45'),
+(1185, 'created', 'period', '4', NULL, '{\"name\":\"July - December 2026 (2nd Semester)\"}', 10, 'Period created', '2026-10-11 15:35:52'),
+(1186, 'updated', 'period', '4', NULL, '{\"name\":\"July - December 2026 (2nd Semester)\"}', 10, 'Period updated', '2026-10-11 15:36:00'),
+(1187, 'status_change', 'period', '4', 'draft', 'open', 10, 'Period advanced to open', '2026-10-11 15:36:03'),
+(1188, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-11 15:36:07'),
+(1189, 'login', 'user', '377', NULL, 'logged_in', 377, 'User logged in', '2026-10-11 15:36:30'),
+(1190, 'created', 'ipcr_form', '8', NULL, 'draft', 377, 'IPCR form created', '2026-10-11 15:36:32'),
+(1191, 'evidence_added', 'ipcr_form', '8', NULL, 'Monitoring form (General).docx', 377, 'Uploaded for SI 1 | Period: July - December 2026 (2nd Semester) | AI: pending', '2026-10-11 15:36:41'),
+(1192, 'ipcr_submitted', 'ipcr_form', '8', 'draft', 'submitted', 377, 'Submitted', '2026-10-11 15:37:00'),
+(1193, 'logout', 'user', '377', 'logged_in', 'logged_out', 377, 'User logged out', '2026-10-11 15:37:05'),
+(1194, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-11 15:37:17'),
+(1195, 'status_change', 'ipcr_form', '8', 'submitted', 'under_review', 10, 'Dean started review', '2026-10-11 15:37:23'),
+(1196, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:37:26'),
+(1197, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:37:42'),
+(1198, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1199, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1200, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1201, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1202, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1203, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1204, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1205, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1206, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1207, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1208, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1209, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1210, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1211, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1212, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:37:53'),
+(1213, 'status_change', 'period', '4', 'open', 'rating', 10, 'Period advanced to rating', '2026-10-11 15:38:00'),
+(1214, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:38:17'),
+(1215, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1216, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1217, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1218, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1219, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1220, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1221, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1222, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1223, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1224, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1225, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1226, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1227, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1228, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1229, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:38:36'),
+(1230, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1231, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1232, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1233, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1234, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1235, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1236, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1237, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1238, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1239, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1240, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1241, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1242, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1243, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1244, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:06'),
+(1245, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1246, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1247, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1248, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1249, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1250, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1251, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1252, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1253, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1254, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1255, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1256, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1257, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1258, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1259, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:39:36'),
+(1260, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1261, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1262, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1263, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1264, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1265, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1266, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1267, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1268, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1269, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1270, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1271, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1272, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1273, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1274, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:06'),
+(1275, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1276, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1277, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1278, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1279, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1280, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1281, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1282, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1283, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1284, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1285, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1286, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1287, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1288, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1289, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:40:36'),
+(1290, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1291, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1292, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1293, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1294, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1295, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1296, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1297, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1298, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1299, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1300, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1301, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1302, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1303, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1304, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:06'),
+(1305, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1306, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1307, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1308, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1309, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1310, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1311, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1312, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1313, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1314, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1315, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1316, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1317, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1318, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1319, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:41:36'),
+(1320, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1321, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1322, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1323, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1324, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1325, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1326, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1327, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1328, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1329, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1330, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1331, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1332, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1333, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1334, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:21'),
+(1335, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:42:26'),
+(1336, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1337, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1338, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1339, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1340, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1341, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1342, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54');
+INSERT INTO `audit_log` (`id`, `action`, `entity_type`, `entity_id`, `old_value`, `new_value`, `performed_by`, `remarks`, `performed_at`) VALUES
+(1343, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1344, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1345, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1346, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1347, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1348, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1349, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1350, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:42:54'),
+(1351, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1352, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1353, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1354, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1355, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1356, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1357, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1358, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1359, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1360, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1361, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1362, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1363, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1364, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1365, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:43:24'),
+(1366, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:43:33'),
+(1367, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:43:33'),
+(1368, 'ipcr_returned', 'ipcr_form', '8', 'under_review', 'returned', 10, 'hj', '2026-10-11 15:43:45'),
+(1369, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-11 15:43:50'),
+(1370, 'login', 'user', '377', NULL, 'logged_in', 377, 'User logged in', '2026-10-11 15:44:02'),
+(1371, 'ipcr_submitted', 'ipcr_form', '8', 'draft', 'submitted', 377, 'Submitted', '2026-10-11 15:44:24'),
+(1372, 'logout', 'user', '377', 'logged_in', 'logged_out', 377, 'User logged out', '2026-10-11 15:44:31'),
+(1373, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-11 15:44:39'),
+(1374, 'status_change', 'ipcr_form', '8', 'submitted', 'under_review', 10, 'Dean started review', '2026-10-11 15:44:48'),
+(1375, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:45:10'),
+(1376, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1377, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1378, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1379, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1380, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1381, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1382, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1383, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1384, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1385, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1386, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1387, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1388, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1389, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1390, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:19'),
+(1391, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1392, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1393, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1394, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1395, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1396, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1397, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1398, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1399, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1400, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1401, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1402, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1403, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1404, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1405, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:45:49'),
+(1406, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1407, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1408, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1409, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1410, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1411, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1412, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1413, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1414, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1415, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1416, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1417, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1418, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1419, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1420, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:19'),
+(1421, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1422, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1423, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1424, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1425, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1426, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1427, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1428, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1429, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1430, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1431, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1432, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1433, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1434, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1435, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:46:49'),
+(1436, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1437, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1438, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1439, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1440, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1441, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1442, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1443, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1444, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1445, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1446, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1447, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1448, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1449, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1450, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:19'),
+(1451, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1452, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1453, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1454, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1455, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1456, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1457, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1458, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1459, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1460, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1461, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1462, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1463, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1464, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1465, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:47:49'),
+(1466, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-11 15:50:53'),
+(1467, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:51:11'),
+(1468, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1469, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1470, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1471, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1472, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1473, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1474, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1475, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1476, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1477, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1478, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1479, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1480, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1481, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1482, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:51:35'),
+(1483, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1484, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1485, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1486, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1487, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1488, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1489, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1490, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1491, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1492, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1493, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1494, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1495, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1496, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1497, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:05'),
+(1498, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1499, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1500, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1501, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1502, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1503, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1504, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1505, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1506, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1507, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1508, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1509, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1510, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1511, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1512, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:52:35'),
+(1513, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1514, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1515, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1516, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1517, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1518, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1519, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1520, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1521, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1522, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1523, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1524, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1525, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1526, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1527, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:05'),
+(1528, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1529, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1530, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1531, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1532, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1533, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1534, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1535, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1536, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1537, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1538, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1539, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1540, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1541, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1542, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:53:35'),
+(1543, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1544, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1545, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1546, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1547, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1548, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1549, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1550, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1551, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1552, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1553, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1554, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1555, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1556, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1557, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:05'),
+(1558, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1559, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1560, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1561, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1562, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1563, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1564, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1565, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1566, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1567, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1568, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1569, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1570, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1571, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1572, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:54:35'),
+(1573, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1574, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1575, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1576, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1577, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1578, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1579, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1580, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1581, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1582, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1583, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1584, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1585, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1586, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1587, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:55:18'),
+(1588, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:55:24'),
+(1589, 'ipcr_returned', 'ipcr_form', '8', 'under_review', 'returned', 10, 'sdf', '2026-10-11 15:55:44'),
+(1590, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-11 15:55:48'),
+(1591, 'login', 'user', '377', NULL, 'logged_in', 377, 'User logged in', '2026-10-11 15:55:57'),
+(1592, 'ipcr_submitted', 'ipcr_form', '8', 'draft', 'submitted', 377, 'Submitted', '2026-10-11 15:56:23'),
+(1593, 'logout', 'user', '377', 'logged_in', 'logged_out', 377, 'User logged out', '2026-10-11 15:56:27'),
+(1594, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-11 15:56:34'),
+(1595, 'status_change', 'ipcr_form', '8', 'submitted', 'under_review', 10, 'Dean started review', '2026-10-11 15:56:40'),
+(1596, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-11 15:56:45'),
+(1597, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1598, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1599, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1600, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1601, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1602, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1603, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1604, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1605, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1606, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1607, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1608, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1609, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1610, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1611, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-11 15:57:11'),
+(1612, 'ipcr_returned', 'ipcr_form', '8', 'under_review', 'returned', 10, 's', '2026-10-11 15:57:24'),
+(1613, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-11 15:57:28'),
+(1614, 'login', 'user', '377', NULL, 'logged_in', 377, 'User logged in', '2026-10-11 15:57:45'),
+(1615, 'ipcr_submitted', 'ipcr_form', '8', 'draft', 'submitted', 377, 'Submitted', '2026-10-11 15:58:11'),
+(1616, 'logout', 'user', '377', 'logged_in', 'logged_out', 377, 'User logged out', '2026-10-11 15:58:15'),
+(1617, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 01:16:23'),
+(1618, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 01:16:27'),
+(1619, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 01:16:35'),
+(1620, 'notification_sent', 'user', '364', 'MARIBEL ABALOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:23:50'),
+(1621, 'notification_sent', 'user', '342', 'REYMOND AGCAOILI', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:23:56'),
+(1622, 'notification_sent', 'user', '356', 'SOTERO ARNOLD ALBURO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:03'),
+(1623, 'notification_sent', 'user', '334', 'JEFSIE ANTONIO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:11'),
+(1624, 'notification_sent', 'user', '343', 'ALEX BALUBAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:15'),
+(1625, 'notification_sent', 'user', '355', 'MARY GRACE BAQUIRAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:19'),
+(1626, 'notification_sent', 'user', '363', 'ORFEL BEJARIN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:23'),
+(1627, 'notification_sent', 'user', '357', 'JEAN CALUDE BENITEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:27'),
+(1628, 'notification_sent', 'user', '344', 'EUGENE BOLAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:32'),
+(1629, 'notification_sent', 'user', '345', 'ABIGAIL BRUNO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:36'),
+(1630, 'notification_sent', 'user', '358', 'JOSELITO BUGAYONG', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:40'),
+(1631, 'notification_sent', 'user', '353', 'MARCO BULAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:44'),
+(1632, 'notification_sent', 'user', '378', 'MARJAY BUMALOD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:48'),
+(1633, 'notification_sent', 'user', '379', 'CLARISA BUNUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:52'),
+(1634, 'notification_sent', 'user', '376', 'RACHEL CABAJAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:56'),
+(1635, 'notification_sent', 'user', '339', 'GERRLENE CABALONGA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:24:59'),
+(1636, 'notification_sent', 'user', '365', 'ZACH CHAMBERLAINE CORPUZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:03'),
+(1637, 'notification_sent', 'user', '346', 'ROBERT DANCEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:07'),
+(1638, 'notification_sent', 'user', '366', 'MARK GERALD DE LEON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:11'),
+(1639, 'notification_sent', 'user', '380', 'HARROLD JAY FATALLA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:15'),
+(1640, 'notification_sent', 'user', '354', 'JERICO FIEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:21'),
+(1641, 'notification_sent', 'user', '362', 'FREDERICK GALLO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:25'),
+(1642, 'notification_sent', 'user', '367', 'ANGELO GAMARA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:29'),
+(1643, 'notification_sent', 'user', '368', 'MARK GIL GANGAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:33'),
+(1644, 'notification_sent', 'user', '382', 'TWINKLE MAE GATBONTON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:38'),
+(1645, 'notification_sent', 'user', '347', 'KRISTELLE ANN GINEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 01:25:43'),
+(1646, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 01:29:01'),
+(1647, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 01:40:24'),
+(1648, 'updated', 'user', '1', NULL, '{\"role\":\"admin\",\"dept\":\"Administration\"}', 10, 'User updated', '2026-10-12 01:40:37'),
+(1649, 'password_reset', 'user', '1', NULL, NULL, 10, 'Password reset by admin', '2026-10-12 01:41:02'),
+(1650, 'logout', 'user', '10', 'logged_in', 'logged_out', 10, 'User logged out', '2026-10-12 01:41:07'),
+(1651, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-12 01:41:15'),
+(1652, 'login', 'user', '1', NULL, 'logged_in', 1, 'User logged in', '2026-10-12 01:45:23'),
+(1653, 'logout', 'user', '1', 'logged_in', 'logged_out', 1, 'User logged out', '2026-10-12 01:49:37'),
+(1654, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 01:49:52'),
+(1655, 'user_updated', 'user', '334', NULL, NULL, 10, 'Dean updated user: JEFSIE ANTONIO (ARCH-002)', '2026-10-12 01:51:37'),
+(1656, 'user_updated', 'user', '334', NULL, NULL, 10, 'Dean updated user: JEFSIE ANTONIO (ARCH-002)', '2026-10-12 01:51:42'),
+(1657, 'user_updated', 'user', '339', '10', NULL, 10, 'Dean updated user: GERRLENE CABALONGA (ARCH-007)', '2026-10-12 01:54:16'),
+(1658, 'updated', 'user', '364', NULL, '{\"role\":\"faculty\",\"dept\":\"Bachelor of Science in Information and Communication Technology\"}', 10, 'User updated', '2026-10-12 01:54:51'),
+(1659, 'notification_sent', 'user', '364', 'MARIBEL ABALOS', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:10:24'),
+(1660, 'notification_sent', 'user', '342', 'REYMOND AGCAOILI', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:10:31'),
+(1661, 'notification_sent', 'user', '356', 'SOTERO ARNOLD ALBURO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:10:35'),
+(1662, 'notification_sent', 'user', '334', 'JEFSIE ANTONIO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:10:41'),
+(1663, 'notification_sent', 'user', '343', 'ALEX BALUBAL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:10:45'),
+(1664, 'notification_sent', 'user', '355', 'MARY GRACE BAQUIRAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:10:50'),
+(1665, 'notification_sent', 'user', '363', 'ORFEL BEJARIN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:10:53'),
+(1666, 'notification_sent', 'user', '357', 'JEAN CALUDE BENITEZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:10:57'),
+(1667, 'notification_sent', 'user', '344', 'EUGENE BOLAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:11:02'),
+(1668, 'notification_sent', 'user', '345', 'ABIGAIL BRUNO', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:11:10'),
+(1669, 'notification_sent', 'user', '358', 'JOSELITO BUGAYONG', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:11:17'),
+(1670, 'notification_sent', 'user', '353', 'MARCO BULAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:11:23'),
+(1671, 'notification_sent', 'user', '378', 'MARJAY BUMALOD', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:11:30'),
+(1672, 'notification_sent', 'user', '379', 'CLARISA BUNUAN', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:11:41'),
+(1673, 'notification_sent', 'user', '376', 'RACHEL CABAJAR', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:11:47'),
+(1674, 'notification_sent', 'user', '339', 'GERRLENE CABALONGA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:11:54'),
+(1675, 'notification_sent', 'user', '365', 'ZACH CHAMBERLAINE CORPUZ', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:11:59'),
+(1676, 'notification_sent', 'user', '346', 'ROBERT DANCEL', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:12:05'),
+(1677, 'notification_sent', 'user', '366', 'MARK GERALD DE LEON', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:12:10'),
+(1678, 'notification_sent', 'user', '380', 'HARROLD JAY FATALLA', NULL, 10, 'IPCR submission reminder sent for period: July - December 2026 (2nd Semester)', '2026-10-12 05:12:15'),
+(1679, 'status_change', 'ipcr_form', '8', 'submitted', 'under_review', 10, 'Dean started review', '2026-10-12 05:23:13'),
+(1680, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-12 05:23:15'),
+(1681, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 1: Q=3 E=2 T=5', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1682, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 2: Q=2 E=2 T=2', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1683, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 3: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1684, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 4: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1685, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 5: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1686, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 6: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1687, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 7: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1688, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 8: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1689, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 9: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1690, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 10: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1691, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 11: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1692, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 12: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1693, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 13: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1694, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 14: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1695, 'rating_changed', 'ipcr_form', '8', NULL, 'SI 15: Q= E= T=', 10, 'Dean saved ratings', '2026-10-12 05:23:43'),
+(1696, 'user_updated', 'user', '342', '10', NULL, 10, 'Dean updated user: REYMOND AGCAOILI (CE-001)', '2026-10-12 05:44:22'),
+(1697, 'user_updated', 'user', '342', '10', NULL, 10, 'Dean updated user: REYMOND AGCAOILI (CE-001)', '2026-10-12 05:44:56'),
+(1698, 'updated', 'department', '8', NULL, '{\"name\":\"Bachelor of Science in Civil Engineering\"}', 10, 'Department updated', '2026-10-12 05:45:24'),
+(1699, 'updated', 'department', '8', NULL, '{\"name\":\"Bachelor of Science in Civil Engineering\"}', 10, 'Department updated', '2026-10-12 05:45:30'),
+(1700, 'ipcr_printed', 'ipcr_form', '8', NULL, 'print', 10, 'IPCR printed', '2026-10-12 06:21:03'),
+(1701, 'ipcr_downloaded', 'ipcr_form', '8', NULL, 'excel', 10, 'IPCR exported to Excel/CSV', '2026-10-12 06:21:14'),
+(1702, 'created', 'period', '5', NULL, '{\"name\":\"July - Deber 2026 (2nd Semester)\"}', 10, 'Period created', '2026-10-12 06:24:14'),
+(1703, 'created', 'period', '6', NULL, '{\"name\":\"July - Deber 2026 (2nd Semester)\"}', 10, 'Period created', '2026-10-12 06:27:21'),
+(1704, 'deleted', 'period', '6', 'July - Deber 2026 (2nd Semester)', NULL, 10, 'Period deleted: July - Deber 2026 (2nd Semester)', '2026-10-12 06:27:44'),
+(1705, 'deleted', 'period', '5', 'July - Deber 2026 (2nd Semester)', NULL, 10, 'Period deleted: July - Deber 2026 (2nd Semester)', '2026-10-12 06:27:47'),
+(1706, 'login', 'user', '10', NULL, 'logged_in', 10, 'User logged in', '2026-10-12 14:54:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `audit_logs`
+--
+
+CREATE TABLE `audit_logs` (
+  `id` int(11) NOT NULL,
+  `action` varchar(100) NOT NULL,
+  `entity_type` varchar(50) NOT NULL,
+  `entity_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `old_value` text DEFAULT NULL,
+  `new_value` text DEFAULT NULL,
+  `remarks` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `abbreviation` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`id`, `name`, `abbreviation`, `created_at`) VALUES
+(5, 'Administration', 'ADM', '2026-09-29 11:50:02'),
+(6, 'Bachelor of Science in Information Technology', 'BSIT', '2026-09-29 14:21:51'),
+(7, 'Bachelor of Science in Architecture', 'BSArch', '2026-09-29 14:22:18'),
+(8, 'Bachelor of Science in Civil Engineering', 'BSCE', '2026-09-29 14:22:43'),
+(9, 'Bachelor of Science in Electrical Engineering', 'BSEE', '2026-09-29 14:23:08'),
+(10, 'Bachelor of Science in Industrial Technology', 'BSIT-Ind', '2026-09-29 14:25:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `edit_requests`
+--
+
+CREATE TABLE `edit_requests` (
+  `id` int(11) NOT NULL,
+  `request_type` enum('user','ipcr','department','template','period') NOT NULL,
+  `target_id` int(11) NOT NULL,
+  `requested_by` int(11) NOT NULL,
+  `dean_id` int(11) NOT NULL,
+  `status` enum('pending','approved','rejected') DEFAULT 'pending',
+  `request_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`request_data`)),
+  `original_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`original_data`)),
+  `remarks` text DEFAULT NULL,
+  `dean_remarks` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `reviewed_at` timestamp NULL DEFAULT NULL,
+  `reviewed_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `edit_requests`
+--
+
+INSERT INTO `edit_requests` (`id`, `request_type`, `target_id`, `requested_by`, `dean_id`, `status`, `request_data`, `original_data`, `remarks`, `dean_remarks`, `created_at`, `reviewed_at`, `reviewed_by`) VALUES
+(1, 'user', 284, 20, 10, 'approved', '{\"first_name\":\"Jefsie\",\"last_name\":\"Antonio\",\"employee_id\":\"ARCH-002\",\"email\":\"jefsie.antonio@isu.edu.ph\",\"department\":\"Architecture\",\"position\":\"Instructor I\",\"is_active\":0}', '{\"id\":284,\"employee_id\":\"ARCH-002\",\"first_name\":\"Jefsie\",\"middle_name\":\"\",\"last_name\":\"Antonio\",\"suffix\":\"\",\"email\":\"jefsie.antonio@isu.edu.ph\",\"password_hash\":\"$2y$10$pAqI6YsY4sntYI5sn4a8N.QinartXcwN0w.t\\/\\/jS2bdNPTpaHOVMq\",\"role\":\"faculty\",\"department\":\"Architecture\",\"college\":null,\"position\":\"Instructor I\",\"employment_status\":\"permanent\",\"assigned_dean_id\":10,\"is_active\":1,\"failed_attempts\":0,\"lockout_until\":null,\"last_login\":null,\"created_at\":\"2026-10-01 23:53:42\",\"updated_at\":\"2026-10-01 23:53:42\",\"pending_approvals\":0}', 'inactive', '', '2026-10-01 17:04:16', '2026-10-01 17:04:57', NULL),
+(2, 'user', 291, 20, 10, 'approved', '{\"first_name\":\"Angela\",\"last_name\":\"Bautista\",\"employee_id\":\"ARCH-009\",\"email\":\"angela.bautista@isu.edu.ph\",\"department\":\"Architecture\",\"position\":\"Instructor I\",\"is_active\":0}', '{\"id\":291,\"employee_id\":\"ARCH-009\",\"first_name\":\"Angela\",\"middle_name\":\"\",\"last_name\":\"Bautista\",\"suffix\":\"\",\"email\":\"angela.bautista@isu.edu.ph\",\"password_hash\":\"$2y$10$pAqI6YsY4sntYI5sn4a8N.QinartXcwN0w.t\\/\\/jS2bdNPTpaHOVMq\",\"role\":\"faculty\",\"department\":\"Architecture\",\"college\":null,\"position\":\"Instructor I\",\"employment_status\":\"permanent\",\"assigned_dean_id\":10,\"is_active\":1,\"failed_attempts\":0,\"lockout_until\":null,\"last_login\":null,\"created_at\":\"2026-10-01 23:53:42\",\"updated_at\":\"2026-10-01 23:53:42\",\"pending_approvals\":0}', 'asd', '', '2026-10-01 17:08:23', '2026-10-01 17:08:40', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `evidence_files`
+--
+
+CREATE TABLE `evidence_files` (
+  `id` int(11) NOT NULL,
+  `form_id` int(11) NOT NULL,
+  `si_id` int(11) NOT NULL,
+  `original_name` varchar(500) NOT NULL,
+  `stored_name` varchar(500) NOT NULL,
+  `file_type` varchar(100) DEFAULT NULL,
+  `file_size` int(11) DEFAULT 0,
+  `description` text DEFAULT NULL,
+  `verify_status` enum('pending','verified','needs_revision','insufficient','rejected') DEFAULT 'pending',
+  `uploaded_by` int(11) DEFAULT NULL,
+  `uploaded_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `evidence_files`
+--
+
+INSERT INTO `evidence_files` (`id`, `form_id`, `si_id`, `original_name`, `stored_name`, `file_type`, `file_size`, `description`, `verify_status`, `uploaded_by`, `uploaded_at`) VALUES
+(24, 6, 2, 'OOP-Syllabus-1st-Sem-2026-2027.docx', 'ev_6abf6ed8452ff2.42529027.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 178926, '[AI pending 0%]: AI check unavailable', 'pending', 333, '2026-10-02 08:44:08'),
+(28, 6, 3, 'Networking_Multiple_Choice_Questions (1).docx', 'ev_6abf6f0039c5d5.29629825.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 38878, '[AI pending 0%]: AI check unavailable', 'pending', 333, '2026-10-02 08:44:48'),
+(30, 6, 4, 'OOP-Syllabus-1st-Sem-2026-2027 (1).docx', 'ev_6abf70f05a2fc0.08055724.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 178926, '[AI pending 0%]: AI check unavailable', 'pending', 333, '2026-10-02 08:53:04'),
+(31, 6, 1, 'OOP-Syllabus-1st-Sem-2026-2027 (1).docx', 'ev_6abf72f179ead5.74942945.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 178926, '[AI pending 0%]: AI check unavailable', 'pending', 333, '2026-10-02 09:01:37'),
+(32, 6, 5, '5149bc44-8b32-44e3-ba8d-7e94b30589b0.jpg', 'ev_6abf78f61cc218.56169874.jpg', 'image/jpeg', 182117, '[AI pending 0%]: AI check unavailable', 'pending', 333, '2026-10-02 09:27:18'),
+(33, 8, 1, 'Monitoring form (General).docx', 'ev_6acbad09611f66.97398258.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 689859, '', 'pending', 377, '2026-10-11 15:36:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `form_history`
+--
+
+CREATE TABLE `form_history` (
+  `id` int(11) NOT NULL,
+  `form_id` int(11) NOT NULL,
+  `action` varchar(100) DEFAULT NULL,
+  `done_by` int(11) DEFAULT NULL,
+  `remarks` text DEFAULT NULL,
+  `done_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `form_history`
+--
+
+INSERT INTO `form_history` (`id`, `form_id`, `action`, `done_by`, `remarks`, `done_at`) VALUES
+(11, 4, 'created', 292, 'IPCR form created.', '2026-10-01 16:27:46'),
+(12, 5, 'created', 283, 'IPCR form created.', '2026-10-01 16:28:07'),
+(13, 6, 'created', 333, 'IPCR form created.', '2026-10-01 17:29:55'),
+(14, 7, 'created', 363, 'IPCR form created.', '2026-10-01 17:30:05'),
+(15, 7, 'submitted', 363, 'IPCR submitted for evaluation.', '2026-10-01 18:52:09'),
+(16, 7, 'under_review', 10, 'Dean started review.', '2026-10-01 18:54:49'),
+(17, 7, 'reviewed', 10, 'Evaluation submitted. Composite: 3.57 — Very Satisfactory', '2026-10-02 08:34:21'),
+(18, 7, 'returned', 10, 'asd', '2026-10-11 15:32:11'),
+(19, 8, 'created', 377, 'IPCR form created.', '2026-10-11 15:36:32'),
+(20, 8, 'submitted', 377, 'IPCR submitted for evaluation.', '2026-10-11 15:37:00'),
+(21, 8, 'under_review', 10, 'Dean started review.', '2026-10-11 15:37:23'),
+(22, 8, 'returned', 10, 'hj', '2026-10-11 15:43:45'),
+(23, 8, 'submitted', 377, 'IPCR submitted for evaluation.', '2026-10-11 15:44:24'),
+(24, 8, 'under_review', 10, 'Dean started review.', '2026-10-11 15:44:48'),
+(25, 8, 'returned', 10, 'sdf', '2026-10-11 15:55:44'),
+(26, 8, 'submitted', 377, 'IPCR submitted for evaluation.', '2026-10-11 15:56:23'),
+(27, 8, 'under_review', 10, 'Dean started review.', '2026-10-11 15:56:40'),
+(28, 8, 'returned', 10, 's', '2026-10-11 15:57:24'),
+(29, 8, 'submitted', 377, 'IPCR submitted for evaluation.', '2026-10-11 15:58:11'),
+(30, 8, 'under_review', 10, 'Dean started review.', '2026-10-12 05:23:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ipcr_evidence`
+--
+
+CREATE TABLE `ipcr_evidence` (
+  `id` int(11) NOT NULL,
+  `form_id` int(11) NOT NULL,
+  `si_id` int(11) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `file_path` varchar(500) NOT NULL,
+  `file_type` varchar(50) DEFAULT NULL,
+  `file_size` int(11) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `uploaded_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ipcr_forms`
+--
+
+CREATE TABLE `ipcr_forms` (
+  `id` int(11) NOT NULL,
+  `period_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `template_id` int(11) NOT NULL,
+  `status` enum('draft','submitted','under_review','reviewed','returned','approved','finalized') DEFAULT 'draft',
+  `is_late` tinyint(1) DEFAULT 0,
+  `submitted_at` datetime DEFAULT NULL,
+  `reviewed_at` datetime DEFAULT NULL,
+  `reviewed_by` int(11) DEFAULT NULL,
+  `approved_at` datetime DEFAULT NULL,
+  `approved_by` int(11) DEFAULT NULL,
+  `finalized_at` datetime DEFAULT NULL,
+  `return_remarks` text DEFAULT NULL,
+  `dean_remarks` text DEFAULT NULL,
+  `admin_remarks` text DEFAULT NULL,
+  `composite_rating` decimal(5,3) DEFAULT NULL,
+  `adjectival_rating` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ipcr_forms`
+--
+
+INSERT INTO `ipcr_forms` (`id`, `period_id`, `user_id`, `template_id`, `status`, `is_late`, `submitted_at`, `reviewed_at`, `reviewed_by`, `approved_at`, `approved_by`, `finalized_at`, `return_remarks`, `dean_remarks`, `admin_remarks`, `composite_rating`, `adjectival_rating`, `created_at`, `updated_at`) VALUES
+(6, 3, 333, 1, 'draft', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-01 17:29:55', '2026-10-02 09:48:37'),
+(7, 3, 363, 1, 'returned', 0, '2026-10-02 02:52:09', '2026-10-02 16:34:21', 10, NULL, NULL, NULL, 'asd', '', NULL, 3.570, 'Very Satisfactory', '2026-10-01 17:30:05', '2026-10-11 15:32:11'),
+(8, 4, 377, 1, 'under_review', 0, '2026-10-11 23:58:11', NULL, 10, NULL, NULL, NULL, 's', NULL, NULL, NULL, NULL, '2026-10-11 15:36:32', '2026-10-12 05:23:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ipcr_si_entries`
+--
+
+CREATE TABLE `ipcr_si_entries` (
+  `id` int(11) NOT NULL,
+  `form_id` int(11) NOT NULL,
+  `si_id` int(11) NOT NULL,
+  `planned_magnitude` varchar(200) DEFAULT '',
+  `planned_budget` varchar(200) DEFAULT '',
+  `planned_date` varchar(200) DEFAULT '',
+  `actual_magnitude` varchar(200) DEFAULT '',
+  `actual_budget` varchar(200) DEFAULT '',
+  `actual_date` varchar(200) DEFAULT '',
+  `actual_output` text DEFAULT NULL,
+  `self_rating` decimal(3,1) DEFAULT NULL,
+  `q_rating` decimal(3,1) DEFAULT NULL,
+  `e_rating` decimal(3,1) DEFAULT NULL,
+  `t_rating` decimal(3,1) DEFAULT NULL,
+  `average_rating` decimal(5,3) DEFAULT NULL,
+  `weighted_rating` decimal(5,4) DEFAULT NULL,
+  `dean_remarks` text DEFAULT NULL,
+  `dean_verify_status` enum('pending','verified','needs_revision','insufficient','rejected') DEFAULT 'pending',
+  `is_na` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ipcr_si_entries`
+--
+
+INSERT INTO `ipcr_si_entries` (`id`, `form_id`, `si_id`, `planned_magnitude`, `planned_budget`, `planned_date`, `actual_magnitude`, `actual_budget`, `actual_date`, `actual_output`, `self_rating`, `q_rating`, `e_rating`, `t_rating`, `average_rating`, `weighted_rating`, `dean_remarks`, `dean_verify_status`, `is_na`) VALUES
+(1426, 7, 1, '', '', '', '', '', '', '', NULL, 3.0, 5.0, 5.0, 4.200, NULL, '', 'verified', 0),
+(1427, 7, 2, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1428, 7, 3, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1429, 7, 4, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1430, 7, 5, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1431, 7, 6, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1432, 7, 7, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1433, 7, 8, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1434, 7, 9, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1435, 7, 10, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1436, 7, 11, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1437, 7, 12, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1438, 7, 13, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1439, 7, 14, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1440, 7, 15, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 1),
+(1576, 6, 1, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1577, 6, 2, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1578, 6, 3, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1579, 6, 4, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1580, 6, 5, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1581, 6, 6, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1582, 6, 7, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1583, 6, 8, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1584, 6, 9, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1585, 6, 10, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1586, 6, 11, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1587, 6, 12, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1588, 6, 13, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1589, 6, 14, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(1590, 6, 15, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', 0),
+(3091, 8, 1, '21', '21', '21', '21', '21', '21', '', NULL, 3.0, 2.0, 5.0, 3.000, NULL, '', 'pending', 0),
+(3092, 8, 2, '', '', '', '', '', '', '', NULL, 2.0, 2.0, 2.0, 2.000, NULL, '', 'pending', 0),
+(3093, 8, 3, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3094, 8, 4, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3095, 8, 5, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3096, 8, 6, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3097, 8, 7, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3098, 8, 8, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3099, 8, 9, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3100, 8, 10, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3101, 8, 11, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3102, 8, 12, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3103, 8, 13, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3104, 8, 14, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0),
+(3105, 8, 15, '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', 'pending', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ipcr_templates`
+--
+
+CREATE TABLE `ipcr_templates` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `period_id` int(11) DEFAULT NULL,
+  `is_default` tinyint(1) DEFAULT 0,
+  `description` text DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ipcr_templates`
+--
+
+INSERT INTO `ipcr_templates` (`id`, `name`, `period_id`, `is_default`, `description`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, 'Faculty IPCR Template — SSC AY 2025-2026', NULL, 1, 'Standard faculty IPCR based on CSC MC No.6 s.2012', 1, '2026-09-29 11:50:02', '2026-09-29 11:50:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kras`
+--
+
+CREATE TABLE `kras` (
+  `id` int(11) NOT NULL,
+  `mfo_id` int(11) NOT NULL,
+  `code` varchar(20) DEFAULT NULL,
+  `title` varchar(200) NOT NULL,
+  `weight` decimal(5,2) DEFAULT 0.00,
+  `sort_order` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `kras`
+--
+
+INSERT INTO `kras` (`id`, `mfo_id`, `code`, `title`, `weight`, `sort_order`) VALUES
+(1, 1, 'KRA 1.1', 'Instruction', 100.00, 1),
+(2, 2, 'KRA 2.1', 'Compliance and Governance', 100.00, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mfos`
+--
+
+CREATE TABLE `mfos` (
+  `id` int(11) NOT NULL,
+  `template_id` int(11) NOT NULL,
+  `code` varchar(20) DEFAULT NULL,
+  `title` varchar(200) NOT NULL,
+  `weight` decimal(5,2) DEFAULT 0.00,
+  `sort_order` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `mfos`
+--
+
+INSERT INTO `mfos` (`id`, `template_id`, `code`, `title`, `weight`, `sort_order`) VALUES
+(1, 1, 'MFO 1', 'Instruction', 85.00, 1),
+(2, 1, 'MFO 2', 'Compliance to Good Governance and Office Rules and Regulations', 15.00, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating_periods`
+--
+
+CREATE TABLE `rating_periods` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `academic_year` varchar(20) DEFAULT NULL,
+  `semester` varchar(20) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `submission_deadline` date DEFAULT NULL,
+  `review_deadline` date DEFAULT NULL,
+  `status` enum('draft','open','rating','closed','archived') DEFAULT 'draft',
+  `template_id` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `rating_periods`
+--
+
+INSERT INTO `rating_periods` (`id`, `name`, `academic_year`, `semester`, `start_date`, `end_date`, `submission_deadline`, `review_deadline`, `status`, `template_id`, `created_by`, `created_at`, `updated_at`) VALUES
+(3, 'July - December 2026 (2nd Semester)', '2026-2027', NULL, NULL, NULL, '2026-12-15', '2026-12-25', 'closed', 1, 10, '2026-10-01 17:29:37', '2026-10-11 15:35:45'),
+(4, 'July - December 2026 (2nd Semester)', '2026-2027', NULL, NULL, NULL, '2026-12-15', '2026-12-25', 'rating', 1, 10, '2026-10-11 15:35:52', '2026-10-11 15:38:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `required_proof_types`
+--
+
+CREATE TABLE `required_proof_types` (
+  `id` int(11) NOT NULL,
+  `si_id` int(11) NOT NULL,
+  `label` varchar(200) NOT NULL,
+  `description` text DEFAULT NULL,
+  `is_required` tinyint(1) DEFAULT 1,
+  `sort_order` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `required_proof_types`
+--
+
+INSERT INTO `required_proof_types` (`id`, `si_id`, `label`, `description`, `is_required`, `sort_order`) VALUES
+(22, 1, 'Teaching Load Form', 'Official teaching load form signed by Dean', 1, 1),
+(23, 1, 'Class Schedule', 'Official class schedule from Registrar', 1, 2),
+(24, 2, 'Syllabus Copy', 'Copy of approved and signed course syllabus', 1, 1),
+(25, 2, 'Submission Acknowledgment', 'Receipt or email proof of submission', 1, 2),
+(26, 3, 'Instructional Material', 'Copy of prepared/updated module or IM', 1, 1),
+(27, 4, 'Exam Copy', 'Copy of midterm and final examination', 1, 1),
+(28, 4, 'Exam Schedule', 'Examination schedule or announcement', 0, 2),
+(29, 5, 'Quiz/Activity Copies', 'Copies of quizzes or activity sheets', 1, 1),
+(30, 5, 'Class Record', 'Class record showing quiz scores', 0, 2),
+(31, 6, 'Grade Sheet', 'Signed and submitted grade sheet', 1, 1),
+(32, 6, 'Submission Confirmation', 'Receipt/acknowledgment from Registrar', 1, 2),
+(33, 7, 'Attendance Record', 'Flag ceremony attendance sheet', 1, 1),
+(34, 8, 'Attendance Record', 'Flag retreat attendance sheet', 1, 1),
+(35, 9, 'DTR Copy', 'Daily Time Record submitted to HR', 1, 1),
+(36, 10, 'PDS Submission Proof', 'Personal Data Sheet with submission receipt', 1, 1),
+(37, 11, 'SALN Copy', 'Statement of Assets, Liabilities and Net Worth', 1, 1),
+(38, 12, 'Clearance Form', 'Signed annual clearance form', 1, 1),
+(39, 13, 'DTR / Biometrics Record', 'Daily Time Record showing time in/out', 1, 1),
+(40, 14, 'DTR / Attendance Record', 'Daily Time Record or biometric printout', 1, 1),
+(41, 15, 'Photo Documentation', 'Photos showing prescribed uniform compliance', 0, 1),
+(42, 15, 'Supervisor Certification', 'Certification from immediate supervisor', 0, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `secretary_permissions`
+--
+
+CREATE TABLE `secretary_permissions` (
+  `id` int(11) NOT NULL,
+  `secretary_id` int(11) NOT NULL,
+  `dean_id` int(11) NOT NULL,
+  `department` varchar(255) DEFAULT NULL,
+  `can_edit_users` tinyint(1) DEFAULT 1,
+  `can_edit_ipcr` tinyint(1) DEFAULT 1,
+  `can_view_reports` tinyint(1) DEFAULT 1,
+  `can_manage_departments` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `secretary_permissions`
+--
+
+INSERT INTO `secretary_permissions` (`id`, `secretary_id`, `dean_id`, `department`, `can_edit_users`, `can_edit_ipcr`, `can_view_reports`, `can_manage_departments`, `created_at`, `updated_at`) VALUES
+(3, 20, 10, 'College of Engineering, Architecture and Technology', 1, 1, 1, 0, '2026-10-01 15:53:42', '2026-10-01 15:53:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `success_indicators`
+--
+
+CREATE TABLE `success_indicators` (
+  `id` int(11) NOT NULL,
+  `kra_id` int(11) NOT NULL,
+  `code` varchar(20) DEFAULT NULL,
+  `title` varchar(500) NOT NULL,
+  `quality_target` text DEFAULT NULL,
+  `efficiency_target` text DEFAULT NULL,
+  `timeliness_target` text DEFAULT NULL,
+  `si_weight` decimal(5,2) DEFAULT 0.00,
+  `is_required` tinyint(1) DEFAULT 1,
+  `rating_basis` varchar(50) DEFAULT 'quality',
+  `sort_order` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `success_indicators`
+--
+
+INSERT INTO `success_indicators` (`id`, `kra_id`, `code`, `title`, `quality_target`, `efficiency_target`, `timeliness_target`, `si_weight`, `is_required`, `rating_basis`, `sort_order`) VALUES
+(1, 1, 'SI 1.1', 'Number of FTE workload units', '21 FTE units per semester', 'All units delivered as scheduled', 'Throughout semester', 65.00, 0, 'quantity', 1),
+(2, 1, 'SI 1.2', 'Number of Syllabi prepared, updated and submitted', '1 syllabus per subject per semester', 'All submitted before start of classes', 'On or before first day of classes', 5.00, 0, 'quality', 2),
+(3, 1, 'SI 1.3', 'Number of IM/s prepared/updated', '1 IM/module per subject', 'All IMs available to students', 'Within first 2 weeks of semester', 10.00, 0, 'quality', 3),
+(4, 1, 'SI 1.4', 'Number of major exams prepared and administered per subject', 'At least 1 midterm + 1 final per subject', 'Administered per course plan', 'Per academic calendar', 8.00, 0, 'quantity', 4),
+(5, 1, 'SI 1.5', 'Number of quizzes/activities conducted per subject', 'At least 4 quizzes/activities per subject per semester', 'Administered per course plan', 'Throughout semester', 7.00, 0, 'quantity', 5),
+(6, 1, 'SI 1.6', 'Number of grade sheets submitted on time', '100% grade submission compliance', 'All submitted by registrar deadline', 'Per Registrar deadline', 5.00, 0, 'timeliness', 6),
+(7, 2, 'SI 2.1', 'Percent of attendance in Flag Raising', '100%', 'Regular attendance', 'Every Monday', 1.00, 0, 'percentage', 1),
+(8, 2, 'SI 2.2', 'Percent of attendance in Flag Retreat', '100%', 'Regular attendance', 'Every Friday', 1.00, 0, 'percentage', 2),
+(9, 2, 'SI 2.3', 'Percent of submission of DTR', '100%', 'Submitted on time', 'Monthly deadline', 3.00, 0, 'timeliness', 3),
+(10, 2, 'SI 2.4', 'Percent of submission of PDS', '100%', 'Submitted on time', 'Per HR deadline', 3.00, 0, 'timeliness', 4),
+(11, 2, 'SI 2.5', 'Percent of submission of SALN', '100%', 'Submitted on time', 'Per CSC deadline', 3.00, 0, 'timeliness', 5),
+(12, 2, 'SI 2.6', 'Percent of submission of Annual Clearance', '100%', 'Submitted on time', 'Per HR deadline', 1.00, 0, 'timeliness', 6),
+(13, 2, 'SI 2.7', 'Punctuality', '100%', 'No tardiness recorded', 'Daily', 1.00, 0, 'percentage', 7),
+(14, 2, 'SI 2.8', 'Attendance', '100%', 'No unauthorized absences', 'Daily', 1.00, 0, 'percentage', 8),
+(15, 2, 'SI 2.9', 'Wearing of Prescribed uniform w/ ID', '100%', 'Compliant every working day', 'Daily', 1.00, 0, 'percentage', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_config`
+--
+
+CREATE TABLE `system_config` (
+  `id` int(11) NOT NULL,
+  `config_key` varchar(100) NOT NULL,
+  `config_value` text DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `system_config`
+--
+
+INSERT INTO `system_config` (`id`, `config_key`, `config_value`, `updated_at`) VALUES
+(1, 'institution_name', 'Sample State College', '2026-09-29 11:50:02'),
+(2, 'institution_acronym', 'SSC', '2026-09-29 11:50:02'),
+(3, 'institution_address', 'Quezon City, Philippines', '2026-09-29 11:50:02'),
+(4, 'qet_q_weight', '40', '2026-09-29 11:50:02'),
+(5, 'qet_e_weight', '40', '2026-09-29 11:50:02'),
+(6, 'qet_t_weight', '20', '2026-09-29 11:50:02'),
+(7, 'allow_self_rating', '0', '2026-09-29 11:50:02'),
+(8, 'require_admin_approval', '1', '2026-09-29 11:50:02'),
+(9, 'rating_scale', '[{\"value\":5,\"label\":\"Outstanding\",\"color\":\"#198754\",\"min_score\":4.5},{\"value\":4,\"label\":\"Very Satisfactory\",\"color\":\"#0d6efd\",\"min_score\":3.5},{\"value\":3,\"label\":\"Satisfactory\",\"color\":\"#ffc107\",\"min_score\":2.5},{\"value\":2,\"label\":\"Unsatisfactory\",\"color\":\"#fd7e14\",\"min_score\":1.5},{\"value\":1,\"label\":\"Poor\",\"color\":\"#dc3545\",\"min_score\":0}]', '2026-09-29 11:50:02'),
+(10, 'gemini_api_key', 'YOUR_GCP_API_KEY_HERE', '2026-09-30 17:58:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `employee_id` varchar(50) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `middle_name` varchar(100) DEFAULT '',
+  `last_name` varchar(100) NOT NULL,
+  `suffix` varchar(20) DEFAULT '',
+  `email` varchar(255) DEFAULT NULL COMMENT 'ISU institutional email',
+  `personal_email` varchar(255) DEFAULT NULL COMMENT 'Personal email for password recovery',
+  `password_hash` varchar(255) NOT NULL,
+  `role` enum('faculty','dean','admin','secretary') NOT NULL DEFAULT 'faculty',
+  `department` varchar(200) DEFAULT NULL,
+  `college` varchar(200) DEFAULT NULL,
+  `position` varchar(200) DEFAULT NULL,
+  `employment_status` enum('permanent','temporary','contractual','part-time') DEFAULT 'permanent',
+  `assigned_dean_id` int(11) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT 1,
+  `failed_attempts` int(11) DEFAULT 0,
+  `lockout_until` datetime DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `pending_approvals` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `employee_id`, `first_name`, `middle_name`, `last_name`, `suffix`, `email`, `personal_email`, `password_hash`, `role`, `department`, `college`, `position`, `employment_status`, `assigned_dean_id`, `is_active`, `failed_attempts`, `lockout_until`, `last_login`, `created_at`, `updated_at`, `pending_approvals`) VALUES
+(1, 'ADMIN001', 'System', '', 'Administrator', '', 'pambidandrei26@gmail.com', NULL, '$2y$10$geiJFgsfdrdjFaXvERpRAeYl0JBP9ldUBGDaRfuV/4NY/IZ2pfLO2', 'admin', 'Administration', 'Administration', 'HRMO Officer', 'permanent', NULL, 1, 0, NULL, '2026-10-12 09:45:23', '2026-09-29 11:50:02', '2026-10-12 01:45:23', 0),
+(10, 'DEAN-001', 'Crestian', '', 'Agustin', '', 'crestian.agustin@isu.edu.ph', NULL, '$2y$10$pAqI6YsY4sntYI5sn4a8N.QinartXcwN0w.t//jS2bdNPTpaHOVMq', 'dean', 'Bachelor of Science in Architecture', NULL, 'Dean', 'permanent', NULL, 1, 0, NULL, '2026-10-12 22:54:43', '2026-10-01 15:53:42', '2026-10-12 14:54:43', 0),
+(20, 'SEC-001', 'CEAT', '', 'Secretary', '', 'secretary.ceat@isu.edu.ph', NULL, '$2y$10$GbFa2RLuHRWCOeknK5c7DuAEMip2MAba5LcpR/t/SEYqH7My1C/aq', 'secretary', 'Bachelor of Science in Architecture', NULL, 'College Secretary', 'permanent', 10, 1, 3, NULL, '2026-10-02 01:08:51', '2026-10-01 15:53:42', '2026-10-12 05:48:25', 0),
+(333, 'ARCH-001', 'BLESIE JOY', 'M.', 'LAGUNA', '', 'blesie.joy.laguna@isu.edu.ph', NULL, '$2y$10$nu/IiwItBsMmVfjCQab8P.zhjDinz9etfkArMwTev5rYFjn9cpfom', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, '2026-10-02 17:35:57', '2026-10-01 17:21:55', '2026-10-12 05:48:25', 0),
+(334, 'ARCH-002', 'JEFSIE', 'M.', 'ANTONIO', '', 'jefsie.antonio@isu.edu.ph', NULL, '$2y$10$6ru1ZltbA6NFQ7nXpWkUoeLOumNqH9s7/UtrsDtnBzsmYT8F6Nta2', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(335, 'ARCH-003', 'GERALDINE', 'J.', 'PAGUIGAN', '', 'geraldine.paguigan@isu.edu.ph', NULL, '$2y$10$ah.D.MYah1nl2dmOFcRRvuSwk69q/zIOiRCN/D23TsRzuu10w2aTu', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Associate Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(336, 'ARCH-004', 'BAGNOS JR', 'A.', 'QUEBRAL', '', 'bagnos.jr.quebral@isu.edu.ph', NULL, '$2y$10$cF5HTBWSfK1zdridctqPze16zIyps3Hg4MWchEnp5JQ4ZxzCsy.ZK', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Assistant Professor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(337, 'ARCH-005', 'WILNA BREECH', 'A.', 'RAMOS', '', 'wilna.breech.ramos@isu.edu.ph', NULL, '$2y$10$pl0k6mn3zPDUnq/mny2XrulZY.rZNLGoEdQctPnWP1/kBQWIiSoIq', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(338, 'ARCH-006', 'RAZEL', 'B.', 'TACAY', '', 'razel.tacay@isu.edu.ph', NULL, '$2y$10$BksGbk1H0u8z/HH9e7ftBOpRTQ1mZebTCc.GBvjmRTzpEsno3oV/C', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(339, 'ARCH-007', 'GERRLENE', 'C.', 'CABALONGA', '', 'gerrlene.cabalonga@isu.edu.ph', NULL, '$2y$10$tskVXYQ5pzxdkndNWwDBauGa.RhCGY1Shv9/jBk7zsuETITG14Thi', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(340, 'ARCH-008', 'ADRIAN', 'G.', 'LAGUA', '', 'adrian.lagua@isu.edu.ph', NULL, '$2y$10$ogFYAjE8mAp4St8EwOk4Buzz.QW3BTWlJpyLWcKPam13.yMTM40We', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(341, 'ARCH-009', 'DIANNE FAE', 'E.', 'PAGADUAN', '', 'dianne.fae.pagaduan@isu.edu.ph', NULL, '$2y$10$28dVhaxOk/ZHQ1/lud0hHO0z./MIwerOrBAaHioBGW26qUruplAYq', 'faculty', 'Bachelor of Science in Architecture', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(342, 'CE-001', 'REYMOND', 'P.', 'AGCAOILI', '', 'reymond.agcaoili@isu.edu.ph', NULL, '$2y$10$miibi2KYP2Ey1hAGiIXynuaQCgBs6MYyqC2hiYmDXLhE/6CxdfQTq', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, '2026-10-02 17:24:58', '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(343, 'CE-002', 'ALEX', 'M.', 'BALUBAL', '', 'alex.balubal@isu.edu.ph', NULL, '$2y$10$5E/fXQGlh7Vd22ctsBaUB.NTC25I0sXP7YcI4uMQi1VgJ7vRIr9HC', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Associate Professor V', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(344, 'CE-003', 'EUGENE', 'C.', 'BOLAR', '', 'eugene.bolar@isu.edu.ph', NULL, '$2y$10$xcLr6PRtiadPUXDSB6TsLeW8YPX.q/bN4MTIrfCNbQFixoSdmYv6q', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(345, 'CE-004', 'ABIGAIL', 'B.', 'BRUNO', '', 'abigail.bruno@isu.edu.ph', NULL, '$2y$10$jxdWVxsgK/uM8eX.JqOmG.aqL9/S5qGK33rbzVZOC0YFwSDiaITZu', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:56', '2026-10-12 05:48:25', 0),
+(346, 'CE-005', 'ROBERT', 'R.', 'DANCEL', '', 'robert.dancel@isu.edu.ph', NULL, '$2y$10$qK.5MKI9Xoh2do6T/WkaCO8EVqyRhDbO/TfRbR.vIAUxmLFemsov.', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Assistant Professor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(347, 'CE-006', 'KRISTELLE ANN', 'V.', 'GINEZ', '', 'kristelle.ann.ginez@isu.edu.ph', NULL, '$2y$10$5oDN/pD/e/TRzeXelY68H.mcAWqPKfnVxvacbWRAlhD/Xh4/Gzwe.', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(348, 'CE-007', 'HAZEL MEI', 'M.', 'MANUEL', '', 'hazel.mei.manuel@isu.edu.ph', NULL, '$2y$10$RPRgUHFaTYSw.9btyiZXduzleKv3cmE60c5DjSe7IZ6HqY5L8Myxe', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(349, 'CE-008', 'MARIA CRISTINA LALAINE', 'M.', 'NERONA', '', 'maria.cristina.lalaine.nerona@isu.edu.ph', NULL, '$2y$10$coZVFRS1BavOdadNT8CRxu6d40ZQXB3bB3vTSRs4yajaHzL9frOQ.', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Professor VI', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(350, 'CE-009', 'JOEY', 'L.', 'RAPADAS', '', 'joey.rapadas@isu.edu.ph', NULL, '$2y$10$sI8eQhNvrKXp6gJ.ZZ7h3OWImQ6skxPSHf6TaPCQUcSnXeaKPQnWW', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Assistant Professor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(351, 'CE-010', 'REYNAN', 'R.', 'REYES', '', 'reynan.reyes@isu.edu.ph', NULL, '$2y$10$srIZ.9aNt5krWhCgKvZccu6TWX3CYq2UW.uAyRU4NLJq3YHQ/W8Uq', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(352, 'CE-011', 'ALFONSO', 'R.', 'SIMON', '', 'alfonso.simon@isu.edu.ph', NULL, '$2y$10$4aavY5M1M8aapGGyNFS8.u9e1C4Dl/6.mpZfi6Tzdv53NZnzLvFUa', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Professor V', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(353, 'CE-012', 'MARCO', 'B.', 'BULAN', '', 'marco.bulan@isu.edu.ph', NULL, '$2y$10$gw/aHnAw0nCRfuncqIhTZef2Rg7M/ViQAgSqdUnMMA7j6CyoAd7sy', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(354, 'CE-013', 'JERICO', 'P.', 'FIEL', '', 'jerico.fiel@isu.edu.ph', NULL, '$2y$10$AylHInDqcorILZ2vrF4GcexdNj2llHwPGJh8VSNQXpOXf79uNwEzK', 'faculty', 'Bachelor of Science in Civil Engineering', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(355, 'EE-001', 'MARY GRACE', 'M.', 'BAQUIRAN', '', 'mary.grace.baquiran@isu.edu.ph', NULL, '$2y$10$R2wA2IYDWtTNx.Cvf0jzH.SzWMBsclFhJsa8H34Zaz3NgmieN/jIO', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(356, 'EE-002', 'SOTERO ARNOLD', 'L.', 'ALBURO', '', 'sotero.arnold.alburo@isu.edu.ph', NULL, '$2y$10$sVwhMfl1HoyQCKgIvmh.h.1q.fvRycN5.VXvjNDpOXf86PkQoVhq6', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Associate Professor V', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(357, 'EE-003', 'JEAN CALUDE', 'M.', 'BENITEZ', '', 'jean.calude.benitez@isu.edu.ph', NULL, '$2y$10$zKpy/zqE3f0OWuqUSA6c..X8JzBJ5Ayjl5Z0s8JfRmx6cTL8GuMna', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:57', '2026-10-12 05:48:25', 0),
+(358, 'EE-004', 'JOSELITO', 'M.', 'BUGAYONG', '', 'joselito.bugayong@isu.edu.ph', NULL, '$2y$10$F76Uc6/Ht352SVFgbAPGNOfeZT/lDW/tNKuSmw.pjrsEfG7YH26bS', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Associate Professor II', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(359, 'EE-005', 'PATRICIO JR.', 'M.', 'MATIAS', '', 'patricio.jr..matias@isu.edu.ph', NULL, '$2y$10$fWVlCGbhJVF.nhWMM9ylJ.XAk0t8m7SUU.tZ5BWLTMinoPepeKKGy', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Associate Professor IV', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(360, 'EE-006', 'RAFAEL', 'S.', 'RAMOS', '', 'rafael.ramos@isu.edu.ph', NULL, '$2y$10$g.dd9zcvGfBcDHQPP0UoBuTcHHcdHSUU55PoXp0/DuIubH3g71zZe', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Assistant Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(361, 'EE-007', 'PABLO JR.', 'T.', 'ZIPAGAN', '', 'pablo.jr..zipagan@isu.edu.ph', NULL, '$2y$10$KxDEt70sE4RnNd.b7eSB5e7FEAnQ8mTHsBfHZKUvObZQfcADBzsl.', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Assistant Professor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(362, 'EE-008', 'FREDERICK', 'K.', 'GALLO', '', 'frederick.gallo@isu.edu.ph', NULL, '$2y$10$4pKg1mfCdu0u6x1EnS2T3.ouljFZ1bmdtS/tJDl6nNWLf66hywcWa', 'faculty', 'Bachelor of Science in Electrical Engineering', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(363, 'ICT-001', 'ORFEL', 'L.', 'BEJARIN', '', 'orfel.bejarin@isu.edu.ph', NULL, '$2y$10$EQDJCMLagrxEi3S.nMhVXeYqvnUdaT5Icq/Lz1pb.NnSha4MMNGJq', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor II', 'permanent', 10, 1, 0, NULL, '2026-10-02 02:52:04', '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(364, 'ICT-002', 'MARIBEL', 'S.', 'ABALOS', '', 'maribel.abalos@isu.edu.ph', NULL, '$2y$10$4ly0cWIQ.i4gKGjv0PBGD.RzsIzHIq86qJL1WDMP3bxyKUpL7s3/m', 'faculty', 'Bachelor of Science in Information Technology', 'Bachelor of Science in Information and Communication Technology', 'Assistant Professor II', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(365, 'ICT-003', 'ZACH CHAMBERLAINE', 'M.', 'CORPUZ', '', 'zach.chamberlaine.corpuz@isu.edu.ph', NULL, '$2y$10$/LiXNog37opq5dAJOCoZaeEi/7/VxcKjAxP9lYFWgrCSYS.H7APhS', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Associate Professor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(366, 'ICT-004', 'MARK GERALD', 'O.', 'DE LEON', '', 'mark.gerald.de.leon@isu.edu.ph', NULL, '$2y$10$VCTJVgR2ys9J34UBDF/EsOdpjs4UepTIm3P1bqaywl9LdNC9NmagK', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor IV', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(367, 'ICT-005', 'ANGELO', 'R.', 'GAMARA', '', 'angelo.gamara@isu.edu.ph', NULL, '$2y$10$pB9Nf3lg3BD8oRabxOAya.MFjN.RlW/Hnzpqnq3O04Y0pHm19rrQW', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor IV', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(368, 'ICT-006', 'MARK GIL', 'T.', 'GANGAN', '', 'mark.gil.gangan@isu.edu.ph', NULL, '$2y$10$GSMDjyulid7WOLfDLWFKEek3MK6mYHSafiLqacVJ5WHiMH57DtujC', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(369, 'ICT-007', 'JAYDWIN', 'T.', 'LABIANO', '', 'jaydwin.labiano@isu.edu.ph', NULL, '$2y$10$x3D8XyVXxIRnQC4T4VpsGO9b1frGAqCyidQH6ltis0DVnPZ5iI/4C', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, '2026-10-02 01:22:42', '2026-10-01 17:21:58', '2026-10-12 05:48:25', 0),
+(370, 'ICT-008', 'FITZERALD', 'P.', 'LIM', '', 'fitzerald.lim@isu.edu.ph', NULL, '$2y$10$ztSuTt93ejUMjKaYA5Bcfe9MeQxwPlzKW/aOGTugG6AjaWYTToDKu', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Associate Professor II', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(371, 'ICT-009', 'ROMAN ALEX', 'F.', 'LUSTRO', '', 'roman.alex.lustro@isu.edu.ph', NULL, '$2y$10$Rm/DswIpSwR/Owf4eBhr6.BHqmnCLA2.Tl4/xSP.dRKslepmWSoSC', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Associate Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(372, 'ICT-010', 'VON RYAN', 'P.', 'MARCELO', '', 'von.ryan.marcelo@isu.edu.ph', NULL, '$2y$10$LcMBKbHIvnq5uRjXbjiJzOQYSKuYkIn9PeBGctiBylrJFyEay2SpW', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(373, 'ICT-011', 'JOEY', 'G.', 'NATIVIDAD', '', 'joey.natividad@isu.edu.ph', NULL, '$2y$10$6k9HUjEA8N7mdcyuEsNeVO6h1au5DvqQnH.hq9wdLY/RCgmrGZD1K', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Associate Professor III', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(374, 'ICT-012', 'JHOAN', 'V.', 'PAGUIRIGAN', '', 'jhoan.paguirigan@isu.edu.ph', NULL, '$2y$10$fxST9.O1bC4.klBDLMqtZu8dBD5iP.Yw760y0e3rJPUph/2nejAuO', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Associate Professor V', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(375, 'ICT-013', 'EDDISON', 'B.', 'TULIAO', '', 'eddison.tuliao@isu.edu.ph', NULL, '$2y$10$UO26zJpEsvOzjZLc8YtDnOJF0wI8kd.mrOaPr/V3B.idSKcr.zh/a', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Assistant Professor IV', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(376, 'ICT-014', 'RACHEL', 'A.', 'CABAJAR', '', 'rachel.cabajar@isu.edu.ph', NULL, '$2y$10$q7Dkc3NS6rGrH5B/xKx2zuy2bxk2v7ZbT/9U3E2fBRd/LOX3vqYYm', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor', '', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(377, 'ICT-015', 'MARIA THERESA', 'P.', 'NUEZ', '', 'maria.theresa.nuez@isu.edu.ph', NULL, '$2y$10$pTzCtuAHJpjFcQ8uppWP8eeRTOB1GdwWYtNIQAJDjz64mEKt2YjmS', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', '', 10, 1, 0, NULL, '2026-10-11 23:57:45', '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(378, 'ICT-016', 'MARJAY', 'C.', 'BUMALOD', '', 'marjay.bumalod@isu.edu.ph', NULL, '$2y$10$WYHeLPu3r7FAyrpRCqvYlOfQOf0c8Gk81Uw0GonJigaMpoixBD35y', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'permanent', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(379, 'ICT-017', 'CLARISA', 'E.', 'BUNUAN', '', 'clarisa.bunuan@isu.edu.ph', NULL, '$2y$10$YsKvZRpFdCKDzJTXcWLHdeAQsAPN39UhETbenRxKNrSW6oydGFZGq', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'part-time', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(380, 'ICT-018', 'HARROLD JAY', 'D.', 'FATALLA', '', 'harrold.jay.fatalla@isu.edu.ph', NULL, '$2y$10$M7NGnZU2dCclxm1/MQUt3OGAZjGlP9O3Lw/XMplf13tTqN3xbO28m', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'part-time', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(381, 'ICT-019', 'MARIA VERCIDA', 'G.', 'GONZALVO', '', 'maria.vercida.gonzalvo@isu.edu.ph', NULL, '$2y$10$w0p8UuRJMQwjSNRcjQiNruM0l85dP5c3A6CsPMTly.Czi1CSyzdtm', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'part-time', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0),
+(382, 'ICT-020', 'TWINKLE MAE', 'C.', 'GATBONTON', '', 'twinkle.mae.gatbonton@isu.edu.ph', NULL, '$2y$10$OlZ4Vh0VEe5DJcGFmCBGyuCBkn5Db2bObZ5HbVz2fpbi9mD.rQnnK', 'faculty', 'Bachelor of Science in Information Technology', 'CEAT', 'Instructor I', 'part-time', 10, 1, 0, NULL, NULL, '2026-10-01 17:21:59', '2026-10-12 05:48:25', 0);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `audit_log`
+--
+ALTER TABLE `audit_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_entity` (`entity_type`,`entity_id`),
+  ADD KEY `idx_user` (`performed_by`);
+
+--
+-- Indexes for table `audit_logs`
+--
+ALTER TABLE `audit_logs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_entity` (`entity_type`,`entity_id`),
+  ADD KEY `idx_user` (`user_id`),
+  ADD KEY `idx_action` (`action`),
+  ADD KEY `idx_created` (`created_at`);
+
+--
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `edit_requests`
+--
+ALTER TABLE `edit_requests`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_status` (`status`),
+  ADD KEY `idx_dean` (`dean_id`,`status`),
+  ADD KEY `idx_requested_by` (`requested_by`),
+  ADD KEY `idx_type_target` (`request_type`,`target_id`),
+  ADD KEY `reviewed_by` (`reviewed_by`);
+
+--
+-- Indexes for table `evidence_files`
+--
+ALTER TABLE `evidence_files`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `form_id` (`form_id`),
+  ADD KEY `si_id` (`si_id`);
+
+--
+-- Indexes for table `form_history`
+--
+ALTER TABLE `form_history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `form_id` (`form_id`);
+
+--
+-- Indexes for table `ipcr_evidence`
+--
+ALTER TABLE `ipcr_evidence`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_form` (`form_id`),
+  ADD KEY `idx_si` (`si_id`);
+
+--
+-- Indexes for table `ipcr_forms`
+--
+ALTER TABLE `ipcr_forms`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_user_period` (`user_id`,`period_id`),
+  ADD KEY `period_id` (`period_id`),
+  ADD KEY `template_id` (`template_id`);
+
+--
+-- Indexes for table `ipcr_si_entries`
+--
+ALTER TABLE `ipcr_si_entries`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_form_si` (`form_id`,`si_id`),
+  ADD KEY `si_id` (`si_id`);
+
+--
+-- Indexes for table `ipcr_templates`
+--
+ALTER TABLE `ipcr_templates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kras`
+--
+ALTER TABLE `kras`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mfo_id` (`mfo_id`);
+
+--
+-- Indexes for table `mfos`
+--
+ALTER TABLE `mfos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `template_id` (`template_id`);
+
+--
+-- Indexes for table `rating_periods`
+--
+ALTER TABLE `rating_periods`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `required_proof_types`
+--
+ALTER TABLE `required_proof_types`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `si_id` (`si_id`);
+
+--
+-- Indexes for table `secretary_permissions`
+--
+ALTER TABLE `secretary_permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_secretary_dean` (`secretary_id`,`dean_id`),
+  ADD KEY `dean_id` (`dean_id`);
+
+--
+-- Indexes for table `success_indicators`
+--
+ALTER TABLE `success_indicators`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `kra_id` (`kra_id`);
+
+--
+-- Indexes for table `system_config`
+--
+ALTER TABLE `system_config`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `config_key` (`config_key`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `employee_id` (`employee_id`),
+  ADD KEY `idx_assigned_dean` (`assigned_dean_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `audit_log`
+--
+ALTER TABLE `audit_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1707;
+
+--
+-- AUTO_INCREMENT for table `audit_logs`
+--
+ALTER TABLE `audit_logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `edit_requests`
+--
+ALTER TABLE `edit_requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `evidence_files`
+--
+ALTER TABLE `evidence_files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `form_history`
+--
+ALTER TABLE `form_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `ipcr_evidence`
+--
+ALTER TABLE `ipcr_evidence`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ipcr_forms`
+--
+ALTER TABLE `ipcr_forms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `ipcr_si_entries`
+--
+ALTER TABLE `ipcr_si_entries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3511;
+
+--
+-- AUTO_INCREMENT for table `ipcr_templates`
+--
+ALTER TABLE `ipcr_templates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `kras`
+--
+ALTER TABLE `kras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `mfos`
+--
+ALTER TABLE `mfos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `rating_periods`
+--
+ALTER TABLE `rating_periods`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `required_proof_types`
+--
+ALTER TABLE `required_proof_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `secretary_permissions`
+--
+ALTER TABLE `secretary_permissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `success_indicators`
+--
+ALTER TABLE `success_indicators`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `system_config`
+--
+ALTER TABLE `system_config`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=383;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `audit_logs`
+--
+ALTER TABLE `audit_logs`
+  ADD CONSTRAINT `audit_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `edit_requests`
+--
+ALTER TABLE `edit_requests`
+  ADD CONSTRAINT `edit_requests_ibfk_1` FOREIGN KEY (`requested_by`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `edit_requests_ibfk_2` FOREIGN KEY (`dean_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `edit_requests_ibfk_3` FOREIGN KEY (`reviewed_by`) REFERENCES `users` (`id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `evidence_files`
+--
+ALTER TABLE `evidence_files`
+  ADD CONSTRAINT `evidence_files_ibfk_1` FOREIGN KEY (`form_id`) REFERENCES `ipcr_forms` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `evidence_files_ibfk_2` FOREIGN KEY (`si_id`) REFERENCES `success_indicators` (`id`);
+
+--
+-- Constraints for table `form_history`
+--
+ALTER TABLE `form_history`
+  ADD CONSTRAINT `form_history_ibfk_1` FOREIGN KEY (`form_id`) REFERENCES `ipcr_forms` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `ipcr_forms`
+--
+ALTER TABLE `ipcr_forms`
+  ADD CONSTRAINT `ipcr_forms_ibfk_1` FOREIGN KEY (`period_id`) REFERENCES `rating_periods` (`id`),
+  ADD CONSTRAINT `ipcr_forms_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `ipcr_forms_ibfk_3` FOREIGN KEY (`template_id`) REFERENCES `ipcr_templates` (`id`);
+
+--
+-- Constraints for table `ipcr_si_entries`
+--
+ALTER TABLE `ipcr_si_entries`
+  ADD CONSTRAINT `ipcr_si_entries_ibfk_1` FOREIGN KEY (`form_id`) REFERENCES `ipcr_forms` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `ipcr_si_entries_ibfk_2` FOREIGN KEY (`si_id`) REFERENCES `success_indicators` (`id`);
+
+--
+-- Constraints for table `kras`
+--
+ALTER TABLE `kras`
+  ADD CONSTRAINT `kras_ibfk_1` FOREIGN KEY (`mfo_id`) REFERENCES `mfos` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `mfos`
+--
+ALTER TABLE `mfos`
+  ADD CONSTRAINT `mfos_ibfk_1` FOREIGN KEY (`template_id`) REFERENCES `ipcr_templates` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `required_proof_types`
+--
+ALTER TABLE `required_proof_types`
+  ADD CONSTRAINT `required_proof_types_ibfk_1` FOREIGN KEY (`si_id`) REFERENCES `success_indicators` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `secretary_permissions`
+--
+ALTER TABLE `secretary_permissions`
+  ADD CONSTRAINT `secretary_permissions_ibfk_1` FOREIGN KEY (`secretary_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `secretary_permissions_ibfk_2` FOREIGN KEY (`dean_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `success_indicators`
+--
+ALTER TABLE `success_indicators`
+  ADD CONSTRAINT `success_indicators_ibfk_1` FOREIGN KEY (`kra_id`) REFERENCES `kras` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`assigned_dean_id`) REFERENCES `users` (`id`) ON DELETE SET NULL;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
